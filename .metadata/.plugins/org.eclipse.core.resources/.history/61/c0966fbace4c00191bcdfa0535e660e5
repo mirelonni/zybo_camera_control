@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
 	cout << h << endl << w << endl << l << endl;
 	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
 
-	for (size_t loop = 0; loop < 50; loop++) {
+	for (size_t loop = 0; loop < 100; loop++) {
 		cout << "loop=====================" << loop << endl;
 
 		clock_t begin = clock();

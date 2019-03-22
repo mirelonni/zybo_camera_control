@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
 	cout << h << endl << w << endl << l << endl;
 	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
 
-	for (size_t loop = 0; loop < 50; loop++) {
+	for (size_t loop = 0; loop < 100; loop++) {
 		cout << "loop=====================" << loop << endl;
 
 		clock_t begin = clock();
@@ -160,7 +160,7 @@ int main(int argc, char** argv) {
 		for (size_t i = 0; i < l_l.size(); i++) {
 			Vec4i l = l_l[i];
 			if (l[2] - l[3] != 0) {
-				m = (l[1] - l[3]) / (l[0] - l[2]);
+				m = (l[0] - l[1]) / (l[2] - l[3]);
 				if (fabs(m) < 2) {
 					if (l[0] < l[2]) {
 						x1.push_back(l[0]);
@@ -191,7 +191,7 @@ int main(int argc, char** argv) {
 		for (size_t i = 0; i < l_r.size(); i++) {
 			Vec4i l = l_r[i];
 			if (l[2] - l[3] != 0) {
-				m = (l[1] - l[3]) / (l[0] - l[2]);
+				m = (l[0] - l[1]) / (l[2] - l[3]);
 				if (fabs(m) < 2) {
 					if (l[0] < l[2]) {
 						x1.push_back(l[0]);
@@ -232,7 +232,7 @@ int main(int argc, char** argv) {
 		cout << "m_r = " << m_r << endl;
 		cout << "m_l = " << m_l << endl;
 		cout << "sum of slopes = " << m_r + m_l << endl;
-		unsigned short servo_out = servo_comand_map(m_r, m_l, -0.5, 0.5);
+		unsigned short servo_out = servo_comand_map(m_r, m_l, -0.3, 0.3);
 		cout << "servo = " << servo_out << endl;
 		cout << "time = " << elapsed << endl;
 

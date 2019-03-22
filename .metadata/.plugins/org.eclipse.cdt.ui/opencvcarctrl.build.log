@@ -1,4 +1,4 @@
-19:46:28 **** Auto Build of configuration Debug for project opencvcarctrl ****
+20:17:18 **** Auto Build of configuration Debug for project opencvcarctrl ****
 make all 
 Building file: ../src/main.cc
 Invoking: ARM v7 Linux g++ compiler
@@ -24,9 +24,9 @@ Finished building target: opencvcarctrl.elf
 Invoking: ARM v7 Linux Print Size
 arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  28329	    532	    156	  29017	   7159	opencvcarctrl.elf
+  28321	    532	    156	  29009	   7151	opencvcarctrl.elf
 Finished building: opencvcarctrl.elf.size
  
 
-19:46:30 Build Finished (took 2s.524ms)
+20:17:21 Build Finished (took 2s.524ms)
 
