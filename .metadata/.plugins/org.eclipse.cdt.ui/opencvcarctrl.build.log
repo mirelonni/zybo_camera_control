@@ -1,0 +1,32 @@
+19:46:28 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void OnePoly(cv::Mat)’:
+../src/main.cc:53:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void TwoPoly(cv::Mat)’:
+../src/main.cc:72:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:73:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  28329	    532	    156	  29017	   7159	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+
+19:46:30 Build Finished (took 2s.524ms)
+
