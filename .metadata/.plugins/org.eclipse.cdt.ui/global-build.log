@@ -8577,3 +8577,2405 @@ arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
   28321	    532	    156	  29009	   7151	opencvcarctrl.elf
 Finished building: opencvcarctrl.elf.size
  
+15:06:14 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void OnePoly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void TwoPoly(cv::Mat)’:
+../src/main.cc:89:20: error: redeclaration of ‘const Point* ppt [1]’
+  const Point* ppt[1] = { pts[1] };
+                    ^
+../src/main.cc:85:15: note: ‘const Point* ppt [1]’ previously declared here
+  const Point* ppt[1] = { pts[0] };
+               ^~~
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void OnePoly(cv::Mat)’:
+../src/main.cc:93:6: error: redefinition of ‘void OnePoly(cv::Mat)’
+ void OnePoly(Mat img) {
+      ^~~~~~~
+../src/main.cc:51:6: note: ‘void OnePoly(cv::Mat)’ previously defined here
+ void OnePoly(Mat img) {
+      ^~~~~~~
+../src/main.cc:94:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+15:06:44 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:89:20: error: redeclaration of ‘const Point* ppt [1]’
+  const Point* ppt[1] = { pts[1] };
+                    ^
+../src/main.cc:85:15: note: ‘const Point* ppt [1]’ previously declared here
+  const Point* ppt[1] = { pts[0] };
+               ^~~
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void two_lines(cv::Mat)’:
+../src/main.cc:94:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:148:15: error: ‘OnePoly’ was not declared in this scope
+   OnePoly(poly);
+               ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+15:07:00 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:89:20: error: redeclaration of ‘const Point* ppt [1]’
+  const Point* ppt[1] = { pts[1] };
+                    ^
+../src/main.cc:85:15: note: ‘const Point* ppt [1]’ previously declared here
+  const Point* ppt[1] = { pts[0] };
+               ^~~
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void two_lines(cv::Mat)’:
+../src/main.cc:94:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+15:07:35 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void two_lines(cv::Mat)’:
+../src/main.cc:94:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  28965	    532	    156	  29653	   73d5	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+15:09:42 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void two_lines(cv::Mat)’:
+../src/main.cc:96:7: error: ‘image’ was not declared in this scope
+  line(image, Point(x1r, y1r), Point(x2r, y2r), Scalar(255, 255, 255), 3, CV_AA);
+       ^~~~~
+../src/main.cc:96:20: error: ‘x1r’ was not declared in this scope
+  line(image, Point(x1r, y1r), Point(x2r, y2r), Scalar(255, 255, 255), 3, CV_AA);
+                    ^~~
+../src/main.cc:96:25: error: ‘y1r’ was not declared in this scope
+  line(image, Point(x1r, y1r), Point(x2r, y2r), Scalar(255, 255, 255), 3, CV_AA);
+                         ^~~
+../src/main.cc:96:37: error: ‘x2r’ was not declared in this scope
+  line(image, Point(x1r, y1r), Point(x2r, y2r), Scalar(255, 255, 255), 3, CV_AA);
+                                     ^~~
+../src/main.cc:96:42: error: ‘y2r’ was not declared in this scope
+  line(image, Point(x1r, y1r), Point(x2r, y2r), Scalar(255, 255, 255), 3, CV_AA);
+                                          ^~~
+../src/main.cc:97:20: error: ‘x1l’ was not declared in this scope
+  line(image, Point(x1l, y1l), Point(x2l, y2l), Scalar(0, 255, 0), 3, CV_AA);
+                    ^~~
+../src/main.cc:97:37: error: ‘x2l’ was not declared in this scope
+  line(image, Point(x1l, y1l), Point(x2l, y2l), Scalar(0, 255, 0), 3, CV_AA);
+                                     ^~~
+../src/main.cc:97:42: error: ‘y2l’ was not declared in this scope
+  line(image, Point(x1l, y1l), Point(x2l, y2l), Scalar(0, 255, 0), 3, CV_AA);
+                                          ^~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+15:12:27 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void two_lines(cv::Mat)’:
+../src/main.cc:99:12: warning: ‘x1r’ is used uninitialized in this function [-Wuninitialized]
+  line(img, Point(x1r, right_y), Point(x2r, right_y), Scalar(255, 255, 255), 3, CV_AA);
+            ^~~~~~~~~~~~~~~~~~~
+../src/main.cc:99:12: warning: ‘right_y’ is used uninitialized in this function [-Wuninitialized]
+../src/main.cc:99:33: warning: ‘x2r’ is used uninitialized in this function [-Wuninitialized]
+  line(img, Point(x1r, right_y), Point(x2r, right_y), Scalar(255, 255, 255), 3, CV_AA);
+                                 ^~~~~~~~~~~~~~~~~~~
+../src/main.cc:102:12: warning: ‘x1l’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  line(img, Point(x1l, left_y), Point(x2l, left_y), Scalar(0, 255, 0), 3, CV_AA);
+            ^~~~~~~~~~~~~~~~~~
+../src/main.cc:102:12: warning: ‘left_y’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+../src/main.cc:102:32: warning: ‘x2l’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  line(img, Point(x1l, left_y), Point(x2l, left_y), Scalar(0, 255, 0), 3, CV_AA);
+                                ^~~~~~~~~~~~~~~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  28833	    532	    156	  29521	   7351	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+15:16:43 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  28885	    532	    156	  29573	   7385	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+15:21:07 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:149:3: error: expected initializer before ‘poly’
+   poly = cv::Mat::zeros(canny_image.size(), canny_image.type());
+   ^~~~
+../src/main.cc:150:3: error: ‘poly2’ was not declared in this scope
+   poly2 = cv::Mat::zeros(canny_image.size(), canny_image.type());
+   ^~~~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+15:22:15 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:52:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:72:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30197	    532	    156	  30885	   78a5	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+16:49:39 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:62:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:81:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:82:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30197	    532	    156	  30885	   78a5	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+16:50:15 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:62:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:81:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:82:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30197	    532	    156	  30885	   78a5	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+16:52:55 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:64:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:67:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:86:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:87:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30237	    532	    156	  30925	   78cd	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+18:48:04 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc:68:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:71:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:90:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:91:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30269	    532	    156	  30957	   78ed	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+18:48:09 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30269	    532	    156	  30957	   78ed	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+18:59:31 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29213	    532	    156	  29901	   74cd	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+19:20:54 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:159:11: error: ‘name’ was not declared in this scope
+   imwrite(name, image, compression_params);
+           ^~~~
+../src/main.cc:159:24: error: ‘compression_params’ was not declared in this scope
+   imwrite(name, image, compression_params);
+                        ^~~~~~~~~~~~~~~~~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+19:21:17 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:300:1: error: jump to label ‘write’ [-fpermissive]
+ write:
+ ^~~~~
+../src/main.cc:159:6: note:   from here
+ goto write;
+      ^~~~~
+../src/main.cc:283:18: note:   crosses initialization of ‘short unsigned int servo_out’
+   unsigned short servo_out = servo_comand_map(m_r, m_l, -0.5, 0.5);
+                  ^~~~~~~~~
+../src/main.cc:277:10: note:   crosses initialization of ‘double elapsed’
+   double elapsed = double(end - begin);
+          ^~~~~~~
+../src/main.cc:276:11: note:   crosses initialization of ‘clock_t end’
+   clock_t end = clock();
+           ^~~
+../src/main.cc:202:32: note:   crosses initialization of ‘std::vector<int> y2’
+   std::vector<int> x1, x2, y1, y2;
+                                ^~
+../src/main.cc:202:28: note:   crosses initialization of ‘std::vector<int> y1’
+   std::vector<int> x1, x2, y1, y2;
+                            ^~
+../src/main.cc:202:24: note:   crosses initialization of ‘std::vector<int> x2’
+   std::vector<int> x1, x2, y1, y2;
+                        ^~
+../src/main.cc:202:20: note:   crosses initialization of ‘std::vector<int> x1’
+   std::vector<int> x1, x2, y1, y2;
+                    ^~
+../src/main.cc:191:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > l_r’
+   vector<Vec4i> l_r;
+                 ^~~
+../src/main.cc:190:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > l_l’
+   vector<Vec4i> l_l;
+                 ^~~
+../src/main.cc:181:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > lines’
+   vector<Vec4i> lines;
+                 ^~~~~
+../src/main.cc:175:21: note:   crosses initialization of ‘cv::Mat region_image2’
+   Mat region_image, region_image2;
+                     ^~~~~~~~~~~~~
+../src/main.cc:175:7: note:   crosses initialization of ‘cv::Mat region_image’
+   Mat region_image, region_image2;
+       ^~~~~~~~~~~~
+../src/main.cc:170:13: note:   crosses initialization of ‘cv::Mat poly2’
+   Mat poly, poly2;
+             ^~~~~
+../src/main.cc:170:7: note:   crosses initialization of ‘cv::Mat poly’
+   Mat poly, poly2;
+       ^~~~
+../src/main.cc:167:7: note:   crosses initialization of ‘cv::Mat canny_image’
+   Mat canny_image;
+       ^~~~~~~~~~~
+../src/main.cc:164:7: note:   crosses initialization of ‘cv::Mat blurred_image’
+   Mat blurred_image;
+       ^~~~~~~~~~~~~
+../src/main.cc:161:7: note:   crosses initialization of ‘cv::Mat gray_image’
+   Mat gray_image;
+       ^~~~~~~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+19:21:38 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:300:1: error: jump to label ‘write111’ [-fpermissive]
+ write111:
+ ^~~~~~~~
+../src/main.cc:159:6: note:   from here
+ goto write111;
+      ^~~~~~~~
+../src/main.cc:283:18: note:   crosses initialization of ‘short unsigned int servo_out’
+   unsigned short servo_out = servo_comand_map(m_r, m_l, -0.5, 0.5);
+                  ^~~~~~~~~
+../src/main.cc:277:10: note:   crosses initialization of ‘double elapsed’
+   double elapsed = double(end - begin);
+          ^~~~~~~
+../src/main.cc:276:11: note:   crosses initialization of ‘clock_t end’
+   clock_t end = clock();
+           ^~~
+../src/main.cc:202:32: note:   crosses initialization of ‘std::vector<int> y2’
+   std::vector<int> x1, x2, y1, y2;
+                                ^~
+../src/main.cc:202:28: note:   crosses initialization of ‘std::vector<int> y1’
+   std::vector<int> x1, x2, y1, y2;
+                            ^~
+../src/main.cc:202:24: note:   crosses initialization of ‘std::vector<int> x2’
+   std::vector<int> x1, x2, y1, y2;
+                        ^~
+../src/main.cc:202:20: note:   crosses initialization of ‘std::vector<int> x1’
+   std::vector<int> x1, x2, y1, y2;
+                    ^~
+../src/main.cc:191:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > l_r’
+   vector<Vec4i> l_r;
+                 ^~~
+../src/main.cc:190:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > l_l’
+   vector<Vec4i> l_l;
+                 ^~~
+../src/main.cc:181:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > lines’
+   vector<Vec4i> lines;
+                 ^~~~~
+../src/main.cc:175:21: note:   crosses initialization of ‘cv::Mat region_image2’
+   Mat region_image, region_image2;
+                     ^~~~~~~~~~~~~
+../src/main.cc:175:7: note:   crosses initialization of ‘cv::Mat region_image’
+   Mat region_image, region_image2;
+       ^~~~~~~~~~~~
+../src/main.cc:170:13: note:   crosses initialization of ‘cv::Mat poly2’
+   Mat poly, poly2;
+             ^~~~~
+../src/main.cc:170:7: note:   crosses initialization of ‘cv::Mat poly’
+   Mat poly, poly2;
+       ^~~~
+../src/main.cc:167:7: note:   crosses initialization of ‘cv::Mat canny_image’
+   Mat canny_image;
+       ^~~~~~~~~~~
+../src/main.cc:164:7: note:   crosses initialization of ‘cv::Mat blurred_image’
+   Mat blurred_image;
+       ^~~~~~~~~~~~~
+../src/main.cc:161:7: note:   crosses initialization of ‘cv::Mat gray_image’
+   Mat gray_image;
+       ^~~~~~~~~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+19:21:46 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:302:3: error: jump to label ‘write111’ [-fpermissive]
+   write111:
+   ^~~~~~~~
+../src/main.cc:159:6: note:   from here
+ goto write111;
+      ^~~~~~~~
+../src/main.cc:301:15: note:   crosses initialization of ‘std::vector<int> compression_params’
+   vector<int> compression_params;
+               ^~~~~~~~~~~~~~~~~~
+../src/main.cc:283:18: note:   crosses initialization of ‘short unsigned int servo_out’
+   unsigned short servo_out = servo_comand_map(m_r, m_l, -0.5, 0.5);
+                  ^~~~~~~~~
+../src/main.cc:277:10: note:   crosses initialization of ‘double elapsed’
+   double elapsed = double(end - begin);
+          ^~~~~~~
+../src/main.cc:276:11: note:   crosses initialization of ‘clock_t end’
+   clock_t end = clock();
+           ^~~
+../src/main.cc:202:32: note:   crosses initialization of ‘std::vector<int> y2’
+   std::vector<int> x1, x2, y1, y2;
+                                ^~
+../src/main.cc:202:28: note:   crosses initialization of ‘std::vector<int> y1’
+   std::vector<int> x1, x2, y1, y2;
+                            ^~
+../src/main.cc:202:24: note:   crosses initialization of ‘std::vector<int> x2’
+   std::vector<int> x1, x2, y1, y2;
+                        ^~
+../src/main.cc:202:20: note:   crosses initialization of ‘std::vector<int> x1’
+   std::vector<int> x1, x2, y1, y2;
+                    ^~
+../src/main.cc:191:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > l_r’
+   vector<Vec4i> l_r;
+                 ^~~
+../src/main.cc:190:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > l_l’
+   vector<Vec4i> l_l;
+                 ^~~
+../src/main.cc:181:17: note:   crosses initialization of ‘std::vector<cv::Vec<int, 4> > lines’
+   vector<Vec4i> lines;
+                 ^~~~~
+../src/main.cc:175:21: note:   crosses initialization of ‘cv::Mat region_image2’
+   Mat region_image, region_image2;
+                     ^~~~~~~~~~~~~
+../src/main.cc:175:7: note:   crosses initialization of ‘cv::Mat region_image’
+   Mat region_image, region_image2;
+       ^~~~~~~~~~~~
+../src/main.cc:170:13: note:   crosses initialization of ‘cv::Mat poly2’
+   Mat poly, poly2;
+             ^~~~~
+../src/main.cc:170:7: note:   crosses initialization of ‘cv::Mat poly’
+   Mat poly, poly2;
+       ^~~~
+../src/main.cc:167:7: note:   crosses initialization of ‘cv::Mat canny_image’
+   Mat canny_image;
+       ^~~~~~~~~~~
+../src/main.cc:164:7: note:   crosses initialization of ‘cv::Mat blurred_image’
+   Mat blurred_image;
+       ^~~~~~~~~~~~~
+../src/main.cc:161:7: note:   crosses initialization of ‘cv::Mat gray_image’
+   Mat gray_image;
+       ^~~~~~~~~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+19:22:19 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(int, int)’:
+../src/main.cc:63:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:63:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:73:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:154:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  15045	    484	    156	  15685	   3d45	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:21:48 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:75:6: error: ‘right_point’ was not declared in this scope
+  if (right_point > 0) {
+      ^~~~~~~~~~~
+../src/main.cc:73:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:83:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:102:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:103:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:22:03 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:73:6: error: ‘right_point’ was not declared in this scope
+  if (right_point > 0) {
+      ^~~~~~~~~~~
+../src/main.cc:71:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:81:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:100:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:101:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:23:54 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:73:6: error: ‘right_point’ was not declared in this scope
+  if (right_point > 0) {
+      ^~~~~~~~~~~
+../src/main.cc:71:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:81:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:100:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:101:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:26:45 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:75:6: error: ‘right_point’ was not declared in this scope
+  if (right_point > 0) {
+      ^~~~~~~~~~~
+../src/main.cc:73:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:83:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:102:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:103:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+20:33:58 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:68:40: error: ‘l’ was not declared in this scope
+  for (int i = 0; i < 2 * LINE_DISTANCE;l i++) {
+                                        ^
+../src/main.cc:68:42: error: expected ‘)’ before ‘i’
+  for (int i = 0; i < 2 * LINE_DISTANCE;l i++) {
+                                          ^
+../src/main.cc:68:45: error: expected ‘;’ before ‘)’ token
+  for (int i = 0; i < 2 * LINE_DISTANCE;l i++) {
+                                             ^
+../src/main.cc:75:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:75:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:83:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:102:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:103:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+20:34:11 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:69:10: error: could not convert ‘img’ from ‘cv::Mat’ to ‘bool’
+   if (img)
+          ^
+../src/main.cc:70:2: error: expected primary-expression before ‘}’ token
+  }
+  ^
+../src/main.cc:75:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:75:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:83:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:102:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:103:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:38:08 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:74:2: error: expected primary-expression before ‘}’ token
+  }
+  ^
+../src/main.cc:69:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:79:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:79:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:106:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:107:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+20:38:20 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:69:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:81:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:81:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:89:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:108:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:109:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29253	    532	    156	  29941	   74f5	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:39:32 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:74:40: error: expected ‘;’ before ‘:’ token
+    cout << "punct la " << i  / 3<< endl:
+                                        ^
+../src/main.cc:69:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:81:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:81:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:89:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:108:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:109:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+20:43:28 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:75:41: error: no matching function for call to ‘cv::Mat::at(cv::Point)’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1707:33: note: candidate: template<class _Tp> _Tp& cv::Mat::at(int)
+     template<typename _Tp> _Tp& at(int i0=0);
+                                 ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1707:33: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   couldn't deduce template parameter ‘_Tp’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1711:39: note: candidate: template<class _Tp> const _Tp& cv::Mat::at(int) const
+     template<typename _Tp> const _Tp& at(int i0=0) const;
+                                       ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1711:39: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   couldn't deduce template parameter ‘_Tp’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1716:33: note: candidate: template<class _Tp> _Tp& cv::Mat::at(int, int)
+     template<typename _Tp> _Tp& at(int i0, int i1);
+                                 ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1716:33: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   candidate expects 2 arguments, 1 provided
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1721:39: note: candidate: template<class _Tp> const _Tp& cv::Mat::at(int, int) const
+     template<typename _Tp> const _Tp& at(int i0, int i1) const;
+                                       ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1721:39: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   candidate expects 2 arguments, 1 provided
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1728:33: note: candidate: template<class _Tp> _Tp& cv::Mat::at(int, int, int)
+     template<typename _Tp> _Tp& at(int i0, int i1, int i2);
+                                 ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1728:33: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   candidate expects 3 arguments, 1 provided
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1734:39: note: candidate: template<class _Tp> const _Tp& cv::Mat::at(int, int, int) const
+     template<typename _Tp> const _Tp& at(int i0, int i1, int i2) const;
+                                       ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1734:39: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   candidate expects 3 arguments, 1 provided
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1739:33: note: candidate: template<class _Tp> _Tp& cv::Mat::at(const int*)
+     template<typename _Tp> _Tp& at(const int* idx);
+                                 ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1739:33: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   couldn't deduce template parameter ‘_Tp’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1743:39: note: candidate: template<class _Tp> const _Tp& cv::Mat::at(const int*) const
+     template<typename _Tp> const _Tp& at(const int* idx) const;
+                                       ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1743:39: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   couldn't deduce template parameter ‘_Tp’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1746:40: note: candidate: template<class _Tp, int n> _Tp& cv::Mat::at(const cv::Vec<int, n>&)
+     template<typename _Tp, int n> _Tp& at(const Vec<int, n>& idx);
+                                        ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1746:40: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   ‘cv::Point {aka cv::Point_<int>}’ is not derived from ‘const cv::Vec<int, n>’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1748:46: note: candidate: template<class _Tp, int n> const _Tp& cv::Mat::at(const cv::Vec<int, n>&) const
+     template<typename _Tp, int n> const _Tp& at(const Vec<int, n>& idx) const;
+                                              ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1748:46: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   ‘cv::Point {aka cv::Point_<int>}’ is not derived from ‘const cv::Vec<int, n>’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1754:33: note: candidate: template<class _Tp> _Tp& cv::Mat::at(cv::Point)
+     template<typename _Tp> _Tp& at(Point pt);
+                                 ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1754:33: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   couldn't deduce template parameter ‘_Tp’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+In file included from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:59:0,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1759:39: note: candidate: template<class _Tp> const _Tp& cv::Mat::at(cv::Point) const
+     template<typename _Tp> const _Tp& at(Point pt) const;
+                                       ^~
+/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/mat.hpp:1759:39: note:   template argument deduction/substitution failed:
+../src/main.cc:75:41: note:   couldn't deduce template parameter ‘_Tp’
+   if (img.at(Point(i + LEFT_X_1, LEFT_Y)) == 255){
+                                         ^
+../src/main.cc:77:16: error: no matching function for call to ‘std::vector<int>::push_back()’
+    l.push_back();
+                ^
+In file included from /home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/vector:64:0,
+                 from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/types.hpp:53,
+                 from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:58,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:914:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::value_type = int]
+       push_back(const value_type& __x)
+       ^~~~~~~~~
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:914:7: note:   candidate expects 1 argument, 0 provided
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:932:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::value_type = int]
+       push_back(value_type&& __x)
+       ^~~~~~~~~
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:932:7: note:   candidate expects 1 argument, 0 provided
+../src/main.cc:68:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:69:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:84:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:84:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:111:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:112:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:43:56 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:77:16: error: no matching function for call to ‘std::vector<int>::push_back()’
+    l.push_back();
+                ^
+In file included from /home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/vector:64:0,
+                 from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core/types.hpp:53,
+                 from /home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include/opencv2/core.hpp:58,
+                 from ../src/main.cc:1:
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:914:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(const value_type&) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::value_type = int]
+       push_back(const value_type& __x)
+       ^~~~~~~~~
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:914:7: note:   candidate expects 1 argument, 0 provided
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:932:7: note: candidate: void std::vector<_Tp, _Alloc>::push_back(std::vector<_Tp, _Alloc>::value_type&&) [with _Tp = int; _Alloc = std::allocator<int>; std::vector<_Tp, _Alloc>::value_type = int]
+       push_back(value_type&& __x)
+       ^~~~~~~~~
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/bits/stl_vector.h:932:7: note:   candidate expects 1 argument, 0 provided
+../src/main.cc:68:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:69:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:84:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:84:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:111:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:112:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:44:29 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:68:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:69:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:84:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:84:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:111:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:112:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29633	    532	    156	  30321	   7671	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:45:22 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:79:31: error: ‘RIGYHT_X_1’ was not declared in this scope
+   if (img.at<uchar>(Point(i + RIGYHT_X_1, RIGHT_Y)) == 255) {
+                               ^~~~~~~~~~
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:85:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:85:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:91:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:110:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:111:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:45:34 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:79:31: error: ‘RIGYHT_X_1’ was not declared in this scope
+   if (img.at<uchar>(Point(i + RIGYHT_X_1, RIGHT_Y)) == 255) {
+                               ^~~~~~~~~~
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:85:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:85:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:91:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:110:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:111:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:45:48 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:85:7: warning: unused variable ‘right_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:85:23: warning: unused variable ‘left_flag’ [-Wunused-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:91:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:110:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:111:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29849	    532	    156	  30537	   7749	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:46:46 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:86:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:86:23: warning: variable ‘left_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:101:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:120:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:121:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29945	    532	    156	  30633	   77a9	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:46:51 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:86:7: warning: variable ‘right_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+       ^~~~~~~~~~
+../src/main.cc:86:23: warning: variable ‘left_flag’ set but not used [-Wunused-but-set-variable]
+  char right_flag = 0, left_flag = 0;
+                       ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:101:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:120:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:121:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  29945	    532	    156	  30633	   77a9	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:48:40 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:96:3: error: ‘right_flag’ was not declared in this scope
+   right_flag = 1;
+   ^~~~~~~~~~
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:104:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:123:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:124:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+20:48:49 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:86:9: warning: variable ‘left_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+         ^~~~~~~~
+../src/main.cc:86:19: warning: variable ‘right_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+                   ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:104:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:123:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:124:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30041	    532	    156	  30729	   7809	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:50:09 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:66:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:67:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:86:9: warning: variable ‘left_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+         ^~~~~~~~
+../src/main.cc:86:19: warning: variable ‘right_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+                   ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:104:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:123:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:124:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30041	    532	    156	  30729	   7809	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:51:14 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:74:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:75:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:94:9: warning: variable ‘left_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+         ^~~~~~~~
+../src/main.cc:94:19: warning: variable ‘right_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+                   ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:112:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:131:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:132:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30169	    532	    156	  30857	   7889	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:52:02 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:74:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:75:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:94:9: warning: variable ‘left_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+         ^~~~~~~~
+../src/main.cc:94:19: warning: variable ‘right_avg’ set but not used [-Wunused-but-set-variable]
+  double left_avg, right_avg;
+                   ^~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:112:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:131:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:132:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30193	    532	    156	  30881	   78a1	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:54:50 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:74:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:75:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:99:6: warning: variable ‘servo_left’ set but not used [-Wunused-but-set-variable]
+  int servo_left = 0, servo_right = 0;
+      ^~~~~~~~~~
+../src/main.cc:99:22: warning: variable ‘servo_right’ set but not used [-Wunused-but-set-variable]
+  int servo_left = 0, servo_right = 0;
+                      ^~~~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:114:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:134:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30289	    532	    156	  30977	   7901	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:56:40 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:81:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:82:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:106:6: warning: variable ‘servo_left’ set but not used [-Wunused-but-set-variable]
+  int servo_left = 0, servo_right = 0;
+      ^~~~~~~~~~
+../src/main.cc:106:22: warning: variable ‘servo_right’ set but not used [-Wunused-but-set-variable]
+  int servo_left = 0, servo_right = 0;
+                      ^~~~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:123:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:142:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:143:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘double average_not_zero(int, int)’:
+../src/main.cc:77:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30385	    532	    156	  31073	   7961	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:57:33 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc:112:6: warning: variable ‘servo_left’ set but not used [-Wunused-but-set-variable]
+  int servo_left = 0, servo_right = 0;
+      ^~~~~~~~~~
+../src/main.cc:112:22: warning: variable ‘servo_right’ set but not used [-Wunused-but-set-variable]
+  int servo_left = 0, servo_right = 0;
+                      ^~~~~~~~~~~
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:129:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:148:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:149:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30441	    532	    156	  31129	   7999	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:58:09 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:129:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:148:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:149:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  30457	    532	    156	  31145	   79a9	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+20:59:44 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:129:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:148:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:149:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:344:24: error: ‘elapsed’ was not declared in this scope
+   cout << "time = " << elapsed << endl;
+                        ^~~~~~~
+../src/main.cc:210:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+21:00:11 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:129:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:148:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:149:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:210:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21166	    520	    156	  21842	   5552	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:00:25 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:129:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:148:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:149:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:210:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21166	    520	    156	  21842	   5552	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:02:01 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:132:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:151:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:152:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:213:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21254	    520	    156	  21930	   55aa	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:02:18 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21254	    520	    156	  21930	   55aa	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:22:43 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21434	    520	    156	  22110	   565e	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:24:21 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21438	    520	    156	  22114	   5662	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:26:11 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21438	    520	    156	  22114	   5662	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:27:26 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21438	    520	    156	  22114	   5662	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:30:15 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  21438	    520	    156	  22114	   5662	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:31:46 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  20454	    508	    148	  21110	   5276	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:32:11 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  20454	    508	    148	  21110	   5276	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 
+21:34:39 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:87:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:88:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:133:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:152:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:153:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:214:11: warning: unused variable ‘begin’ [-Wunused-variable]
+   clock_t begin = clock();
+           ^~~~~
+Finished building: ../src/main.cc
+ 
+Building target: opencvcarctrl.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "opencvcarctrl.elf"  ./src/main.o   -lopencv_core -lm -lopencv_imgcodecs -lopencv_imgproc
+Finished building target: opencvcarctrl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  20402	    504	    148	  21054	   523e	opencvcarctrl.elf
+Finished building: opencvcarctrl.elf.size
+ 

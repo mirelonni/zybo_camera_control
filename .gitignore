@@ -1,0 +1,10 @@
+IGNORE/
+*/**/Debug
+
+*/**/*.cache
+*/**/*.runs
+*/**/*.sim
+*/**/*.tmp
+*/**/edit_projects
+
+.metadata/**
