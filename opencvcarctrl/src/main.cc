@@ -14,6 +14,7 @@
 #include <unistd.h>
 
 #define CHARVIDEO_IOC_MAGIC  '8'
+#define MOTION_IOC_MAGIC  '9'
 
 #define CHARVIDEO_IOCHALT    _IO(CHARVIDEO_IOC_MAGIC, 0)
 #define CHARVIDEO_IOCSTART    _IO(CHARVIDEO_IOC_MAGIC, 1)
@@ -28,6 +29,9 @@
 #define SERVO_RIGHT 380
 #define SERVO_CENTER (SERVO_LEFT + (SERVO_RIGHT-SERVO_LEFT)/2)
 
+#define MOTION_IOCTSETENABLE    _IO(MOTION_IOC_MAGIC, 0)
+#define MOTION_IOCTSETDIR	_IO(MOTION_IOC_MAGIC, 1)
+
 #define RIGHT_Y 560
 #define LEFT_Y 560
 
@@ -41,8 +45,19 @@
 #define RIGHT_X_1 RIGHT_MEAN - LINE_DISTANCE
 #define RIGHT_X_2 RIGHT_MEAN + LINE_DISTANCE
 
+#define CLK_FREQ 50000000.0f // FCLK0 frequency not found in xparameters.h
+const double clk_to_cm = (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
+
 using namespace cv;
 using namespace std;
+
+int map_servo(double input, double in_min, double in_max) {
+
+	double slope = (double) (SERVO_RIGHT - SERVO_LEFT) / (double) (in_max - in_min);
+	double output = (double) SERVO_LEFT + slope * (double) (input - in_min);
+	return (int) output;
+
+}
 
 int servo_comand_map(double m_r, double m_l, double in_min, double in_max) {
 
@@ -55,17 +70,7 @@ int servo_comand_map(double m_r, double m_l, double in_min, double in_max) {
 		input = (-1) * fabs(sum);
 	}
 
-	double slope = (double) (SERVO_RIGHT - SERVO_LEFT) / (double) (in_max - in_min);
-	double output = (double) SERVO_LEFT + slope * (double) (input - in_min);
-	return (int) output;
-
-}
-
-int map_servo (double input, double in_min, double in_max) {
-
-	double slope = (double) (SERVO_RIGHT - SERVO_LEFT) / (double) (in_max - in_min);
-	double output = (double) SERVO_LEFT + slope * (double) (input - in_min);
-	return (int) output;
+	return map_servo(input, in_min, in_max);
 
 }
 
@@ -107,7 +112,6 @@ int servo_comand_line(Mat img) {
 		}
 	}
 
-
 	double left_avg, right_avg;
 
 	left_avg = std::accumulate(l.begin(), l.end(), 0.0) / l.size();
@@ -122,9 +126,6 @@ int servo_comand_line(Mat img) {
 	if (r.size() > 0) {
 		servo_right = map_servo(right_avg, RIGHT_X_1, RIGHT_X_2);
 	}
-
-
-
 
 	return average_not_zero(servo_left, servo_right);
 }
@@ -194,26 +195,100 @@ void two_lines(Mat img) {
 
 int main(int argc, char** argv) {
 
-	unsigned char* pixels;
+	cout << "OpenCV version : " << CV_VERSION << endl;
 
-	FILE* in = fopen("/dev/video", "rb");
+	if (argc < 6) {
+		cerr << "./opencvcarctrl.elf <debug param> <number of iterations> <speed> <direction> <stop distance>" << endl << "0 - nothing" << endl << "1 - just text" << endl
+				<< "2 - one *relevant* image" << endl << "3 - more *relevant* images" << endl;
+		return -1;
+	}
+
+	FILE* camera = fopen("/dev/video", "rb");
+	if (camera < 0) {
+		cerr << "Failed to open camera." << endl;
+		return -1;
+	}
+
 	FILE* servo = fopen("/dev/servo", "r+b");
-	//ofstream servo("/dev/servo", ofstream::binary);
-	//int s = open("/dev/servo", O_WRONLY);
+	if (servo < 0) {
+		cerr << "Failed to open servo." << endl;
+		fclose(camera);
+		return -1;
+	}
 
+	FILE* motors = fopen("/dev/motors", "r+b");
+	if (motors < 0) {
+		cerr << "Failed to open motors." << endl;
+		fclose(camera);
+		fclose(servo);
+		return -1;
+	}
+
+	FILE* sonar = fopen("/dev/sonar", "rb");
+	if (sonar < 0) {
+		cerr << "Failed to open sonar." << endl;
+		fclose(camera);
+		fclose(servo);
+		fclose(motors);
+		return -1;
+	}
+
+	int iterations = atoi(argv[2]);
+	if (iterations < 0) {
+		cerr << "Bad number of iterations." << endl;
+		fclose(camera);
+		fclose(servo);
+		fclose(motors);
+		fclose(sonar);
+		return -1;
+	}
+
+	unsigned short left_speed = atoi(argv[3]);
+	unsigned short right_speed = left_speed;
+	unsigned int speed = (left_speed << 16) + right_speed;
+
+	unsigned int left_dir = atoi(argv[4]);
+	if (left_dir < 0 && left_dir > 1) {
+		cerr << "Bad direction." << endl;
+		fclose(camera);
+		fclose(servo);
+		fclose(motors);
+		fclose(sonar);
+		return -1;
+	}
+	unsigned int right_dir = left_dir;
+	ioctl(motors->_fileno, MOTION_IOCTSETDIR, ((left_dir & 1) << 1) + (right_dir & 1));
+
+	unsigned int enable = 1;
+	ioctl(motors->_fileno, MOTION_IOCTSETENABLE, enable);
+
+	int servo_out = 300;
+	int old_servo_out = servo_out;
+
+	int srv_write = write(servo->_fileno, &servo_out, 2);
+	int mtr_write = write(motors->_fileno, &speed, 4);
+
+	unsigned int clk_edges;
+	double dist;
+	double stop_dist = atoi(argv[5]);
+
+	unsigned char* pixels;
 	int h, w, l;
-	h = ioctl(in->_fileno, CHARVIDEO_IOCQHEIGHT);
-	w = ioctl(in->_fileno, CHARVIDEO_IOCQWIDTH);
-	l = ioctl(in->_fileno, CHARVIDEO_IOCQPIXELLEN);
+	h = ioctl(camera->_fileno, CHARVIDEO_IOCQHEIGHT);
+	w = ioctl(camera->_fileno, CHARVIDEO_IOCQWIDTH);
+	l = ioctl(camera->_fileno, CHARVIDEO_IOCQPIXELLEN);
 	cout << h << endl << w << endl << l << endl;
 	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
 
-	for (size_t loop = 0; loop < 300; loop++) {
-		cout << "loop=====================" << loop << endl;
+	for (int loop = 0; loop < iterations; loop++) {
+		if (atoi(argv[1]) > 0) {
+			cout << "loop==========aaa===========" << loop << endl;
 
-		clock_t begin = clock();
+		}
 
-		fread(pixels, 1, h * w * l, in);
+		//clock_t begin = clock();
+
+		fread(pixels, 1, h * w * l, camera);
 
 		Mat image(h, w, CV_8UC3, &pixels[0]); //in case of BGR image use CV_8UC3
 
@@ -341,22 +416,45 @@ int main(int argc, char** argv) {
 //		cout << "sum of slopes = " << m_r + m_l << endl;
 //		unsigned short servo_out = servo_comand_map(m_r, m_l, -0.5, 0.5);
 
+		servo_out = servo_comand_line(region_image2);
 
-		int servo_out = servo_comand_line(region_image2);
-
-		cout << "servo = " << servo_out << endl;
 		//cout << "time = " << elapsed << endl;
+
+		read(sonar->_fileno, &clk_edges, 4);
+
+		dist = clk_edges * clk_to_cm;
+		if (dist < stop_dist) {
+			speed = 0;
+		} else {
+			speed = (left_speed << 16) + right_speed;
+		}
+
+		mtr_write = write(motors->_fileno, &speed, 4);
+		srv_write = write(servo->_fileno, &servo_out, 2);
 
 
 		if (servo_out == -1) {
-			continue;
+			servo_out = old_servo_out;
 		}
+
 		if (servo_out <= 220)
 			servo_out = 220;
 		if (servo_out >= 380)
 			servo_out = 380;
 
-		cout << "Servo write: " << write(servo->_fileno, &servo_out, 2) << endl;
+		old_servo_out = servo_out;
+
+		if (atoi(argv[1]) > 0) {
+
+			cout << "servo = " << servo_out << endl;
+			cout << "speed = " << speed << endl;
+			cout << "dist  = " << dist << endl;
+
+			//cout << "Servo write: " << srv_write << endl;
+			//cout << "Motor write: " << mtr_write << endl;
+		}
+
+
 
 //		for (size_t i = 0; i < lines.size(); i++) {
 //			Vec4i l = lines[i];
@@ -365,26 +463,46 @@ int main(int argc, char** argv) {
 //		line(image, Point(x1r, y1r), Point(x2r, y2r), Scalar(255, 0, 0), 3, CV_AA);
 //		line(image, Point(x1l, y1l), Point(x2l, y2l), Scalar(0, 255, 0), 3, CV_AA);
 
+		line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+
+		line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+
 		vector<int> compression_params;
 		compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
 		compression_params.push_back(9);
 
 		char name[20];
 		sprintf(name, "img%d.png", loop);
-//		try {
-//			imwrite("im.png", poly2, compression_params);
-//			imwrite(name, region_image2, compression_params);
-//
-//		} catch (runtime_error& ex) {
-//			fprintf(stderr, "Exception converting image to PNG format: %s\n", ex.what());
-//			return 1;
-//		}
+		try {
+			if (atoi(argv[1]) > 1) {
+				imwrite(name, image, compression_params);
+			}
+			if (atoi(argv[1]) > 2) {
+				imwrite("dbg.png", region_image2, compression_params);
+
+			}
+
+		} catch (runtime_error& ex) {
+			cerr << "Exception converting image to PNG format: " << ex.what() << endl;
+			return 1;
+		}
 
 		//image.release();
 	}
 
-	fclose(in);
+	speed = 0;
+	servo_out = 300;
+
+	srv_write = write(servo->_fileno, &servo_out, 2);
+	mtr_write = write(motors->_fileno, &speed, 4);
+	if (atoi(argv[1]) > 0) {
+		cout << "Servo write: " << srv_write << endl;
+		cout << "Motor write: " << mtr_write << endl;
+	}
+
+	fclose(camera);
 	fclose(servo);
+	fclose(motors);
 
 	return 0;
 }
