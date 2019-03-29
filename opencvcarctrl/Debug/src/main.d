@@ -91,7 +91,16 @@ src/main.o src/main.o: ../src/main.cc \
  /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/posix_opt.h \
  /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/environments.h \
  /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/confname.h \
- /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/getopt.h
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/getopt.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/signal.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/signum.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/siginfo.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigaction.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigcontext.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/asm/sigcontext.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigstack.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/sys/ucontext.h \
+ /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigthread.h
 
 /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/stdc-predef.h:
 
@@ -278,3 +287,21 @@ src/main.o src/main.o: ../src/main.cc \
 /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/confname.h:
 
 /home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/getopt.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/signal.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/signum.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/siginfo.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigaction.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigcontext.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/asm/sigcontext.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigstack.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/sys/ucontext.h:
+
+/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include/bits/sigthread.h:

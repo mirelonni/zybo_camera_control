@@ -1,7 +1,10 @@
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
+#include <opencv2/objdetect.hpp>
+
 #include <stdio.h>
 #include <sys/ioctl.h>
 #include <linux/fcntl.h>
@@ -12,6 +15,8 @@
 #include <string.h>
 #include <math.h>
 #include <unistd.h>
+
+#include <signal.h>
 
 #define CHARVIDEO_IOC_MAGIC  '8'
 #define MOTION_IOC_MAGIC  '9'
@@ -130,49 +135,53 @@ int servo_comand_line(Mat img) {
 	return average_not_zero(servo_left, servo_right);
 }
 
-void one_poly(Mat img) {
+void one_poly_sign(Mat img) {
 	int w = img.cols;
 	int h = img.rows;
 
-	int lineType = 8;
-	/* Create some points */
-	Point pts[1][6];
-	pts[0][0] = Point(0, 350);
-	pts[0][1] = Point(0, 430);
-	pts[0][2] = Point(157, h);
-	pts[0][3] = Point(1085, h);
-	pts[0][4] = Point(1230, 430);
-	pts[0][5] = Point(1230, 350);
-
-	const Point* ppt[1] = { pts[0] };
-	int npt[] = { 6 };
-	fillPoly(img, ppt, npt, 1, Scalar(255, 255, 255), lineType);
-}
-
-void two_poly(Mat img) {
-	int w = img.cols;
-	int h = img.rows;
+	int x1, x2, y1, y2;
+	x1 = 750;
+	y1 = 75;
+	x2 = 1150;
+	y2 = 400;
 
 	int lineType = 8;
 	/* Create some points */
-
-	Point pts[2][4];
-	pts[0][0] = Point(90, 475);
-	pts[0][1] = Point(90, 610);
-	pts[0][2] = Point(300, 610);
-	pts[0][3] = Point(300, 475);
-	pts[1][0] = Point(980, 475);
-	pts[1][1] = Point(980, 580);
-	pts[1][2] = Point(1160, 580);
-	pts[1][3] = Point(1160, 475);
+	Point pts[1][4];
+	pts[0][0] = Point(x1, y1);
+	pts[0][1] = Point(x1, y2);
+	pts[0][2] = Point(x2, y2);
+	pts[0][3] = Point(x2, y1);
 
 	const Point* ppt[1] = { pts[0] };
 	int npt[] = { 4 };
-	fillPoly(img, ppt, npt, 2, Scalar(255, 255, 255), lineType);
-
-	ppt[1] = {pts[1]};
-	fillPoly(img, ppt, npt, 2, Scalar(255, 255, 255), lineType);
+	fillPoly(img, ppt, npt, 1, Scalar(255, 255, 255), lineType);
 }
+
+//void two_poly(Mat img) {
+//	int w = img.cols;
+//	int h = img.rows;
+//
+//	int lineType = 8;
+//	/* Create some points */
+//
+//	Point pts[2][4];
+//	pts[0][0] = Point(90, 475);
+//	pts[0][1] = Point(90, 610);
+//	pts[0][2] = Point(300, 610);
+//	pts[0][3] = Point(300, 475);
+//	pts[1][0] = Point(980, 475);
+//	pts[1][1] = Point(980, 580);
+//	pts[1][2] = Point(1160, 580);
+//	pts[1][3] = Point(1160, 475);
+//
+//	const Point* ppt[1] = { pts[0] };
+//	int npt[] = { 4 };
+//	fillPoly(img, ppt, npt, 2, Scalar(255, 255, 255), lineType);
+//
+//	ppt[1] = {pts[1]};
+//	fillPoly(img, ppt, npt, 2, Scalar(255, 255, 255), lineType);
+//}
 
 void two_lines(Mat img) {
 	int left_y, right_y, x1l, x2l, x1r, x2r;
@@ -191,6 +200,46 @@ void two_lines(Mat img) {
 
 	// the left selection line
 	line(img, Point(x1l, left_y), Point(x2l, left_y), Scalar(255, 255, 255), 3, CV_AA);
+}
+
+String stop_cascade_name = "stop.xml";
+CascadeClassifier stop_cascade;
+
+void detectAndDisplay(Mat frame, Mat image) {
+
+	std::vector<Rect> stop_signs;
+	Mat frame_gray;
+	cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
+	equalizeHist(frame_gray, frame_gray);
+	//-- Detect stop_signs
+	stop_cascade.detectMultiScale(frame_gray, stop_signs, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
+
+	cout << "stop signs = " << stop_signs.size() << endl;
+
+	for (size_t i = 0; i < stop_signs.size(); i++) {
+		Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
+		ellipse(image, center, Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
+	}
+
+}
+
+int f_motors;
+int f_servo;
+
+
+void my_handler(int s) {
+
+	unsigned int speed = 0;
+	int servo_out = 300;
+
+	//cout << "AAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
+
+	int m = write(f_servo, &servo_out, 2);
+	int sr = write(f_motors, &speed, 4);
+
+	cout << m << "--" << sr << endl;
+
+	exit(1);
 }
 
 int main(int argc, char** argv) {
@@ -233,6 +282,9 @@ int main(int argc, char** argv) {
 		return -1;
 	}
 
+	f_motors = motors->_fileno;
+	f_servo = servo->_fileno;
+
 	int iterations = atoi(argv[2]);
 	if (iterations < 0) {
 		cerr << "Bad number of iterations." << endl;
@@ -241,6 +293,8 @@ int main(int argc, char** argv) {
 		fclose(motors);
 		fclose(sonar);
 		return -1;
+	} else if (iterations == 42){
+		iterations = 10000;
 	}
 
 	unsigned short left_speed = atoi(argv[3]);
@@ -272,6 +326,16 @@ int main(int argc, char** argv) {
 	double dist;
 	double stop_dist = atoi(argv[5]);
 
+	struct sigaction sigIntHandler;
+
+	memset(&sigIntHandler, 0, sizeof(sigIntHandler));
+
+	sigIntHandler.sa_flags = SA_RESETHAND;
+	sigIntHandler.sa_handler = my_handler;
+
+	sigaction(SIGINT, &sigIntHandler, NULL);
+
+
 	unsigned char* pixels;
 	int h, w, l;
 	h = ioctl(camera->_fileno, CHARVIDEO_IOCQHEIGHT);
@@ -281,6 +345,7 @@ int main(int argc, char** argv) {
 	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
 
 	for (int loop = 0; loop < iterations; loop++) {
+
 		if (atoi(argv[1]) > 0) {
 			cout << "loop==========aaa===========" << loop << endl;
 
@@ -304,13 +369,17 @@ int main(int argc, char** argv) {
 		Mat poly, poly2;
 		poly = cv::Mat::zeros(canny_image.size(), canny_image.type());
 		poly2 = cv::Mat::zeros(canny_image.size(), canny_image.type());
-		one_poly(poly);
-		two_lines(poly2);
-		Mat region_image, region_image2;
+		one_poly_sign(poly2);
+		two_lines(poly);
+
+		Mat region_image_lane, region_image_sign;
 		//blurred_image.copyTo(final_image, poly);
-		bitwise_and(poly, canny_image, region_image);
-		bitwise_and(poly2, canny_image, region_image2);
-		//region_image.copyTo(region_image2);
+
+		bitwise_and(poly, canny_image, region_image_lane);
+
+		//bitwise_and(poly2, image, region_image_sign);
+
+		image.copyTo(region_image_sign, poly2);
 
 //		vector<Vec4i> lines;
 //		HoughLinesP(region_image, lines, 1, CV_PI / 180, 50, 50, 10);
@@ -416,11 +485,13 @@ int main(int argc, char** argv) {
 //		cout << "sum of slopes = " << m_r + m_l << endl;
 //		unsigned short servo_out = servo_comand_map(m_r, m_l, -0.5, 0.5);
 
-		servo_out = servo_comand_line(region_image2);
+
+		servo_out = servo_comand_line(region_image_lane);
 
 		//cout << "time = " << elapsed << endl;
 
 		read(sonar->_fileno, &clk_edges, 4);
+
 
 		dist = clk_edges * clk_to_cm;
 		if (dist < stop_dist) {
@@ -431,7 +502,6 @@ int main(int argc, char** argv) {
 
 		mtr_write = write(motors->_fileno, &speed, 4);
 		srv_write = write(servo->_fileno, &servo_out, 2);
-
 
 		if (servo_out == -1) {
 			servo_out = old_servo_out;
@@ -453,8 +523,6 @@ int main(int argc, char** argv) {
 			//cout << "Servo write: " << srv_write << endl;
 			//cout << "Motor write: " << mtr_write << endl;
 		}
-
-
 
 //		for (size_t i = 0; i < lines.size(); i++) {
 //			Vec4i l = lines[i];
@@ -478,7 +546,8 @@ int main(int argc, char** argv) {
 				imwrite(name, image, compression_params);
 			}
 			if (atoi(argv[1]) > 2) {
-				imwrite("dbg.png", region_image2, compression_params);
+				imwrite("dbg.png", region_image_lane, compression_params);
+				imwrite("dbgsign.png", region_image_sign, compression_params);
 
 			}
 
@@ -488,6 +557,9 @@ int main(int argc, char** argv) {
 		}
 
 		//image.release();
+
+		sigaction(SIGINT, &sigIntHandler, NULL);
+
 	}
 
 	speed = 0;
