@@ -8,3 +8,4 @@ IGNORE/
 */**/edit_projects
 
 .metadata/**
+acl/**

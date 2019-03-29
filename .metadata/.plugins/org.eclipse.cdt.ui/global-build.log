@@ -14976,3 +14976,830 @@ arm-linux-gnueabihf-size opencvcarctrl.elf  |tee "opencvcarctrl.elf.size"
   23596	    520	    292	  24408	   5f58	opencvcarctrl.elf
 Finished building: opencvcarctrl.elf.size
  
+15:33:27 **** Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" -o "stopsign.elf"  ./src/main.o   -lopencv_core
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/libc.so.6
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /usr/lib/libc_nonshared.a
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/ld-linux-armhf.so.3
+collect2: error: ld returned 1 exit status
+make: *** [stopsign.elf] Error 1
+makefile:48: recipe for target 'stopsign.elf' failed
+15:33:31 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" -o "stopsign.elf"  ./src/main.o   -lopencv_core
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/libc.so.6
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /usr/lib/libc_nonshared.a
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/ld-linux-armhf.so.3
+collect2: error: ld returned 1 exit status
+make: *** [stopsign.elf] Error 1
+makefile:48: recipe for target 'stopsign.elf' failed
+15:34:01 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" -o "stopsign.elf"  ./src/main.o   -lopencv_core
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/libc.so.6
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /usr/lib/libc_nonshared.a
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/ld-linux-armhf.so.3
+collect2: error: ld returned 1 exit status
+makefile:48: recipe for target 'stopsign.elf' failed
+make: *** [stopsign.elf] Error 1
+15:36:54 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_core
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31782	    480	    148	  32410	   7e9a	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:37:54 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_core -lm -limg-codecs -limg-proc
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find -limg-codecs
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find -limg-proc
+collect2: error: ld returned 1 exit status
+makefile:48: recipe for target 'stopsign.elf' failed
+make: *** [stopsign.elf] Error 1
+15:38:46 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31834	    496	    148	  32478	   7ede	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:38:49 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31834	    496	    148	  32478	   7ede	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:39:13 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:92:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:93:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:134:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:153:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:154:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  23596	    520	    292	  24408	   5f58	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:39:59 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int map_servo(double, double, double)’:
+../src/main.cc:33:27: error: ‘SERVO_RIGHT’ was not declared in this scope
+  double slope = (double) (SERVO_RIGHT - SERVO_LEFT) / (double) (in_max - in_min);
+                           ^~~~~~~~~~~
+../src/main.cc:33:41: error: ‘SERVO_LEFT’ was not declared in this scope
+  double slope = (double) (SERVO_RIGHT - SERVO_LEFT) / (double) (in_max - in_min);
+                                         ^~~~~~~~~~
+../src/main.cc: In function ‘int servo_comand_line(cv::Mat)’:
+../src/main.cc:76:26: error: ‘LINE_DISTANCE’ was not declared in this scope
+  for (int i = 0; i < 2 * LINE_DISTANCE; i += 1) {
+                          ^~~~~~~~~~~~~
+../src/main.cc:77:31: error: ‘LEFT_X_1’ was not declared in this scope
+   if (img.at<uchar>(Point(i + LEFT_X_1, LEFT_Y)) == 255) {
+                               ^~~~~~~~
+../src/main.cc:77:41: error: ‘LEFT_Y’ was not declared in this scope
+   if (img.at<uchar>(Point(i + LEFT_X_1, LEFT_Y)) == 255) {
+                                         ^~~~~~
+../src/main.cc:85:26: error: ‘LINE_DISTANCE’ was not declared in this scope
+  for (int i = 0; i < 2 * LINE_DISTANCE; i += 1) {
+                          ^~~~~~~~~~~~~
+../src/main.cc:86:31: error: ‘RIGHT_X_1’ was not declared in this scope
+   if (img.at<uchar>(Point(i + RIGHT_X_1, RIGHT_Y)) == 255) {
+                               ^~~~~~~~~
+../src/main.cc:86:42: error: ‘RIGHT_Y’ was not declared in this scope
+   if (img.at<uchar>(Point(i + RIGHT_X_1, RIGHT_Y)) == 255) {
+                                          ^~~~~~~
+../src/main.cc:100:36: error: ‘LEFT_X_1’ was not declared in this scope
+   servo_left = map_servo(left_avg, LEFT_X_1, LEFT_X_2);
+                                    ^~~~~~~~
+../src/main.cc:100:46: error: ‘LEFT_X_2’ was not declared in this scope
+   servo_left = map_servo(left_avg, LEFT_X_1, LEFT_X_2);
+                                              ^~~~~~~~
+../src/main.cc:104:38: error: ‘RIGHT_X_1’ was not declared in this scope
+   servo_right = map_servo(right_avg, RIGHT_X_1, RIGHT_X_2);
+                                      ^~~~~~~~~
+../src/main.cc:104:49: error: ‘RIGHT_X_2’ was not declared in this scope
+   servo_right = map_servo(right_avg, RIGHT_X_1, RIGHT_X_2);
+                                                 ^~~~~~~~~
+../src/main.cc:69:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:70:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void one_poly(cv::Mat)’:
+../src/main.cc:111:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc: In function ‘void two_poly(cv::Mat)’:
+../src/main.cc:130:6: warning: unused variable ‘w’ [-Wunused-variable]
+  int w = img.cols;
+      ^
+../src/main.cc:131:6: warning: unused variable ‘h’ [-Wunused-variable]
+  int h = img.rows;
+      ^
+../src/main.cc: In function ‘void two_lines(cv::Mat)’:
+../src/main.cc:157:11: error: ‘LEFT_Y’ was not declared in this scope
+  left_y = LEFT_Y;
+           ^~~~~~
+../src/main.cc:158:12: error: ‘RIGHT_Y’ was not declared in this scope
+  right_y = RIGHT_Y;
+            ^~~~~~~
+../src/main.cc:160:8: error: ‘LEFT_X_1’ was not declared in this scope
+  x1l = LEFT_X_1;
+        ^~~~~~~~
+../src/main.cc:161:8: error: ‘LEFT_X_2’ was not declared in this scope
+  x2l = LEFT_X_2;
+        ^~~~~~~~
+../src/main.cc:163:8: error: ‘RIGHT_X_1’ was not declared in this scope
+  x1r = RIGHT_X_1;
+        ^~~~~~~~~
+../src/main.cc:164:8: error: ‘RIGHT_X_2’ was not declared in this scope
+  x2r = RIGHT_X_2;
+        ^~~~~~~~~
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:237:25: error: ‘MOTION_IOCTSETDIR’ was not declared in this scope
+  ioctl(motors->_fileno, MOTION_IOCTSETDIR, ((left_dir & 1) << 1) + (right_dir & 1));
+                         ^~~~~~~~~~~~~~~~~
+../src/main.cc:240:25: error: ‘MOTION_IOCTSETENABLE’ was not declared in this scope
+  ioctl(motors->_fileno, MOTION_IOCTSETENABLE, enable);
+                         ^~~~~~~~~~~~~~~~~~~~
+../src/main.cc:402:22: error: ‘clk_to_cm’ was not declared in this scope
+   dist = clk_edges * clk_to_cm;
+                      ^~~~~~~~~
+../src/main.cc:443:21: error: ‘RIGHT_X_1’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                     ^~~~~~~~~
+../src/main.cc:443:32: error: ‘RIGHT_Y’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                                ^~~~~~~
+../src/main.cc:443:48: error: ‘RIGHT_X_2’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                                                ^~~~~~~~~
+../src/main.cc:445:21: error: ‘LEFT_X_1’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                     ^~~~~~~~
+../src/main.cc:445:31: error: ‘LEFT_Y’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                               ^~~~~~
+../src/main.cc:445:46: error: ‘LEFT_X_2’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                                              ^~~~~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+15:40:33 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:95:25: error: ‘MOTION_IOCTSETDIR’ was not declared in this scope
+  ioctl(motors->_fileno, MOTION_IOCTSETDIR, ((left_dir & 1) << 1) + (right_dir & 1));
+                         ^~~~~~~~~~~~~~~~~
+../src/main.cc:98:25: error: ‘MOTION_IOCTSETENABLE’ was not declared in this scope
+  ioctl(motors->_fileno, MOTION_IOCTSETENABLE, enable);
+                         ^~~~~~~~~~~~~~~~~~~~
+../src/main.cc:142:16: error: ‘one_poly’ was not declared in this scope
+   one_poly(poly);
+                ^
+../src/main.cc:143:18: error: ‘two_lines’ was not declared in this scope
+   two_lines(poly2);
+                  ^
+../src/main.cc:254:46: error: ‘servo_comand_line’ was not declared in this scope
+   servo_out = servo_comand_line(region_image2);
+                                              ^
+../src/main.cc:260:22: error: ‘clk_to_cm’ was not declared in this scope
+   dist = clk_edges * clk_to_cm;
+                      ^~~~~~~~~
+../src/main.cc:301:21: error: ‘RIGHT_X_1’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                     ^~~~~~~~~
+../src/main.cc:301:32: error: ‘RIGHT_Y’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                                ^~~~~~~
+../src/main.cc:301:48: error: ‘RIGHT_X_2’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                                                ^~~~~~~~~
+../src/main.cc:303:21: error: ‘LEFT_X_1’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                     ^~~~~~~~
+../src/main.cc:303:31: error: ‘LEFT_Y’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                               ^~~~~~
+../src/main.cc:303:46: error: ‘LEFT_X_2’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                                              ^~~~~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+15:41:37 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:88:16: error: ‘one_poly’ was not declared in this scope
+   one_poly(poly);
+                ^
+../src/main.cc:89:18: error: ‘two_lines’ was not declared in this scope
+   two_lines(poly2);
+                  ^
+../src/main.cc:200:3: error: ‘servo_out’ was not declared in this scope
+   servo_out = servo_comand_line(region_image2);
+   ^~~~~~~~~
+../src/main.cc:200:46: error: ‘servo_comand_line’ was not declared in this scope
+   servo_out = servo_comand_line(region_image2);
+                                              ^
+../src/main.cc:204:8: error: ‘sonar’ was not declared in this scope
+   read(sonar->_fileno, &clk_edges, 4);
+        ^~~~~
+../src/main.cc:204:25: error: ‘clk_edges’ was not declared in this scope
+   read(sonar->_fileno, &clk_edges, 4);
+                         ^~~~~~~~~
+../src/main.cc:206:3: error: ‘dist’ was not declared in this scope
+   dist = clk_edges * clk_to_cm;
+   ^~~~
+../src/main.cc:206:22: error: ‘clk_to_cm’ was not declared in this scope
+   dist = clk_edges * clk_to_cm;
+                      ^~~~~~~~~
+../src/main.cc:207:14: error: ‘stop_dist’ was not declared in this scope
+   if (dist < stop_dist) {
+              ^~~~~~~~~
+../src/main.cc:208:4: error: ‘speed’ was not declared in this scope
+    speed = 0;
+    ^~~~~
+../src/main.cc:210:4: error: ‘speed’ was not declared in this scope
+    speed = (left_speed << 16) + right_speed;
+    ^~~~~
+../src/main.cc:210:13: error: ‘left_speed’ was not declared in this scope
+    speed = (left_speed << 16) + right_speed;
+             ^~~~~~~~~~
+../src/main.cc:210:33: error: ‘right_speed’ was not declared in this scope
+    speed = (left_speed << 16) + right_speed;
+                                 ^~~~~~~~~~~
+../src/main.cc:213:3: error: ‘mtr_write’ was not declared in this scope
+   mtr_write = write(motors->_fileno, &speed, 4);
+   ^~~~~~~~~
+../src/main.cc:213:21: error: ‘motors’ was not declared in this scope
+   mtr_write = write(motors->_fileno, &speed, 4);
+                     ^~~~~~
+../src/main.cc:213:39: error: ‘speed’ was not declared in this scope
+   mtr_write = write(motors->_fileno, &speed, 4);
+                                       ^~~~~
+../src/main.cc:214:3: error: ‘srv_write’ was not declared in this scope
+   srv_write = write(servo->_fileno, &servo_out, 2);
+   ^~~~~~~~~
+../src/main.cc:214:21: error: ‘servo’ was not declared in this scope
+   srv_write = write(servo->_fileno, &servo_out, 2);
+                     ^~~~~
+../src/main.cc:218:16: error: ‘old_servo_out’ was not declared in this scope
+    servo_out = old_servo_out;
+                ^~~~~~~~~~~~~
+../src/main.cc:226:3: error: ‘old_servo_out’ was not declared in this scope
+   old_servo_out = servo_out;
+   ^~~~~~~~~~~~~
+../src/main.cc:247:21: error: ‘RIGHT_X_1’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                     ^~~~~~~~~
+../src/main.cc:247:32: error: ‘RIGHT_Y’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                                ^~~~~~~
+../src/main.cc:247:48: error: ‘RIGHT_X_2’ was not declared in this scope
+   line(image, Point(RIGHT_X_1, RIGHT_Y), Point(RIGHT_X_2, RIGHT_Y), Scalar(100, 0, 0), 1, CV_AA);
+                                                ^~~~~~~~~
+../src/main.cc:249:21: error: ‘LEFT_X_1’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                     ^~~~~~~~
+../src/main.cc:249:31: error: ‘LEFT_Y’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                               ^~~~~~
+../src/main.cc:249:46: error: ‘LEFT_X_2’ was not declared in this scope
+   line(image, Point(LEFT_X_1, LEFT_Y), Point(LEFT_X_2, LEFT_Y), Scalar(0, 100, 0), 1, CV_AA);
+                                              ^~~~~~~~
+../src/main.cc:274:2: error: ‘speed’ was not declared in this scope
+  speed = 0;
+  ^~~~~
+../src/main.cc:275:2: error: ‘servo_out’ was not declared in this scope
+  servo_out = 300;
+  ^~~~~~~~~
+../src/main.cc:277:2: error: ‘srv_write’ was not declared in this scope
+  srv_write = write(servo->_fileno, &servo_out, 2);
+  ^~~~~~~~~
+../src/main.cc:277:20: error: ‘servo’ was not declared in this scope
+  srv_write = write(servo->_fileno, &servo_out, 2);
+                    ^~~~~
+../src/main.cc:278:2: error: ‘mtr_write’ was not declared in this scope
+  mtr_write = write(motors->_fileno, &speed, 4);
+  ^~~~~~~~~
+../src/main.cc:278:20: error: ‘motors’ was not declared in this scope
+  mtr_write = write(motors->_fileno, &speed, 4);
+                    ^~~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+15:42:22 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:87:24: error: ‘region_image2’ was not declared in this scope
+     imwrite("dbg.png", region_image2, compression_params);
+                        ^~~~~~~~~~~~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+15:43:28 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12537	    468	    292	  13297	   33f1	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:43:38 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12537	    468	    292	  13297	   33f1	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:44:12 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12537	    468	    292	  13297	   33f1	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:47:58 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12537	    468	    292	  13297	   33f1	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:49:37 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘int main(int, char**)’:
+../src/main.cc:100:34: error: cannot convert ‘cv::String’ to ‘char*’ for argument ‘1’ to ‘int sprintf(char*, const char*, ...)’
+   sprintf(name, "img%d.png", loop);
+                                  ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+15:49:54 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12537	    468	    292	  13297	   33f1	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+15:59:43 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+./src/main.o: In function `__static_initialization_and_destruction_0(int, int)':
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:37: undefined reference to `cv::CascadeClassifier::CascadeClassifier()'
+makefile:48: recipe for target 'stopsign.elf' failed
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:37: undefined reference to `cv::CascadeClassifier::~CascadeClassifier()'
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:37: undefined reference to `cv::CascadeClassifier::~CascadeClassifier()'
+collect2: error: ld returned 1 exit status
+make: *** [stopsign.elf] Error 1
+16:00:30 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_imgcodecs -lopencv_core -lm
+./src/main.o: In function `__static_initialization_and_destruction_0(int, int)':
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:38: undefined reference to `cv::CascadeClassifier::CascadeClassifier()'
+makefile:48: recipe for target 'stopsign.elf' failed
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:38: undefined reference to `cv::CascadeClassifier::~CascadeClassifier()'
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:38: undefined reference to `cv::CascadeClassifier::~CascadeClassifier()'
+collect2: error: ld returned 1 exit status
+make: *** [stopsign.elf] Error 1
+16:00:56 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12808	    484	    308	  13600	   3520	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:00:59 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12808	    484	    308	  13600	   3520	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:01:06 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12808	    484	    308	  13600	   3520	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:01:17 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12808	    484	    308	  13600	   3520	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:04:07 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  13034	    492	    308	  13834	   360a	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:07:08 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+./src/main.o: In function `main':
+/home/mirel/zybo/stopsign/Debug/../src/main.cc:89: undefined reference to `detectAndDisplay(cv::Mat)'
+collect2: error: ld returned 1 exit status
+makefile:48: recipe for target 'stopsign.elf' failed
+make: *** [stopsign.elf] Error 1
+16:09:15 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void detectAndDisplay(cv::Mat)’:
+../src/main.cc:48:48: error: ‘faces’ was not declared in this scope
+     stop_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(30, 30) );
+                                                ^~~~~
+make: *** [src/main.o] Error 1
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+16:09:42 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+../src/main.cc: In function ‘void detectAndDisplay(cv::Mat)’:
+../src/main.cc:51:64: error: ‘faces’ was not declared in this scope
+         Point center( stop_signs[i].x + stop_signs[i].width/2, faces[i].y + faces[i].height/2 );
+                                                                ^~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+16:10:05 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17785	    516	    308	  18609	   48b1	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:11:18 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17453	    512	    308	  18273	   4761	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:13:01 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17453	    512	    308	  18273	   4761	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+16:21:07 **** Auto Build of configuration Debug for project stopsign ****
+make all 
+Building file: ../src/main.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/include" -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/main.o" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.cc"
+Finished building: ../src/main.cc
+ 
+Building target: stopsign.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/.opt/SDK/2017.4/data/embeddedsw/ThirdParty/opencv/aarch32/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "stopsign.elf"  ./src/main.o   -lopencv_imgproc -lopencv_objdetect -lopencv_imgcodecs -lopencv_core -lm
+Finished building target: stopsign.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size stopsign.elf  |tee "stopsign.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17729	    516	    308	  18553	   4879	stopsign.elf
+Finished building: stopsign.elf.size
+ 
+17:23:36 **** Build of configuration Debug for project acl ****
+make all 
+Building file: ../src/helloworld.c
+Invoking: ARM v7 Linux gcc compiler
+arm-linux-gnueabihf-gcc -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/helloworld.o" -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+Finished building: ../src/helloworld.c
+ 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" -o "acl.elf"  ./src/helloworld.o   
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/libc.so.6
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /usr/lib/libc_nonshared.a
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/ld-linux-armhf.so.3
+collect2: error: ld returned 1 exit status
+make: *** [acl.elf] Error 1
+makefile:36: recipe for target 'acl.elf' failed
+17:23:43 **** Auto Build of configuration Debug for project acl ****
+make all 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" -o "acl.elf"  ./src/helloworld.o   
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/libc.so.6
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /usr/lib/libc_nonshared.a
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/bin/../lib/gcc/arm-linux-gnueabihf/6.2.1/../../../../arm-linux-gnueabihf/bin/ld: cannot find /lib/ld-linux-armhf.so.3
+collect2: error: ld returned 1 exit status
+makefile:36: recipe for target 'acl.elf' failed
+make: *** [acl.elf] Error 1
+17:25:00 **** Auto Build of configuration Debug for project acl ****
+make all 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "acl.elf"  ./src/helloworld.o   
+Finished building target: acl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size acl.elf  |tee "acl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+    908	    284	      4	   1196	    4ac	acl.elf
+Finished building: acl.elf.size
+ 
+17:25:48 **** Auto Build of configuration Debug for project acl ****
+make all 
+Building file: ../src/acltest.c
+Invoking: ARM v7 Linux gcc compiler
+arm-linux-gnueabihf-gcc -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/acltest.o" -MMD -MP -MF"src/acltest.d" -MT"src/acltest.o" -o "src/acltest.o" "../src/acltest.c"
+Finished building: ../src/acltest.c
+ 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "acl.elf"  ./src/acltest.o ./src/helloworld.o   
+./src/helloworld.o: In function `main':
+/home/mirel/zybo/acl/Debug/../src/helloworld.c:22: multiple definition of `main'
+./src/acltest.o:/home/mirel/zybo/acl/Debug/../src/acltest.c:68: first defined here
+./src/acltest.o: In function `Run':
+/home/mirel/zybo/acl/Debug/../src/acltest.c:50: undefined reference to `pow'
+/home/mirel/zybo/acl/Debug/../src/acltest.c:50: undefined reference to `pow'
+/home/mirel/zybo/acl/Debug/../src/acltest.c:50: undefined reference to `sqrt'
+collect2: error: ld returned 1 exit status
+make: *** [acl.elf] Error 1
+makefile:36: recipe for target 'acl.elf' failed
+17:26:04 **** Auto Build of configuration Debug for project acl ****
+make all 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "acl.elf"  ./src/acltest.o ./src/helloworld.o   -lm
+./src/helloworld.o: In function `main':
+/home/mirel/zybo/acl/Debug/../src/helloworld.c:22: multiple definition of `main'
+./src/acltest.o:/home/mirel/zybo/acl/Debug/../src/acltest.c:68: first defined here
+makefile:36: recipe for target 'acl.elf' failed
+collect2: error: ld returned 1 exit status
+make: *** [acl.elf] Error 1
+17:26:16 **** Auto Build of configuration Debug for project acl ****
+make all 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "acl.elf"  ./src/acltest.o   -lm
+Finished building target: acl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size acl.elf  |tee "acl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   5401	    328	      8	   5737	   1669	acl.elf
+Finished building: acl.elf.size
+ 
+17:36:37 **** Auto Build of configuration Debug for project acl ****
+make all 
+Building file: ../src/acltest.c
+Invoking: ARM v7 Linux gcc compiler
+arm-linux-gnueabihf-gcc -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/acltest.o" -MMD -MP -MF"src/acltest.d" -MT"src/acltest.o" -o "src/acltest.o" "../src/acltest.c"
+Finished building: ../src/acltest.c
+ 
+Building target: acl.elf
+Invoking: ARM v7 Linux gcc linker
+arm-linux-gnueabihf-gcc -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "acl.elf"  ./src/acltest.o   -lm
+Finished building target: acl.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size acl.elf  |tee "acl.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   5393	    328	      8	   5729	   1661	acl.elf
+Finished building: acl.elf.size
+ 
