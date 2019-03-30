@@ -47,7 +47,11 @@ void detectAndDisplay(Mat frame) {
 	stop_cascade.detectMultiScale(frame_gray, stop_signs, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
 
 	cout << "stop signs = " << stop_signs.size() << endl;
+	if (stop_signs.size() > 0) {
+		cout << "stop height = " << stop_signs[0].height << endl;
+		cout << "stop width = " << stop_signs[0].width << endl;
 
+	}
 
 	for (size_t i = 0; i < stop_signs.size(); i++) {
 		Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
