@@ -43,11 +43,11 @@
 #define LINE_DISTANCE_1_OUT 100
 #define LINE_DISTANCE_1_IN 280
 
-#define LEFT_MEAN_1 162
+#define LEFT_MEAN_1 172
 #define LEFT_X_1_1 LEFT_MEAN_1 - LINE_DISTANCE_1_OUT
 #define LEFT_X_2_1 LEFT_MEAN_1 + LINE_DISTANCE_1_IN
 
-#define RIGHT_MEAN_1 1130
+#define RIGHT_MEAN_1 1100
 #define RIGHT_X_1_1 RIGHT_MEAN_1 - LINE_DISTANCE_1_IN
 #define RIGHT_X_2_1 RIGHT_MEAN_1 + LINE_DISTANCE_1_OUT
 
@@ -55,11 +55,11 @@
 
 #define LINE_DISTANCE_2 100
 
-#define LEFT_MEAN_2 285
+#define LEFT_MEAN_2 304
 #define LEFT_X_1_2 LEFT_MEAN_2 - LINE_DISTANCE_2
 #define LEFT_X_2_2 LEFT_MEAN_2 + LINE_DISTANCE_2
 
-#define RIGHT_MEAN_2 1003
+#define RIGHT_MEAN_2 963
 #define RIGHT_X_1_2 RIGHT_MEAN_2 - LINE_DISTANCE_2
 #define RIGHT_X_2_2 RIGHT_MEAN_2 + LINE_DISTANCE_2
 
@@ -67,11 +67,11 @@
 
 #define LINE_DISTANCE_3 100
 
-#define LEFT_MEAN_3 458
+#define LEFT_MEAN_3 481
 #define LEFT_X_1_3 LEFT_MEAN_3 - LINE_DISTANCE_3
 #define LEFT_X_2_3 LEFT_MEAN_3 + LINE_DISTANCE_3
 
-#define RIGHT_MEAN_3 836
+#define RIGHT_MEAN_3 794
 #define RIGHT_X_1_3 RIGHT_MEAN_3 - LINE_DISTANCE_3
 #define RIGHT_X_2_3 RIGHT_MEAN_3 + LINE_DISTANCE_3
 
@@ -256,6 +256,18 @@ void one_poly_sign(Mat img) {
 	fillPoly(img, ppt, npt, 1, Scalar(255, 255, 255), lineType);
 }
 
+Mat crop(Mat frame, int x1, int y1, int x2, int y2) {
+
+	Rect roi;
+	roi.x = x1;
+	roi.y = y1;
+	roi.width = x2 - x1;
+	roi.height = y2 - y1;
+
+	Mat crop = frame(roi);
+	return crop;
+}
+
 void lines(Mat img) {
 // the 1st selection lines
 	line(img, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
@@ -289,7 +301,7 @@ int detect_and_display(Mat frame, Mat image, int param) {
 			// draw a ellipse around the sign
 			if (param > 2 || param == -1) {
 				Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
-				ellipse(image, center, Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
+				ellipse(frame, center, Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
 			}
 		}
 		if (stop_signs[i].height >= SIGN_MIN && stop_signs[i].height <= SIGN_MAX) {
@@ -452,8 +464,11 @@ int main(int argc, char** argv) {
 			image = Mat(h, w, CV_8UC3, &pixels[0]);
 		}
 
+		Mat frame;
+		image.copyTo(frame);
+
 		Mat gray_image;
-		cvtColor(image, gray_image, CV_RGB2GRAY);
+		cvtColor(frame, gray_image, CV_RGB2GRAY);
 
 		Mat blurred_image;
 		GaussianBlur(gray_image, blurred_image, Size(5, 5), 0, 0);
@@ -462,16 +477,17 @@ int main(int argc, char** argv) {
 		Canny(blurred_image, canny_image, 50, 150);
 
 		// make the selection areas for the images
-		Mat poly, poly2;
-		poly = cv::Mat::zeros(image.size(), canny_image.type());
+		Mat poly;
+		poly = cv::Mat::zeros(frame.size(), canny_image.type());
 		lines(poly);
-		poly2 = cv::Mat::zeros(image.size(), canny_image.type());
-		one_poly_sign(poly2);
 
 		// apply selection areas to said images
-		Mat region_image_lane, region_image_sign;
+		Mat region_image_lane, region_image_sign_1, region_image_sign_2;
 		bitwise_and(poly, canny_image, region_image_lane);
-		image.copyTo(region_image_sign, poly2);
+		//image.copyTo(region_image_sign, poly2);
+		region_image_sign_1 = crop(frame, w / 2, 0, w, h);
+		cv::resize(region_image_sign_1, region_image_sign_2, cv::Size(), 0.5, 0.5);
+
 
 		servo_out = servo_comand_line(region_image_lane, image, param);
 
@@ -498,7 +514,7 @@ int main(int argc, char** argv) {
 
 		old_stop_sign = stop_sign;
 
-//		stop_sign = detect_and_display(region_image_sign, image, param);
+		stop_sign = detect_and_display(region_image_sign_2, image, param);
 //
 //		if (stop_sign == 1 && old_stop_sign == 0) {
 //			speed = 0;
@@ -551,14 +567,14 @@ int main(int argc, char** argv) {
 			try {
 
 				imwrite(name, image, compression_params);
+				imwrite("test2.png", frame, compression_params);
 
 				if (param > 2 || param == -1) {
 					imwrite("img_region_image_lane.png", region_image_lane, compression_params);
-					imwrite("img_region_image_sign.png", region_image_sign, compression_params);
+					imwrite("img_region_image_sign.png", region_image_sign_2, compression_params);
 				}
 				if (param == -1) {
 					imwrite("img_poly.png", poly, compression_params);
-					imwrite("img_poly2.png", poly2, compression_params);
 				}
 
 			} catch (runtime_error& ex) {

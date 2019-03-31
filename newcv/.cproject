@@ -67,6 +67,18 @@
 							<tool id="xilinx.gnu.armv7.linux.size.debug.501052293" name="ARM v7 Linux Print Size" superClass="xilinx.gnu.armv7.linux.size.debug"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="xilinx.gnu.armv7.linux.exe.debug.1708866921.1380611864" name="main.cc" rcbsApplicability="disable" resourcePath="src/main.cc" toolsToInvoke="xilinx.gnu.armv7.linux.cxx.toolchain.compiler.debug.570716462.496013365">
+						<tool id="xilinx.gnu.armv7.linux.cxx.toolchain.compiler.debug.570716462.496013365" name="ARM v7 Linux g++ compiler" superClass="xilinx.gnu.armv7.linux.cxx.toolchain.compiler.debug.570716462">
+							<option id="xilinx.gnu.compiler.option.optimization.level.2071866115" superClass="xilinx.gnu.compiler.option.optimization.level" value="gnu.c.optimization.level.optimize" valueType="enumerated"/>
+							<inputType id="xilinx.gnu.armv7.linux.cxx.compiler.input.160783359" name="C++ source files" superClass="xilinx.gnu.armv7.linux.cxx.compiler.input"/>
+						</tool>
+						<tool customBuildStep="true" id="org.eclipse.cdt.managedbuilder.ui.rcbs.1402715803" name="Resource Custom Build Step">
+							<inputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.inputtype.1161588578" name="Resource Custom Build Step Input Type">
+								<additionalInput kind="additionalinputdependency" paths=""/>
+							</inputType>
+							<outputType id="org.eclipse.cdt.managedbuilder.ui.rcbs.outputtype.593398704" name="Resource Custom Build Step Output Type"/>
+						</tool>
+					</fileInfo>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
