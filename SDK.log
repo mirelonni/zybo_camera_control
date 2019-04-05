@@ -33,3 +33,18 @@
 14:29:03 INFO  : XSCT server has started successfully.
 14:29:03 INFO  : Successfully done setting XSCT server connection channel  
 14:29:03 INFO  : Successfully done setting SDK workspace  
+20:09:34 INFO  : Registering command handlers for SDK TCF services
+20:09:35 INFO  : Launching XSCT server: xsct -n -interactive /home/mirel/zybo/temp_xsdb_launch_script.tcl
+20:09:38 INFO  : XSCT server has started successfully.
+20:09:39 INFO  : Successfully done setting XSCT server connection channel  
+20:09:39 INFO  : Successfully done setting SDK workspace  
+15:44:29 INFO  : Registering command handlers for SDK TCF services
+15:44:30 INFO  : Launching XSCT server: xsct -n -interactive /home/mirel/zybo/temp_xsdb_launch_script.tcl
+15:44:33 INFO  : XSCT server has started successfully.
+15:44:33 INFO  : Successfully done setting XSCT server connection channel  
+15:44:33 INFO  : Successfully done setting SDK workspace  
+16:32:42 INFO  : Registering command handlers for SDK TCF services
+16:32:44 INFO  : Launching XSCT server: xsct -n -interactive /home/mirel/zybo/temp_xsdb_launch_script.tcl
+16:32:47 INFO  : XSCT server has started successfully.
+16:32:47 INFO  : Successfully done setting XSCT server connection channel  
+16:32:48 INFO  : Successfully done setting SDK workspace  

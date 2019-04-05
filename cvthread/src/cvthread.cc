@@ -4,6 +4,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/objdetect.hpp>
+#include <chrono>
 
 #include <stdio.h>
 #include <sys/ioctl.h>
@@ -36,6 +37,7 @@
 #define SERVO_LEFT 220
 #define SERVO_RIGHT 380
 #define SERVO_CENTER (SERVO_LEFT + (SERVO_RIGHT-SERVO_LEFT)/2)
+#define SERVO_FINE 15
 
 #define MOTION_IOCTSETENABLE    _IO(MOTION_IOC_MAGIC, 0)
 #define MOTION_IOCTSETDIR	_IO(MOTION_IOC_MAGIC, 1)
@@ -58,7 +60,7 @@
 
 #define Y_2 (440 * RESIZE_FACTOR)
 
-#define LINE_DISTANCE_2 (100 * RESIZE_FACTOR)
+#define LINE_DISTANCE_2 (25 * RESIZE_FACTOR)
 
 #define LEFT_MEAN_2 (304 * RESIZE_FACTOR)
 #define LEFT_X_1_2 ((LEFT_MEAN_2 - LINE_DISTANCE_2))
@@ -70,7 +72,7 @@
 
 #define Y_3 (300 * RESIZE_FACTOR)
 
-#define LINE_DISTANCE_3 (100 * RESIZE_FACTOR)
+#define LINE_DISTANCE_3 (25 * RESIZE_FACTOR)
 
 #define LEFT_MEAN_3 (481 * RESIZE_FACTOR)
 #define LEFT_X_1_3 ((LEFT_MEAN_3 - LINE_DISTANCE_3))
@@ -80,11 +82,14 @@
 #define RIGHT_X_1_3 ((RIGHT_MEAN_3 - LINE_DISTANCE_3))
 #define RIGHT_X_2_3 ((RIGHT_MEAN_3 + LINE_DISTANCE_3))
 
-#define SIGN_MIN 150
-#define SIGN_MAX 200
+#define SIGN_MIN 55
+#define SIGN_MAX 75
 
 #define CLK_FREQ 50000000.0f // FCLK0 frequency not found in xparameters.h
 const double clk_to_cm = (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
+
+#define FPS 5
+#define LOOP_TIME (1000000 / FPS)
 
 int f_motors;
 int f_servo;
@@ -97,6 +102,8 @@ String stop_cascade_name = "stop.xml";
 
 std::mutex IMAGE_mutex;
 std::mutex COUT_mutex;
+std::mutex SPEED_mutex;
+std::mutex STOP_mutex;
 
 int full_map(double input, double in_min, double in_max, double out_min, double out_max) {
 
@@ -134,9 +141,9 @@ double average_not_zero(int a, int b) {
 	}
 }
 
-int chose_servo(int left, int right, int mean) {
+int choose_servo(int left, int right, int mean) {
 	if (left != 0 && right != 0) {
-		if (abs(right - left) < 15) {
+		if (abs(right - left) < SERVO_FINE) {
 			return average_not_zero(left, right);
 		} else {
 			if (left < mean && right < mean) {
@@ -152,13 +159,33 @@ int chose_servo(int left, int right, int mean) {
 	}
 }
 
+std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int right_2, int left_3, int right_3, int mean, unsigned short usr_speed) {
+
+	std::vector<int> ret;
+
+	if (left_2 != 0 && right_2 != 0) {
+		if (left_2 != 0 && right_2 != 0) {
+			ret.push_back(usr_speed * 1.5f);
+			ret.push_back(mean);
+		} else {
+			ret.push_back(usr_speed * 1.25f);
+			ret.push_back(mean);
+		}
+	} else {
+		ret.push_back(usr_speed);
+		ret.push_back(choose_servo(left_1, right_1, mean));
+	}
+	return ret;
+
+}
+
 double find_avg_point_on_line(Mat frame_pixels, Mat frame_image, int line_y, int line_start, int line_stop, int param) {
 
 	std::vector<int> v;
 	double ret = -1;
 	for (int i = 0; i < line_stop - line_start + 3; i += 1) {
 		if (frame_pixels.at<uchar>(Point(i + line_start, line_y)) == 255) {
-			if (param > 0 || param == -1) {
+			if (param > 1 || param == -1) {
 				COUT_mutex.lock();
 				cout << "px " << i + line_start << endl;
 				COUT_mutex.unlock();
@@ -177,46 +204,46 @@ double find_avg_point_on_line(Mat frame_pixels, Mat frame_image, int line_y, int
 	return ret;
 }
 
-int servo_comand_line(Mat frame_pixels, Mat frame_image, int param) {
+std::vector<int> servo_comand_line(Mat frame_pixels, Mat frame_image, int param, unsigned char usr_speed) {
 
 	double left_avg_1, right_avg_1, left_avg_2, right_avg_2, left_avg_3, right_avg_3;
 
-	if (param > 0 || param == -1) {
+	if (param > 1 || param == -1) {
 		COUT_mutex.lock();
 		cout << "left1++" << endl;
 		COUT_mutex.unlock();
 	}
 	left_avg_1 = find_avg_point_on_line(frame_pixels, frame_image, Y_1, LEFT_X_1_1, LEFT_X_2_1, param);
 
-	if (param > 0 || param == -1) {
+	if (param > 1 || param == -1) {
 		COUT_mutex.lock();
 		cout << "right1++" << endl;
 		COUT_mutex.unlock();
 	}
 	right_avg_1 = find_avg_point_on_line(frame_pixels, frame_image, Y_1, RIGHT_X_1_1, RIGHT_X_2_1, param);
 
-	if (param > 0 || param == -1) {
+	if (param > 1 || param == -1) {
 		COUT_mutex.lock();
 		cout << "left2++" << endl;
 		COUT_mutex.unlock();
 	}
 	left_avg_2 = find_avg_point_on_line(frame_pixels, frame_image, Y_2, LEFT_X_1_2, LEFT_X_2_2, param);
 
-	if (param > 0 || param == -1) {
+	if (param > 1 || param == -1) {
 		COUT_mutex.lock();
 		cout << "right2++" << endl;
 		COUT_mutex.unlock();
 	}
 	right_avg_2 = find_avg_point_on_line(frame_pixels, frame_image, Y_2, RIGHT_X_1_2, RIGHT_X_2_2, param);
 
-	if (param > 0 || param == -1) {
+	if (param > 1 || param == -1) {
 		COUT_mutex.lock();
 		cout << "left3++" << endl;
 		COUT_mutex.unlock();
 	}
 	left_avg_3 = find_avg_point_on_line(frame_pixels, frame_image, Y_3, LEFT_X_1_3, LEFT_X_2_3, param);
 
-	if (param > 0 || param == -1) {
+	if (param > 1 || param == -1) {
 		COUT_mutex.lock();
 		cout << "right3++" << endl;
 		COUT_mutex.unlock();
@@ -247,11 +274,13 @@ int servo_comand_line(Mat frame_pixels, Mat frame_image, int param) {
 
 	if (param > 0 || param == -1) {
 		COUT_mutex.lock();
-		cout << "lft  = " << servo_left1 << ", rgt = " << servo_right1 << endl;
+		cout << "lft1  = " << servo_left1 << ", rgt1 = " << servo_right1 << endl;
+		cout << "lft2  = " << servo_left2 << ", rgt2 = " << servo_right2 << endl;
+		cout << "lft3  = " << servo_left3 << ", rgt3 = " << servo_right3 << endl;
 		COUT_mutex.unlock();
 	}
 
-	return chose_servo(servo_left1, servo_right1, SERVO_CENTER);
+	return choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, usr_speed);
 }
 
 void one_poly_sign(Mat img) {
@@ -337,11 +366,40 @@ int detect_and_display(Mat frame, int param) {
 
 }
 
+
 //char sign_done_flag sign_speed_flag;
 Mat IMAGE;
 int h, w, l;
 char lane_done = 0;
 struct sigaction sigIntHandler;
+//unsigned int speed;
+char stop_sign;
+
+
+//not functioning
+unsigned int speed_out(int speed) {
+
+	static int old_stop_sgn = 0;
+	static int loop = 0;
+	STOP_mutex.lock();
+	int stop_sgn = stop_sign;
+	STOP_mutex.unlock();
+	if (stop_sgn == 1 && old_stop_sgn == 0) {
+		old_stop_sgn = 1;
+	}
+	if (old_stop_sgn == 1 && loop == 20) {
+		old_stop_sgn = 0;
+	}
+
+	if (old_stop_sgn == 1) {
+		speed = 0;
+		loop ++;
+	} else {
+		loop = 0;
+	}
+
+	return speed;
+}
 
 void my_handler(int s) {
 
@@ -365,12 +423,23 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 	int clk_edges;
 	int dist = 0;
 
-	unsigned int speed = (usr_speed << 16) + usr_speed;
+	unsigned int speed_local = (usr_speed << 16) + usr_speed;
+	unsigned int speed;
 
 	unsigned char* pixels;
 	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
 
+	auto start = std::chrono::high_resolution_clock::now();
+	auto finish = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+	unsigned short fast_speed;
+
+
+
 	for (int loop = 0; loop < iterations; loop++) {
+
+		start = std::chrono::high_resolution_clock::now();
 
 		COUT_mutex.lock();
 		cout << "loop=============" << loop << endl;
@@ -392,7 +461,7 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 		IMAGE_mutex.lock();
 		IMAGE.copyTo(frame_1);
 		IMAGE_mutex.unlock();
-		resize(frame_1, frame, cv::Size(), (double)RESIZE_FACTOR, (double)RESIZE_FACTOR);
+		resize(frame_1, frame, cv::Size(), (double) RESIZE_FACTOR, (double) RESIZE_FACTOR);
 
 		Mat gray_image;
 		cvtColor(frame, gray_image, CV_RGB2GRAY);
@@ -412,17 +481,22 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 		Mat region_image_lane;
 		bitwise_and(poly, canny_image, region_image_lane);
 
-		servo_out = servo_comand_line(region_image_lane, frame, param);
+		vector<int> line_ret = servo_comand_line(region_image_lane, frame, param, usr_speed);
+
+		fast_speed = line_ret[0];
+		servo_out = line_ret[1];
 
 		if (argc > 5) {
-//			read(sonar->_fileno, &clk_edges, 4);
-//			dist = clk_edges * clk_to_cm;
-//			if (dist < stop_dist && dist != 0) {
-//				speed = 0;
-//			} else {
-//				speed = (usr_speed << 16) + usr_speed;
-//			}
+			read(sonar->_fileno, &clk_edges, 4);
+			dist = clk_edges * clk_to_cm;
+			if (dist < stop_dist && dist != 0) {
+				speed_local = 0;
+			} else {
+				speed_local = (fast_speed << 16) + fast_speed;
+			}
 		}
+
+		speed = speed_out(speed_local);
 
 		if (servo_out == -1) {
 			servo_out = old_servo_out;
@@ -442,7 +516,7 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 			COUT_mutex.lock();
 
 			cout << "servo = " << servo_out << endl;
-			cout << "speed = " << speed << endl;
+			cout << "speed = " << (speed << 16) << endl;
 			cout << "dist  = " << dist << endl;
 
 			if (param > 2) {
@@ -473,12 +547,15 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 
 			char name[20];
 			sprintf(name, "img%d.png", loop);
+
+			char reg_name[65];
+			sprintf(reg_name, "img_region_image_lane%d.png", loop);
 			try {
 
 				imwrite(name, frame, compression_params);
 
 				if (param > 2 || param == -1) {
-					imwrite("img_region_image_lane.png", region_image_lane, compression_params);
+					imwrite(reg_name, region_image_lane, compression_params);
 				}
 				if (param == -1) {
 					imwrite("img_poly.png", poly, compression_params);
@@ -495,6 +572,13 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 //		COUT_mutex.lock();
 //		cout << "1" << endl;
 //		COUT_mutex.unlock();
+		//usleep(100000);
+		finish = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+		if (duration.count() < LOOP_TIME) {
+			usleep(LOOP_TIME - duration.count());
+		}
 
 	}
 
@@ -504,7 +588,15 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 
 void sign_component(int param) {
 
+	auto start = std::chrono::high_resolution_clock::now();
+	auto finish = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+	int loop = 0;
+
 	while (lane_done == 0) {
+
+		start = std::chrono::high_resolution_clock::now();
 
 		Mat frame;
 		//MUTEX
@@ -520,7 +612,9 @@ void sign_component(int param) {
 
 			cv::resize(region_image_sign_1, region_image_sign_2, cv::Size(), 0.5, 0.5);
 
-			char stop_sign = detect_and_display(region_image_sign_2, param);
+			STOP_mutex.lock();
+			stop_sign = detect_and_display(region_image_sign_2, param);
+			STOP_mutex.unlock();
 
 			if (param > 1 || param == -1) {
 
@@ -528,11 +622,14 @@ void sign_component(int param) {
 				compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
 				compression_params.push_back(9);
 
+				char name[65];
+				sprintf(name, "img_region_image_sign%d.png", loop);
+
 				try {
 
 					if (param > 2 || param == -1) {
 
-						imwrite("img_region_image_sign.png", region_image_sign_2, compression_params);
+						imwrite(name, region_image_sign_2, compression_params);
 					}
 
 				} catch (runtime_error& ex) {
@@ -542,6 +639,14 @@ void sign_component(int param) {
 //			COUT_mutex.lock();
 //			cout << "2" << endl;
 //			COUT_mutex.unlock();
+			//usleep(100000);
+			finish = std::chrono::high_resolution_clock::now();
+			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+			if (duration.count() < LOOP_TIME) {
+				usleep(LOOP_TIME - duration.count());
+			}
+			loop++;
 		}
 
 	}
@@ -668,8 +773,6 @@ int main(int argc, char** argv) {
 
 	t1.join();
 	t2.join();
-
-	//lane_component(argc, param, iterations, camera, servo, motors, sonar, usr_speed, stop_dist);
 
 	stock_servo_out = SERVO_CENTER;
 	write(servo->_fileno, &stock_servo_out, 2);
