@@ -35906,3 +35906,1660 @@ arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
   53019	    636	    708	  54363	   d45b	cvthread.elf
 Finished building: cvthread.elf.size
  
+19:09:28 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52791	    636	    700	  54127	   d36f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:11:10 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52791	    636	    700	  54127	   d36f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:20:10 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:394:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53027	    636	    712	  54375	   d467	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:20:39 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52955	    636	    712	  54303	   d41f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:31:44 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52939	    636	    712	  54287	   d40f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:35:47 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘int main(int, char**)’:
+../src/cvthread.cc:776:2: error: expected ‘catch’ before ‘std’
+  std::thread t2(sign_component, param);
+  ^~~
+../src/cvthread.cc:776:2: error: expected ‘(’ before ‘std’
+../src/cvthread.cc:776:17: error: use of deleted function ‘std::thread::thread(std::thread&)’
+  std::thread t2(sign_component, param);
+                 ^~~~~~~~~~~~~~
+In file included from ../src/cvthread.cc:22:0:
+/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/thread:120:5: note: declared here
+     thread(thread&) = delete;
+     ^~~~~~
+../src/cvthread.cc:776:16: error: expected ‘)’ before ‘(’ token
+  std::thread t2(sign_component, param);
+                ^
+../src/cvthread.cc:776:16: error: expected ‘{’ before ‘(’ token
+../src/cvthread.cc:776:33: warning: left operand of comma operator is a reference, not call, to function ‘sign_component’ [-Waddress]
+  std::thread t2(sign_component, param);
+                                 ^~~~~
+../src/cvthread.cc:776:33: warning: left operand of comma operator has no effect [-Wunused-value]
+../src/cvthread.cc:778:2: error: ‘t1’ was not declared in this scope
+  t1.join();
+  ^~
+../src/cvthread.cc:779:2: error: ‘t2’ was not declared in this scope
+  t2.join();
+  ^~
+src/subdir.mk:18: recipe for target 'src/cvthread.o' failed
+make: *** [src/cvthread.o] Error 1
+19:46:52 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘int main(int, char**)’:
+../src/cvthread.cc:781:2: error: ‘t1’ was not declared in this scope
+  t1.join();
+  ^~
+make: *** [src/cvthread.o] Error 1
+src/subdir.mk:18: recipe for target 'src/cvthread.o' failed
+19:46:55 **** Auto Build of configuration Debug for project opencvcarctrl ****
+make all 
+make: Nothing to be done for 'all'.
+19:47:24 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘int main(int, char**)’:
+../src/cvthread.cc:784:2: error: ‘t1’ was not declared in this scope
+  t1.join();
+  ^~
+../src/cvthread.cc:785:2: error: ‘t2’ was not declared in this scope
+  t2.join();
+  ^~
+make: *** [src/cvthread.o] Error 1
+src/subdir.mk:18: recipe for target 'src/cvthread.o' failed
+19:48:48 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53635	    636	    712	  54983	   d6c7	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:52:35 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53571	    636	    712	  54919	   d687	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+19:52:41 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53359	    636	    712	  54707	   d5b3	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:04:00 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53379	    636	    712	  54727	   d5c7	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:06:00 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:388:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:395:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53379	    636	    712	  54727	   d5c7	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:23:49 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:390:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:397:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:486:44: error: conversion from ‘int’ to non-scalar type ‘std::vector<int>’ requested
+    vector<int> line_ret = servo_comand_line(region_image_lane, frame, param, usr_speed);
+                           ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [src/cvthread.o] Error 1
+src/subdir.mk:18: recipe for target 'src/cvthread.o' failed
+20:24:42 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘unsigned int speed_out(int)’:
+../src/cvthread.cc:390:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:397:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53299	    636	    712	  54647	   d577	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:25:03 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53127	    636	    700	  54463	   d4bf	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:25:24 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53127	    636	    700	  54463	   d4bf	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:27:13 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53147	    636	    700	  54483	   d4d3	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:28:38 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52915	    636	    700	  54251	   d3eb	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:29:11 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52915	    636	    700	  54251	   d3eb	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:35:04 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  50659	    636	    700	  51995	   cb1b	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:36:08 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  39768	    612	    628	  41008	   a030	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:38:57 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  39760	    612	    628	  41000	   a028	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:40:53 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  39768	    612	    628	  41008	   a030	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:41:59 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  39768	    612	    628	  41008	   a030	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:43:31 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  39768	    612	    628	  41008	   a030	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+20:52:30 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  39752	    612	    628	  40992	   a020	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+21:01:06 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52899	    636	    700	  54235	   d3db	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:08:00 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  52899	    636	    700	  54235	   d3db	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:08:06 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:390:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:397:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:439:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53071	    636	    712	  54419	   d493	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:09:01 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:9: warning: statement has no effect [-Wunused-value]
+    stop == 1;
+    ~~~~~^~~~
+../src/cvthread.cc:401:9: warning: statement has no effect [-Wunused-value]
+    stop == 0;
+    ~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53087	    636	    712	  54435	   d4a3	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:09:45 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:401:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53087	    636	    712	  54435	   d4a3	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:10:17 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:401:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:444:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53087	    636	    712	  54435	   d4a3	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:13:48 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:400:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53087	    636	    712	  54435	   d4a3	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:17:12 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:400:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:517:18: warning: statement has no effect [-Wunused-value]
+       stop_state == 1;
+       ~~~~~~~~~~~^~~~
+../src/cvthread.cc:523:18: warning: statement has no effect [-Wunused-value]
+       stop_state == 0;
+       ~~~~~~~~~~~^~~~
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53239	    636	    720	  54595	   d543	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:20:30 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:400:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+../src/cvthread.cc:446:6: warning: unused variable ‘stop_sgn’ [-Wunused-variable]
+  int stop_sgn = 0, old_stop_sgn = 0;
+      ^~~~~~~~
+../src/cvthread.cc:446:20: warning: variable ‘old_stop_sgn’ set but not used [-Wunused-but-set-variable]
+  int stop_sgn = 0, old_stop_sgn = 0;
+                    ^~~~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53211	    636	    712	  54559	   d51f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:20:49 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:400:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+../src/cvthread.cc:446:6: warning: unused variable ‘stop_sgn’ [-Wunused-variable]
+  int stop_sgn = 0, old_stop_sgn = 0;
+      ^~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53243	    636	    712	  54591	   d53f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:21:29 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:400:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53207	    636	    712	  54555	   d51b	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:22:01 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:254:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:254:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:254:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:254:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:394:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:400:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:443:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53199	    636	    712	  54547	   d513	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:26:08 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:295:2: error: ‘servo’ was not declared in this scope
+  servo speed = full_map(usr_speed, 15000, )
+  ^~~~~
+../src/cvthread.cc:216:6: warning: unused variable ‘servo_speed’ [-Wunused-variable]
+  int servo_speed;
+      ^~~~~~~~~~~
+../src/cvthread.cc:296:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:404:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:410:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:453:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+src/subdir.mk:18: recipe for target 'src/cvthread.o' failed
+make: *** [src/cvthread.o] Error 1
+11:27:10 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53271	    636	    712	  54619	   d55b	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:37:17 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53319	    636	    712	  54667	   d58b	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:38:14 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53319	    636	    712	  54667	   d58b	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:41:57 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53399	    636	    712	  54747	   d5db	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:44:18 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53411	    636	    712	  54759	   d5e7	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:46:10 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53851	    636	    712	  55199	   d79f	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:47:26 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  53967	    636	    712	  55315	   d813	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:48:16 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  57015	    636	    712	  58363	   e3fb	cvthread.elf
+Finished building: cvthread.elf.size
+ 
+11:49:07 **** Auto Build of configuration Debug for project cvthread ****
+make all 
+Building file: ../src/cvthread.cc
+Invoking: ARM v7 Linux g++ compiler
+arm-linux-gnueabihf-g++ -Wall -O0 -g3 -I"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/arm-linux-gnueabihf" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/include/c++/6.2.1/backward" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/arm-linux-gnueabihf/libc/usr/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include" -I"/home/mirel/.opt/petalinux/tools/linux-i386/gcc-arm-linux-gnueabi/lib/gcc/arm-linux-gnueabihf/6.2.1/include-fixed" -c -fmessage-length=0 -MT"src/cvthread.o" -MMD -MP -MF"src/cvthread.d" -MT"src/cvthread.o" -o "src/cvthread.o" "../src/cvthread.cc"
+../src/cvthread.cc: In function ‘int servo_comand_line(cv::Mat, cv::Mat, int, unsigned char)’:
+../src/cvthread.cc:262:41: warning: variable ‘servo_left2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                         ^~~~~~~~~~~
+../src/cvthread.cc:262:58: warning: variable ‘servo_right2’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                          ^~~~~~~~~~~~
+../src/cvthread.cc:262:76: warning: variable ‘servo_left3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                            ^~~~~~~~~~~
+../src/cvthread.cc:262:93: warning: variable ‘servo_right3’ set but not used [-Wunused-but-set-variable]
+  int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
+                                                                                             ^~~~~~~~~~~~
+../src/cvthread.cc: In function ‘unsigned int speed_out(unsigned int)’:
+../src/cvthread.cc:406:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 1;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc:412:15: warning: statement has no effect [-Wunused-value]
+    stop_state == 0;
+    ~~~~~~~~~~~^~~~
+../src/cvthread.cc: In function ‘void lane_component(int, int, int, FILE*, FILE*, FILE*, FILE*, short unsigned int, double)’:
+../src/cvthread.cc:455:17: warning: unused variable ‘fast_speed’ [-Wunused-variable]
+  unsigned short fast_speed;
+                 ^~~~~~~~~~
+Finished building: ../src/cvthread.cc
+ 
+Building target: cvthread.elf
+Invoking: ARM v7 Linux g++ linker
+arm-linux-gnueabihf-g++ -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/usr/lib" -L"/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm/lib" --sysroot="/home/mirel/Zybo/SDCar/build/tmp/sysroots/plnx_arm" -o "cvthread.elf"  ./src/cvthread.o   -lopencv_imgcodecs -lpthread -lopencv_imgproc -lopencv_core -lopencv_objdetect -lm
+Finished building target: cvthread.elf
+ 
+Invoking: ARM v7 Linux Print Size
+arm-linux-gnueabihf-size cvthread.elf  |tee "cvthread.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  56979	    636	    712	  58327	   e3d7	cvthread.elf
+Finished building: cvthread.elf.size
+ 

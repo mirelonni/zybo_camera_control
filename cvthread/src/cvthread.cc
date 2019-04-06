@@ -88,8 +88,13 @@
 #define CLK_FREQ 50000000.0f // FCLK0 frequency not found in xparameters.h
 const double clk_to_cm = (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
 
-#define FPS 5
+#define FPS 30
 #define LOOP_TIME (1000000 / FPS)
+
+#define MIN_SPEED 15000
+#define MAX_SPEED 30000
+#define MIN_ADJ_SRV 1
+#define MAX_ADJ_SRV 0.5
 
 int f_motors;
 int f_servo;
@@ -105,25 +110,25 @@ std::mutex COUT_mutex;
 std::mutex SPEED_mutex;
 std::mutex STOP_mutex;
 
-int full_map(double input, double in_min, double in_max, double out_min, double out_max) {
+double full_map(double input, double in_min, double in_max, double out_min, double out_max) {
 
 	double slope = (double) (out_max - out_min) / (double) (in_max - in_min);
 	double output = (double) out_min + slope * (double) (input - in_min);
-	return (int) output;
+	return output;
 }
 
 int map_servo(double input, double in_min, double in_max) {
 
-	return full_map(input, in_min, in_max, SERVO_LEFT, SERVO_RIGHT);
+	return (int) full_map(input, in_min, in_max, SERVO_LEFT, SERVO_RIGHT);
 
 }
 
 int map_servo_fine(double input, double in_min, double in_max, double mean) {
 
 	if (input < mean) {
-		return full_map(input, in_min, mean, SERVO_LEFT, SERVO_CENTER);
+		return (int) full_map(input, in_min, mean, SERVO_LEFT, SERVO_CENTER);
 	} else {
-		return full_map(input, mean, in_max, SERVO_CENTER, SERVO_RIGHT);
+		return (int) full_map(input, mean, in_max, SERVO_CENTER, SERVO_RIGHT);
 	}
 
 }
@@ -204,7 +209,11 @@ double find_avg_point_on_line(Mat frame_pixels, Mat frame_image, int line_y, int
 	return ret;
 }
 
-std::vector<int> servo_comand_line(Mat frame_pixels, Mat frame_image, int param, unsigned char usr_speed) {
+//std::vector<int> servo_comand_line(Mat frame_pixels, Mat frame_image, int param, unsigned char usr_speed) {
+int servo_comand_line(Mat frame_pixels, Mat frame_image, int param, unsigned char usr_speed) {
+
+	int servo_no_speed;
+	double servo_speed;
 
 	double left_avg_1, right_avg_1, left_avg_2, right_avg_2, left_avg_3, right_avg_3;
 
@@ -275,12 +284,17 @@ std::vector<int> servo_comand_line(Mat frame_pixels, Mat frame_image, int param,
 	if (param > 0 || param == -1) {
 		COUT_mutex.lock();
 		cout << "lft1  = " << servo_left1 << ", rgt1 = " << servo_right1 << endl;
-		cout << "lft2  = " << servo_left2 << ", rgt2 = " << servo_right2 << endl;
-		cout << "lft3  = " << servo_left3 << ", rgt3 = " << servo_right3 << endl;
+//		cout << "lft2  = " << servo_left2 << ", rgt2 = " << servo_right2 << endl;
+//		cout << "lft3  = " << servo_left3 << ", rgt3 = " << servo_right3 << endl;
 		COUT_mutex.unlock();
 	}
 
-	return choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, usr_speed);
+	//return choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, usr_speed);
+	servo_no_speed = choose_servo(servo_left1, servo_right1, SERVO_CENTER);
+
+	servo_speed = servo_no_speed * full_map(usr_speed, MIN_SPEED, MAX_SPEED, MIN_ADJ_SRV, MAX_ADJ_SRV);
+
+	return (int) servo_speed;
 }
 
 void one_poly_sign(Mat img) {
@@ -366,7 +380,6 @@ int detect_and_display(Mat frame, int param) {
 
 }
 
-
 //char sign_done_flag sign_speed_flag;
 Mat IMAGE;
 int h, w, l;
@@ -375,28 +388,34 @@ struct sigaction sigIntHandler;
 //unsigned int speed;
 char stop_sign;
 
-
 //not functioning
-unsigned int speed_out(int speed) {
+unsigned int speed_out(unsigned int speed) {
+
+	if (speed == 0) {
+		return 0;
+	}
 
 	static int old_stop_sgn = 0;
 	static int loop = 0;
+	static int stop_state = 0;
 	STOP_mutex.lock();
 	int stop_sgn = stop_sign;
 	STOP_mutex.unlock();
-	if (stop_sgn == 1 && old_stop_sgn == 0) {
-		old_stop_sgn = 1;
-	}
-	if (old_stop_sgn == 1 && loop == 20) {
-		old_stop_sgn = 0;
-	}
-
-	if (old_stop_sgn == 1) {
-		speed = 0;
-		loop ++;
-	} else {
+	if (stop_state == 0) {
+		if (stop_sgn == 0 && old_stop_sgn == 1) {
+			stop_state == 1;
+		}
 		loop = 0;
+	} else {
+		speed = 0;
+		if (loop == 2 * FPS) {
+			stop_state == 0;
+
+		} else {
+			loop++;
+		}
 	}
+	old_stop_sgn = stop_sgn;
 
 	return speed;
 }
@@ -435,151 +454,207 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 
 	unsigned short fast_speed;
 
+	int stop_sgn = 0, old_stop_sgn = 0;
 
+	try {
+		for (int loop = 0; loop < iterations; loop++) {
 
-	for (int loop = 0; loop < iterations; loop++) {
+			start = std::chrono::high_resolution_clock::now();
 
-		start = std::chrono::high_resolution_clock::now();
-
-		COUT_mutex.lock();
-		cout << "loop=============" << loop << endl;
-		COUT_mutex.unlock();
-
-		if (loop == 0 && param == -1) {
-			IMAGE_mutex.lock();
-			IMAGE = imread("test.png", CV_LOAD_IMAGE_COLOR);
-			IMAGE_mutex.unlock();
-		} else {
-			fread(pixels, 1, h * w * l, camera);
-			IMAGE_mutex.lock();
-			IMAGE = Mat(h, w, CV_8UC3, &pixels[0]);
-			IMAGE_mutex.unlock();
-		}
-
-		//MUTEX
-		Mat frame_1, frame;
-		IMAGE_mutex.lock();
-		IMAGE.copyTo(frame_1);
-		IMAGE_mutex.unlock();
-		resize(frame_1, frame, cv::Size(), (double) RESIZE_FACTOR, (double) RESIZE_FACTOR);
-
-		Mat gray_image;
-		cvtColor(frame, gray_image, CV_RGB2GRAY);
-
-		Mat blurred_image;
-		GaussianBlur(gray_image, blurred_image, Size(5, 5), 0, 0);
-
-		Mat canny_image;
-		Canny(blurred_image, canny_image, 50, 150);
-
-		// make the selection areas for the images
-		Mat poly;
-		poly = cv::Mat::zeros(frame.size(), canny_image.type());
-		lines(poly);
-
-		// apply selection areas to said images
-		Mat region_image_lane;
-		bitwise_and(poly, canny_image, region_image_lane);
-
-		vector<int> line_ret = servo_comand_line(region_image_lane, frame, param, usr_speed);
-
-		fast_speed = line_ret[0];
-		servo_out = line_ret[1];
-
-		if (argc > 5) {
-			read(sonar->_fileno, &clk_edges, 4);
-			dist = clk_edges * clk_to_cm;
-			if (dist < stop_dist && dist != 0) {
-				speed_local = 0;
-			} else {
-				speed_local = (fast_speed << 16) + fast_speed;
-			}
-		}
-
-		speed = speed_out(speed_local);
-
-		if (servo_out == -1) {
-			servo_out = old_servo_out;
-		}
-
-		if (servo_out <= SERVO_LEFT)
-			servo_out = SERVO_LEFT;
-		if (servo_out >= SERVO_RIGHT)
-			servo_out = SERVO_RIGHT;
-
-		old_servo_out = servo_out;
-
-		mtr_write = write(motors->_fileno, &speed, 4);
-		srv_write = write(servo->_fileno, &servo_out, 2);
-
-		if (param > 0 || param == -1) {
 			COUT_mutex.lock();
-
-			cout << "servo = " << servo_out << endl;
-			cout << "speed = " << (speed << 16) << endl;
-			cout << "dist  = " << dist << endl;
-
-			if (param > 2) {
-				cout << "Servo write: " << srv_write << endl;
-				cout << "Motor write: " << mtr_write << endl;
-
-			}
+			cout << "loop=============" << loop << endl;
 			COUT_mutex.unlock();
-		}
-		if (param > 1 || param == -1) {
-			line(frame, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
-			line(frame, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
-			line(frame, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
-			line(frame, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
-			line(frame, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
-			line(frame, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
 
-			line(frame, Point(LEFT_MEAN_1, Y_1 - 5), Point(LEFT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
-			line(frame, Point(RIGHT_MEAN_1, Y_1 - 5), Point(RIGHT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
-			line(frame, Point(LEFT_MEAN_2, Y_2 - 5), Point(LEFT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
-			line(frame, Point(RIGHT_MEAN_2, Y_2 - 5), Point(RIGHT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
-			line(frame, Point(LEFT_MEAN_3, Y_3 - 5), Point(LEFT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
-			line(frame, Point(RIGHT_MEAN_3, Y_3 - 5), Point(RIGHT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
+			if (loop == 0 && param == -1) {
+				IMAGE_mutex.lock();
+				IMAGE = imread("test.png", CV_LOAD_IMAGE_COLOR);
+				IMAGE_mutex.unlock();
+			} else {
+				fread(pixels, 1, h * w * l, camera);
+				IMAGE_mutex.lock();
+				IMAGE = Mat(h, w, CV_8UC3, &pixels[0]);
+				IMAGE_mutex.unlock();
+			}
 
-			vector<int> compression_params;
-			compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-			compression_params.push_back(9);
+			//MUTEX
+			Mat frame_1, frame;
+			IMAGE_mutex.lock();
+			IMAGE.copyTo(frame_1);
+			IMAGE_mutex.unlock();
+			if (param != 100) {
+				resize(frame_1, frame, cv::Size(), (double) RESIZE_FACTOR, (double) RESIZE_FACTOR);
+			} else {
+				frame_1.copyTo(frame);
+			}
 
-			char name[20];
-			sprintf(name, "img%d.png", loop);
+			Mat gray_image;
+			cvtColor(frame, gray_image, CV_RGB2GRAY);
 
-			char reg_name[65];
-			sprintf(reg_name, "img_region_image_lane%d.png", loop);
-			try {
+			Mat blurred_image;
+			GaussianBlur(gray_image, blurred_image, Size(5, 5), 0, 0);
 
-				imwrite(name, frame, compression_params);
+			Mat canny_image;
+			Canny(blurred_image, canny_image, 50, 150);
 
-				if (param > 2 || param == -1) {
-					imwrite(reg_name, region_image_lane, compression_params);
+			// make the selection areas for the images
+			Mat poly;
+			poly = cv::Mat::zeros(frame.size(), canny_image.type());
+			lines(poly);
+
+			// apply selection areas to said images
+			Mat region_image_lane;
+			bitwise_and(poly, canny_image, region_image_lane);
+
+			//vector<int> line_ret = servo_comand_line(region_image_lane, frame, param, usr_speed);
+			servo_out = servo_comand_line(region_image_lane, frame, param, usr_speed);
+
+			//fast_speed = line_ret[0];
+			//servo_out = line_ret[1];
+
+			if (argc > 5) {
+				read(sonar->_fileno, &clk_edges, 4);
+				dist = clk_edges * clk_to_cm;
+				if (dist < stop_dist && dist != 0) {
+					speed_local = 0;
+				} else {
+					//speed_local = (fast_speed << 16) + fast_speed;
+					speed_local = (usr_speed << 16) + usr_speed;
 				}
-				if (param == -1) {
-					imwrite("img_poly.png", poly, compression_params);
-				}
+			}
 
-			} catch (runtime_error& ex) {
+			STOP_mutex.lock();
+			stop_sgn = stop_sign;
+			STOP_mutex.unlock();
+
+			if (speed_local == 0) {
+				speed = 0;
+			} else {
+				if (stop_sgn == 0 && old_stop_sgn == 1) {
+					usleep(1000000);
+				}
+			}
+			old_stop_sgn = stop_sgn;
+
+			speed = speed_local;
+
+			if (servo_out == -1) {
+				servo_out = old_servo_out;
+			}
+
+			if (servo_out <= SERVO_LEFT)
+				servo_out = SERVO_LEFT;
+			if (servo_out >= SERVO_RIGHT)
+				servo_out = SERVO_RIGHT;
+
+			old_servo_out = servo_out;
+
+			mtr_write = write(motors->_fileno, &speed, 4);
+			srv_write = write(servo->_fileno, &servo_out, 2);
+
+			if (param > 0 || param == -1) {
 				COUT_mutex.lock();
-				cerr << "Exception converting image to PNG format: " << ex.what() << endl;
+
+				cout << "servo = " << servo_out << endl;
+				cout << "speed = " << (speed >> 16) << endl;
+				cout << "dist  = " << dist << endl;
+
+				if (param > 2) {
+					cout << "Servo write: " << srv_write << endl;
+					cout << "Motor write: " << mtr_write << endl;
+
+				}
 				COUT_mutex.unlock();
 			}
-		}
+			if (param != 100) {
+				if (param > 1 || param == -1) {
+					line(frame, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
+					line(frame, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
+					line(frame, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
+					line(frame, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
+					line(frame, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
+					line(frame, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
 
-		sigaction(SIGINT, &sigIntHandler, NULL);
+					line(frame, Point(LEFT_MEAN_1, Y_1 - 5), Point(LEFT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
+					line(frame, Point(RIGHT_MEAN_1, Y_1 - 5), Point(RIGHT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
+					line(frame, Point(LEFT_MEAN_2, Y_2 - 5), Point(LEFT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
+					line(frame, Point(RIGHT_MEAN_2, Y_2 - 5), Point(RIGHT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
+					line(frame, Point(LEFT_MEAN_3, Y_3 - 5), Point(LEFT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
+					line(frame, Point(RIGHT_MEAN_3, Y_3 - 5), Point(RIGHT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
+
+					vector<int> compression_params;
+					compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+					compression_params.push_back(9);
+
+					char name[20];
+					sprintf(name, "img%d.png", loop);
+
+					char reg_name[65];
+					sprintf(reg_name, "img_region_image_lane%d.png", loop);
+					try {
+
+						imwrite(name, frame, compression_params);
+
+						if (param > 2 || param == -1) {
+							imwrite(reg_name, region_image_lane, compression_params);
+						}
+						if (param == -1) {
+							imwrite("img_poly.png", poly, compression_params);
+						}
+
+					} catch (runtime_error& ex) {
+						COUT_mutex.lock();
+						cerr << "Exception converting image to PNG format: " << ex.what() << endl;
+						COUT_mutex.unlock();
+					}
+				}
+
+			} else {
+				line(frame, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
+				line(frame, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
+				line(frame, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
+				line(frame, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
+				line(frame, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
+				line(frame, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
+
+				line(frame, Point(LEFT_MEAN_1, Y_1 - 5), Point(LEFT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
+				line(frame, Point(RIGHT_MEAN_1, Y_1 - 5), Point(RIGHT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
+				line(frame, Point(LEFT_MEAN_2, Y_2 - 5), Point(LEFT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
+				line(frame, Point(RIGHT_MEAN_2, Y_2 - 5), Point(RIGHT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
+				line(frame, Point(LEFT_MEAN_3, Y_3 - 5), Point(LEFT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
+				line(frame, Point(RIGHT_MEAN_3, Y_3 - 5), Point(RIGHT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
+
+				vector<int> compression_params;
+				compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+				compression_params.push_back(9);
+
+				try {
+
+					imwrite("calib_lines.png", frame, compression_params);
+					imwrite("calib_free.png", frame_1, compression_params);
+
+				} catch (runtime_error& ex) {
+					COUT_mutex.lock();
+					cerr << "Exception converting image to PNG format: " << ex.what() << endl;
+					COUT_mutex.unlock();
+				}
+			}
+
+			sigaction(SIGINT, &sigIntHandler, NULL);
 //		COUT_mutex.lock();
 //		cout << "1" << endl;
 //		COUT_mutex.unlock();
-		//usleep(100000);
-		finish = std::chrono::high_resolution_clock::now();
-		duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+			//usleep(100000);
+			finish = std::chrono::high_resolution_clock::now();
+			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-		if (duration.count() < LOOP_TIME) {
-			usleep(LOOP_TIME - duration.count());
+			if (duration.count() < LOOP_TIME) {
+				usleep(LOOP_TIME - duration.count());
+			}
+
 		}
 
+	} catch (...) {
+		cout << "EX_T1" << endl;
 	}
 
 	lane_done = 1;
@@ -592,63 +667,70 @@ void sign_component(int param) {
 	auto finish = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
+	int sign = 0;
+
 	int loop = 0;
+	try {
+		while (lane_done == 0) {
 
-	while (lane_done == 0) {
+			start = std::chrono::high_resolution_clock::now();
 
-		start = std::chrono::high_resolution_clock::now();
+			Mat frame;
+			//MUTEX
+			IMAGE_mutex.lock();
+			IMAGE.copyTo(frame);
+			IMAGE_mutex.unlock();
 
-		Mat frame;
-		//MUTEX
-		IMAGE_mutex.lock();
-		IMAGE.copyTo(frame);
-		IMAGE_mutex.unlock();
+			if (frame.rows != 0) {
 
-		if (frame.rows != 0) {
+				Mat region_image_sign_1, region_image_sign_2;
 
-			Mat region_image_sign_1, region_image_sign_2;
+				region_image_sign_1 = crop(frame, frame.cols / 2, 0, frame.cols, frame.rows);
 
-			region_image_sign_1 = crop(frame, frame.cols / 2, 0, frame.cols, frame.rows);
+				cv::resize(region_image_sign_1, region_image_sign_2, cv::Size(), 0.5, 0.5);
 
-			cv::resize(region_image_sign_1, region_image_sign_2, cv::Size(), 0.5, 0.5);
+				sign = detect_and_display(region_image_sign_2, param);
+				STOP_mutex.lock();
+				stop_sign = sign;
+				STOP_mutex.unlock();
 
-			STOP_mutex.lock();
-			stop_sign = detect_and_display(region_image_sign_2, param);
-			STOP_mutex.unlock();
+				if (param > 1 || param == -1) {
 
-			if (param > 1 || param == -1) {
+					vector<int> compression_params;
+					compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+					compression_params.push_back(9);
 
-				vector<int> compression_params;
-				compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-				compression_params.push_back(9);
+					char name[65];
+					sprintf(name, "img_region_image_sign%d.png", loop);
 
-				char name[65];
-				sprintf(name, "img_region_image_sign%d.png", loop);
+					try {
 
-				try {
+						if (param > 2 || param == -1) {
 
-					if (param > 2 || param == -1) {
+							imwrite(name, region_image_sign_2, compression_params);
+						}
 
-						imwrite(name, region_image_sign_2, compression_params);
+					} catch (runtime_error& ex) {
+						cerr << "Exception converting image to PNG format: " << ex.what() << endl;
 					}
-
-				} catch (runtime_error& ex) {
-					cerr << "Exception converting image to PNG format: " << ex.what() << endl;
 				}
-			}
-//			COUT_mutex.lock();
-//			cout << "2" << endl;
-//			COUT_mutex.unlock();
-			//usleep(100000);
-			finish = std::chrono::high_resolution_clock::now();
-			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+				//			COUT_mutex.lock();
+				//			cout << "2" << endl;
+				//			COUT_mutex.unlock();
+				//usleep(100000);
+				finish = std::chrono::high_resolution_clock::now();
+				duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-			if (duration.count() < LOOP_TIME) {
-				usleep(LOOP_TIME - duration.count());
+				if (duration.count() < LOOP_TIME) {
+					usleep(LOOP_TIME - duration.count());
+				}
+				loop++;
 			}
-			loop++;
+
 		}
 
+	} catch (...) {
+		cout << "EX_T2" << endl;
 	}
 
 }
@@ -661,7 +743,8 @@ int main(int argc, char** argv) {
 
 	if (argc < 5) {
 		cerr << argv[0] << " <debug param> <number of iterations> <speed> <direction> <stop distance>" << endl << "0 - nothing" << endl << "1 - just text" << endl
-				<< "2 - one *relevant* image" << endl << "3 - more *relevant* images" << endl << "-1 - full debug mode test.png used" << endl;
+				<< "2 - one *relevant* image" << endl << "3 - more *relevant* images" << endl << "-1 - full debug mode test.png used" << endl
+				<< "100 - calibration mode, make one .png" << endl;
 		return -1;
 	}
 
@@ -713,7 +796,7 @@ int main(int argc, char** argv) {
 	} else if (iterations == 42) {
 		iterations = 10000;
 	}
-	if (param == -1) {
+	if (param == -1 || param == 100) {
 		iterations = 1;
 	}
 
@@ -773,6 +856,8 @@ int main(int argc, char** argv) {
 
 	t1.join();
 	t2.join();
+
+	//lane_component(argc, param, iterations, camera, servo, motors, sonar, usr_speed, stop_dist);
 
 	stock_servo_out = SERVO_CENTER;
 	write(servo->_fileno, &stock_servo_out, 2);

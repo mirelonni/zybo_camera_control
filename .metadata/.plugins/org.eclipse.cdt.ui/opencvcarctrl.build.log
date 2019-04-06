@@ -1,6 +1,6 @@
-16:32:44 **** Auto Build of configuration Debug for project opencvcarctrl ****
+19:46:55 **** Auto Build of configuration Debug for project opencvcarctrl ****
 make all 
 make: Nothing to be done for 'all'.
 
-16:32:45 Build Finished (took 790ms)
+19:46:56 Build Finished (took 392ms)
 
