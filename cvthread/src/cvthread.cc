@@ -105,7 +105,7 @@
 #define CLK_FREQ 50000000.0f // FCLK0 frequency not found in xparameters.h
 const double clk_to_cm = (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
 
-#define FPS 20
+#define FPS 10
 #define LOOP_TIME (1000000 / FPS)
 
 #define MIN_SPEED 15000
@@ -207,7 +207,7 @@ double find_avg_point_on_line(Mat frame_pixels, Mat frame_image, int line_y, int
 	std::vector<int> v;
 	double ret = -1;
 	for (int i = 0; i < line_stop - line_start + 3; i += 1) {
-		if (frame_pixels.at<uchar>(Point(i + line_start, line_y)) == 255) {
+		if (frame_pixels.at<uchar>(Point(i + line_start, line_y)) > 0) {
 			if (param > 3 || param == -1) {
 				COUT_mutex.lock();
 				cout << "px " << i + line_start << endl;
@@ -494,10 +494,13 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 
 	int stop_sgn = 0, old_stop_sgn = 0;
 
+	double full_time = 0;
+	double read_time = 0;
+
 	try {
 		for (int loop = 0; loop < iterations; loop++) {
 
-			start = std::chrono::high_resolution_clock::now();
+			//start = std::chrono::high_resolution_clock::now();
 
 			COUT_mutex.lock();
 			cout << "loop=============" << loop << endl;
@@ -508,7 +511,11 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 				IMAGE = imread("test.png", CV_LOAD_IMAGE_COLOR);
 				IMAGE_mutex.unlock();
 			} else {
+				start = std::chrono::high_resolution_clock::now();
 				fread(pixels, 1, h * w * l, camera);
+				finish = std::chrono::high_resolution_clock::now();
+				duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+				read_time += duration.count();
 				IMAGE_mutex.lock();
 				IMAGE = Mat(h, w, CV_8UC3, &pixels[0]);
 				IMAGE_mutex.unlock();
@@ -519,6 +526,7 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 			IMAGE_mutex.lock();
 			IMAGE.copyTo(frame_1);
 			IMAGE_mutex.unlock();
+			Mat canny_image;
 			if (param != 100) {
 				resize(frame_1, frame, cv::Size(), (double) RESIZE_FACTOR, (double) RESIZE_FACTOR);
 			} else {
@@ -527,16 +535,18 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 
 			Mat gray_image;
 			cvtColor(frame, gray_image, CV_RGB2GRAY);
+			cvtColor(frame, canny_image, CV_RGB2GRAY);
 
-			Mat blurred_image;
-			GaussianBlur(gray_image, blurred_image, Size(5, 5), 0, 0);
+//			Mat blurred_image;
+//			GaussianBlur(gray_image, blurred_image, Size(5, 5), 0, 0);
+//
+//			Mat canny_image;
+//			Canny(blurred_image, canny_image, 50, 150);
 
-			Mat canny_image;
-			Canny(blurred_image, canny_image, 50, 150);
-
-			// make the selection areas for the images
+// make the selection areas for the images
 			Mat poly;
 			poly = cv::Mat::zeros(frame.size(), canny_image.type());
+			//poly = cv::Mat::zeros(canny_image.size(), canny_image.type());
 			lines(poly);
 
 			// apply selection areas to said images
@@ -706,11 +716,15 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 					compression_params.push_back(9);
 
 					char name[20];
-					sprintf(name, "img%d.png", loop);
+					sprintf(name, "img%d.jpg", loop);
 
 					try {
 
-						imwrite(name, frame, compression_params);
+						//imwrite(name, frame, compression_params);
+						//if (loop % 10 == 0) {
+							imwrite("/etc/mjpg-stream.jpg", frame);
+
+						//}
 
 						if (param == -1) {
 							imwrite("img_poly.png", poly, compression_params);
@@ -755,22 +769,24 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 			}
 
 			sigaction(SIGINT, &sigIntHandler, NULL);
-//		COUT_mutex.lock();
-//		cout << "1" << endl;
-//		COUT_mutex.unlock();
-			//usleep(100000);
-			finish = std::chrono::high_resolution_clock::now();
-			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-			if (duration.count() < LOOP_TIME) {
-				usleep(LOOP_TIME - duration.count());
-			}
+//			finish = std::chrono::high_resolution_clock::now();
+//			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
+//			if (duration.count() < LOOP_TIME) {
+//				usleep(LOOP_TIME - duration.count());
+//			}
+			full_time += duration.count();
 
 		}
 
 	} catch (...) {
 		cout << "EX_T1" << endl;
 	}
+
+	COUT_mutex.lock();
+	cout << "LANE time/loop = " << read_time / (double) iterations << endl;
+	COUT_mutex.unlock();
 
 	lane_done = 1;
 
@@ -785,6 +801,9 @@ void sign_component(int param) {
 	int sign = 0;
 
 	int loop = 0;
+
+	double full_time = 0;
+
 	try {
 		while (lane_done == 0) {
 
@@ -829,10 +848,7 @@ void sign_component(int param) {
 						cerr << "Exception converting image to PNG format: " << ex.what() << endl;
 					}
 				}
-				//			COUT_mutex.lock();
-				//			cout << "2" << endl;
-				//			COUT_mutex.unlock();
-				//usleep(100000);
+
 				finish = std::chrono::high_resolution_clock::now();
 				duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
@@ -840,9 +856,14 @@ void sign_component(int param) {
 					usleep(LOOP_TIME - duration.count());
 				}
 				loop++;
+				full_time += duration.count();
 			}
 
 		}
+
+		COUT_mutex.lock();
+		cout << "SIGN time/loop = " << full_time / (double) loop << endl;
+		COUT_mutex.unlock();
 
 	} catch (...) {
 		cout << "EX_T2" << endl;
@@ -941,7 +962,7 @@ int main(int argc, char** argv) {
 
 	param = atoi(argv[1]);
 
-	FILE* camera = fopen("/dev/video", "rb");
+	FILE* camera = fopen("/dev/videoHLS", "rb");
 	if (camera < 0) {
 		cerr << "Failed to open camera." << endl;
 		return -1;
@@ -1059,12 +1080,12 @@ int main(int argc, char** argv) {
 	cout << h << endl << w << endl << l << endl;
 
 	std::thread t1(lane_component, argc, param, iterations, camera, servo, motors, sonar, usr_speed, stop_dist);
-	std::thread t2(sign_component, param);
-	std::thread t3(runRFID, rfid, c_queue);
+//	std::thread t2(sign_component, param);
+//	std::thread t3(runRFID, rfid, c_queue);
 
 	t1.join();
-	t2.join();
-	t3.join();
+//	t2.join();
+//	t3.join();
 
 	stock_servo_out = SERVO_CENTER;
 	write(servo->_fileno, &stock_servo_out, 2);
@@ -1077,6 +1098,9 @@ int main(int argc, char** argv) {
 	if (argc > 5) {
 		fclose(sonar);
 	}
+
+
+
 
 	return 0;
 }
