@@ -9,3 +9,7 @@ IGNORE/
 
 .metadata/**
 acl/**
+webtalk/**
+RemoteSystemsTempFiles/**
+opencvcarctrl/**
+newcv/**
