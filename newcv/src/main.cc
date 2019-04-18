@@ -44,36 +44,36 @@
 #define LINE_DISTANCE_1_IN 280
 
 #define LEFT_MEAN_1 172
-#define LEFT_X_1_1 LEFT_MEAN_1 - LINE_DISTANCE_1_OUT
-#define LEFT_X_2_1 LEFT_MEAN_1 + LINE_DISTANCE_1_IN
+#define left_x_1_1 LEFT_MEAN_1 - LINE_DISTANCE_1_OUT
+#define left_x_2_1 LEFT_MEAN_1 + LINE_DISTANCE_1_IN
 
 #define RIGHT_MEAN_1 1100
-#define RIGHT_X_1_1 RIGHT_MEAN_1 - LINE_DISTANCE_1_IN
-#define RIGHT_X_2_1 RIGHT_MEAN_1 + LINE_DISTANCE_1_OUT
+#define right_x_1_1 RIGHT_MEAN_1 - LINE_DISTANCE_1_IN
+#define right_x_2_1 RIGHT_MEAN_1 + LINE_DISTANCE_1_OUT
 
 #define Y_2 440
 
 #define LINE_DISTANCE_2 100
 
 #define LEFT_MEAN_2 304
-#define LEFT_X_1_2 LEFT_MEAN_2 - LINE_DISTANCE_2
-#define LEFT_X_2_2 LEFT_MEAN_2 + LINE_DISTANCE_2
+#define left_x_1_2 LEFT_MEAN_2 - LINE_DISTANCE_2
+#define left_x_2_2 LEFT_MEAN_2 + LINE_DISTANCE_2
 
 #define RIGHT_MEAN_2 963
-#define RIGHT_X_1_2 RIGHT_MEAN_2 - LINE_DISTANCE_2
-#define RIGHT_X_2_2 RIGHT_MEAN_2 + LINE_DISTANCE_2
+#define right_x_1_2 RIGHT_MEAN_2 - LINE_DISTANCE_2
+#define right_x_2_2 RIGHT_MEAN_2 + LINE_DISTANCE_2
 
 #define Y_3 300
 
 #define LINE_DISTANCE_3 100
 
 #define LEFT_MEAN_3 481
-#define LEFT_X_1_3 LEFT_MEAN_3 - LINE_DISTANCE_3
-#define LEFT_X_2_3 LEFT_MEAN_3 + LINE_DISTANCE_3
+#define left_x_1_3 LEFT_MEAN_3 - LINE_DISTANCE_3
+#define left_x_2_3 LEFT_MEAN_3 + LINE_DISTANCE_3
 
 #define RIGHT_MEAN_3 794
-#define RIGHT_X_1_3 RIGHT_MEAN_3 - LINE_DISTANCE_3
-#define RIGHT_X_2_3 RIGHT_MEAN_3 + LINE_DISTANCE_3
+#define right_x_1_3 RIGHT_MEAN_3 - LINE_DISTANCE_3
+#define right_x_2_3 RIGHT_MEAN_3 + LINE_DISTANCE_3
 
 #define SIGN_MIN 150
 #define SIGN_MAX 200
@@ -177,51 +177,51 @@ int servo_comand_line(Mat frame, Mat image, int param) {
 	if (param > 0 || param == -1) {
 		cout << "left1++" << endl;
 	}
-	left_avg_1 = find_avg_point_on_line(frame, image, Y_1, LEFT_X_1_1, LEFT_X_2_1, param);
+	left_avg_1 = find_avg_point_on_line(frame, image, Y_1, left_x_1_1, left_x_2_1, param);
 
 	if (param > 0 || param == -1) {
 		cout << "right1++" << endl;
 	}
-	right_avg_1 = find_avg_point_on_line(frame, image, Y_1, RIGHT_X_1_1, RIGHT_X_2_1, param);
+	right_avg_1 = find_avg_point_on_line(frame, image, Y_1, right_x_1_1, right_x_2_1, param);
 
 	if (param > 0 || param == -1) {
 		cout << "left2++" << endl;
 	}
-	left_avg_2 = find_avg_point_on_line(frame, image, Y_2, LEFT_X_1_2, LEFT_X_2_2, param);
+	left_avg_2 = find_avg_point_on_line(frame, image, Y_2, left_x_1_2, left_x_2_2, param);
 
 	if (param > 0 || param == -1) {
 		cout << "right2++" << endl;
 	}
-	right_avg_2 = find_avg_point_on_line(frame, image, Y_2, RIGHT_X_1_2, RIGHT_X_2_2, param);
+	right_avg_2 = find_avg_point_on_line(frame, image, Y_2, right_x_1_2, right_x_2_2, param);
 
 	if (param > 0 || param == -1) {
 		cout << "left3++" << endl;
 	}
-	left_avg_3 = find_avg_point_on_line(frame, image, Y_3, LEFT_X_1_3, LEFT_X_2_3, param);
+	left_avg_3 = find_avg_point_on_line(frame, image, Y_3, left_x_1_3, left_x_2_3, param);
 
 	if (param > 0 || param == -1) {
 		cout << "right3++" << endl;
 	}
-	right_avg_3 = find_avg_point_on_line(frame, image, Y_3, RIGHT_X_1_3, RIGHT_X_2_3, param);
+	right_avg_3 = find_avg_point_on_line(frame, image, Y_3, right_x_1_3, right_x_2_3, param);
 
 	int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
 
 	if (left_avg_1 != -1) {
-		servo_left1 = map_servo_fine(left_avg_1, LEFT_X_1_1, LEFT_X_2_1, LEFT_MEAN_1);
+		servo_left1 = map_servo_fine(left_avg_1, left_x_1_1, left_x_2_1, LEFT_MEAN_1);
 		if (left_avg_2 != -1) {
-			servo_left2 = map_servo_fine(left_avg_2, LEFT_X_1_2, LEFT_X_2_2, LEFT_MEAN_2);
+			servo_left2 = map_servo_fine(left_avg_2, left_x_1_2, left_x_2_2, LEFT_MEAN_2);
 			if (left_avg_3 != -1) {
-				servo_left3 = map_servo_fine(left_avg_3, LEFT_X_1_3, LEFT_X_2_3, LEFT_MEAN_3);
+				servo_left3 = map_servo_fine(left_avg_3, left_x_1_3, left_x_2_3, LEFT_MEAN_3);
 			}
 		}
 	}
 
 	if (right_avg_1 != -1) {
-		servo_right1 = map_servo_fine(right_avg_1, RIGHT_X_1_1, RIGHT_X_2_1, RIGHT_MEAN_1);
+		servo_right1 = map_servo_fine(right_avg_1, right_x_1_1, right_x_2_1, RIGHT_MEAN_1);
 		if (right_avg_2 != -1) {
-			servo_right2 = map_servo_fine(right_avg_2, RIGHT_X_1_2, RIGHT_X_2_2, RIGHT_MEAN_2);
+			servo_right2 = map_servo_fine(right_avg_2, right_x_1_2, right_x_2_2, RIGHT_MEAN_2);
 			if (right_avg_3 != -1) {
-				servo_right3 = map_servo_fine(right_avg_3, RIGHT_X_1_3, RIGHT_X_2_3, RIGHT_MEAN_3);
+				servo_right3 = map_servo_fine(right_avg_3, right_x_1_3, right_x_2_3, RIGHT_MEAN_3);
 			}
 		}
 	}
@@ -270,14 +270,14 @@ Mat crop(Mat frame, int x1, int y1, int x2, int y2) {
 
 void lines(Mat img) {
 // the 1st selection lines
-	line(img, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
-	line(img, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
+	line(img, Point(right_x_1_1, Y_1), Point(right_x_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
+	line(img, Point(left_x_1_1, Y_1), Point(left_x_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
 // the 2nd selection lines
-	line(img, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(255, 255, 255), 3, CV_AA);
-	line(img, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(255, 255, 255), 3, CV_AA);
+	line(img, Point(right_x_1_2, Y_2), Point(right_x_2_2, Y_2), Scalar(255, 255, 255), 3, CV_AA);
+	line(img, Point(left_x_1_2, Y_2), Point(left_x_2_2, Y_2), Scalar(255, 255, 255), 3, CV_AA);
 // the 3rd selection lines
-	line(img, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(255, 255, 255), 3, CV_AA);
-	line(img, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(255, 255, 255), 3, CV_AA);
+	line(img, Point(right_x_1_3, Y_3), Point(right_x_2_3, Y_3), Scalar(255, 255, 255), 3, CV_AA);
+	line(img, Point(left_x_1_3, Y_3), Point(left_x_2_3, Y_3), Scalar(255, 255, 255), 3, CV_AA);
 }
 
 int detect_and_display(Mat frame, Mat image, int param) {
@@ -544,12 +544,12 @@ int main(int argc, char** argv) {
 			//cout << "Motor write: " << mtr_write << endl;
 		}
 		if (param > 1 || param == -1) {
-			line(image, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
-			line(image, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
-			line(image, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
-			line(image, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
-			line(image, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
-			line(image, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
+			line(image, Point(right_x_1_1, Y_1), Point(right_x_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
+			line(image, Point(left_x_1_1, Y_1), Point(left_x_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
+			line(image, Point(right_x_1_2, Y_2), Point(right_x_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
+			line(image, Point(left_x_1_2, Y_2), Point(left_x_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
+			line(image, Point(right_x_1_3, Y_3), Point(right_x_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
+			line(image, Point(left_x_1_3, Y_3), Point(left_x_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
 
 			line(image, Point(LEFT_MEAN_1, Y_1 - 5), Point(LEFT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
 			line(image, Point(RIGHT_MEAN_1, Y_1 - 5), Point(RIGHT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);

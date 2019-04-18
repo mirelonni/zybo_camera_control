@@ -31,13 +31,14 @@
 #include <linux/i2c-dev-user.h>
 
 #include <stdlib.h>
+#include <typeinfo>
 //#define RFID_DEBUG
 
 #include "PN532_rfid.h"
 #include "cardQueue.h"
 #include "cards.h"
 
-#include <typeinfo>
+#include "config.hpp"
 
 #define CHARVIDEO_IOC_MAGIC  '8'
 #define MOTION_IOC_MAGIC  '9'
@@ -51,82 +52,34 @@
 #define CHARVIDEO_IOCQPIXELLEN _IOR(CHARVIDEO_IOC_MAGIC,  5, int)
 #define CHARVIDEO_IOCQBUFSIZE _IOR(CHARVIDEO_IOC_MAGIC,  6, int)
 
-#define SERVO_LEFT 220
-#define SERVO_RIGHT 380
-#define SERVO_CENTER (SERVO_LEFT + (SERVO_RIGHT-SERVO_LEFT)/2)
-#define SERVO_FINE 15
-
 #define MOTION_IOCTSETENABLE    _IO(MOTION_IOC_MAGIC, 0)
 #define MOTION_IOCTSETDIR	_IO(MOTION_IOC_MAGIC, 1)
 
-#define RESIZE_FACTOR 0.5
-
-#define Y_1 (560 * RESIZE_FACTOR)
-
-#define LINE_DISTANCE_1 (120 * RESIZE_FACTOR)
-#define LINE_DISTANCE_1_OUT (120 * RESIZE_FACTOR)
-#define LINE_DISTANCE_1_IN (280 * RESIZE_FACTOR)
-
-#define LEFT_MEAN_1 (150 * RESIZE_FACTOR)
-#define LEFT_X_1_1 ((LEFT_MEAN_1 - LINE_DISTANCE_1_OUT))
-#define LEFT_X_2_1 ((LEFT_MEAN_1 + LINE_DISTANCE_1_IN))
-
-#define RIGHT_MEAN_1 (1088 * RESIZE_FACTOR)
-#define RIGHT_X_1_1 ((RIGHT_MEAN_1 - LINE_DISTANCE_1_IN))
-#define RIGHT_X_2_1 ((RIGHT_MEAN_1 + LINE_DISTANCE_1_OUT))
-
-#define Y_2 (440 * RESIZE_FACTOR)
-
-#define LINE_DISTANCE_2 (25 * RESIZE_FACTOR)
-
-#define LEFT_MEAN_2 (285 * RESIZE_FACTOR)
-#define LEFT_X_1_2 ((LEFT_MEAN_2 - LINE_DISTANCE_2))
-#define LEFT_X_2_2 ((LEFT_MEAN_2 + LINE_DISTANCE_2))
-
-#define RIGHT_MEAN_2 (943 * RESIZE_FACTOR)
-#define RIGHT_X_1_2 ((RIGHT_MEAN_2 - LINE_DISTANCE_2))
-#define RIGHT_X_2_2 ((RIGHT_MEAN_2 + LINE_DISTANCE_2))
-
-#define Y_3 (300 * RESIZE_FACTOR)
-
-#define LINE_DISTANCE_3 (25 * RESIZE_FACTOR)
-
-#define LEFT_MEAN_3 (474 * RESIZE_FACTOR)
-#define LEFT_X_1_3 ((LEFT_MEAN_3 - LINE_DISTANCE_3))
-#define LEFT_X_2_3 ((LEFT_MEAN_3 + LINE_DISTANCE_3))
-
-#define RIGHT_MEAN_3 (768 * RESIZE_FACTOR)
-#define RIGHT_X_1_3 ((RIGHT_MEAN_3 - LINE_DISTANCE_3))
-#define RIGHT_X_2_3 ((RIGHT_MEAN_3 + LINE_DISTANCE_3))
-
-#define SIGN_MIN 55
-#define SIGN_MAX 75
+#define SERVO_LEFT 220
+#define SERVO_RIGHT 380
+#define SERVO_CENTER (SERVO_LEFT + (SERVO_RIGHT-SERVO_LEFT)/2)
 
 #define CLK_FREQ 50000000.0f // FCLK0 frequency not found in xparameters.h
 const double clk_to_cm = (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
 
-#define FPS 10
-#define LOOP_TIME (1000000 / FPS)
-
-#define MIN_SPEED 15000
-#define MAX_SPEED 40000
-#define MIN_ADJ_SRV 1.0f
-#define MAX_ADJ_SRV 0.5f
+struct properties cfg;
 
 int f_motors;
 int f_servo;
 int f_rfid;
 
-using namespace cv;
-using namespace std;
-
-CascadeClassifier stop_cascade;
-String stop_cascade_name = "stop.xml";
+cv::CascadeClassifier stop_cascade;
+std::string stop_cascade_name = "stop.xml";
 
 std::mutex IMAGE_mutex;
 std::mutex COUT_mutex;
 std::mutex SPEED_mutex;
 std::mutex STOP_mutex;
+
+char lane_done = 0;
+struct sigaction sigIntHandler;
+char stop_sign;
+struct cardQueue *c_queue = NULL;
 
 double full_map(double input, double in_min, double in_max, double out_min, double out_max) {
 
@@ -166,13 +119,13 @@ double average_not_zero(int a, int b) {
 
 int choose_servo(int left, int right, int mean) {
 	if (left != 0 && right != 0) {
-		if (abs(right - left) < SERVO_FINE) {
+		if (abs(right - left) < cfg.servo_fine) {
 			return average_not_zero(left, right);
 		} else {
 			if (left < mean && right < mean) {
-				return min(left, right);
+				return std::min(left, right);
 			} else if (left > mean && right > mean) {
-				return max(left, right);
+				return std::max(left, right);
 			} else {
 				return average_not_zero(left, right);
 			}
@@ -202,19 +155,19 @@ std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int 
 
 }
 
-double find_avg_point_on_line(Mat frame_pixels, Mat frame_image, int line_y, int line_start, int line_stop, int param) {
+double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int line_y, int line_start, int line_stop, int param) {
 
 	std::vector<int> v;
 	double ret = -1;
 	for (int i = 0; i < line_stop - line_start + 3; i += 1) {
-		if (frame_pixels.at<uchar>(Point(i + line_start, line_y)) > 0) {
-			if (param > 3 || param == -1) {
+		if (frame_pixels.at<uchar>(cv::Point(i + line_start, line_y)) > 0) {
+			if (param == 1 || param == -1) {
 				COUT_mutex.lock();
-				cout << "px " << i + line_start << endl;
+				std::cout << "px " << i + line_start << "\n";
 				COUT_mutex.unlock();
 			}
-			if (param > 1 || param == -1) {
-				line(frame_image, Point(i + line_start, line_y - 7), Point(i + line_start, line_y + 7), Scalar(0, 0, 255), 4, CV_AA);
+			if (param == 2 || param == -1) {
+				cv::line(frame_image, cv::Point(i + line_start, line_y - 7), cv::Point(i + line_start, line_y + 7), cv::Scalar(0, 0, 255), 4, CV_AA);
 			}
 			v.push_back(i + line_start);
 		}
@@ -222,110 +175,127 @@ double find_avg_point_on_line(Mat frame_pixels, Mat frame_image, int line_y, int
 
 	if (v.size() > 0) {
 		ret = std::accumulate(v.begin(), v.end(), 0.0) / v.size();
-		line(frame_image, Point(ret, line_y - 10), Point(ret, line_y + 10), Scalar(255, 0, 255), 3, CV_AA);
+		if (param == 2 || param == -1) {
+			cv::line(frame_image, cv::Point(ret, line_y - 10), cv::Point(ret, line_y + 10), cv::Scalar(255, 0, 255), 3, CV_AA);
+		}
 	}
+
+	return ret;
+}
+
+std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image, int param) {
+
+	std::vector<double> ret;
+	if (param == 1 || param == -1) {
+		COUT_mutex.lock();
+		std::cout << "++left 1" << "\n";
+		COUT_mutex.unlock();
+	}
+	ret.push_back(find_avg_point_on_line(frame_pixels, frame_image, cfg.y_1, cfg.left_x_1_1, cfg.left_x_2_1, param));
+	if (param == 1 || param == -1) {
+		COUT_mutex.lock();
+		std::cout << "++right 1" << "\n";
+		COUT_mutex.unlock();
+	}
+	ret.push_back(find_avg_point_on_line(frame_pixels, frame_image, cfg.y_1, cfg.right_x_1_1, cfg.right_x_2_1, param));
+	if (param == 1 || param == -1) {
+		COUT_mutex.lock();
+		std::cout << "++left 2" << "\n";
+		COUT_mutex.unlock();
+	}
+	ret.push_back(find_avg_point_on_line(frame_pixels, frame_image, cfg.y_2, cfg.left_x_1_2, cfg.left_x_2_2, param));
+	if (param == 1 || param == -1) {
+		COUT_mutex.lock();
+		std::cout << "++right 2" << "\n";
+		COUT_mutex.unlock();
+	}
+	ret.push_back(find_avg_point_on_line(frame_pixels, frame_image, cfg.y_2, cfg.right_x_1_2, cfg.right_x_2_2, param));
+	if (param == 1 || param == -1) {
+		COUT_mutex.lock();
+		std::cout << "++left 3" << "\n";
+		COUT_mutex.unlock();
+	}
+	ret.push_back(find_avg_point_on_line(frame_pixels, frame_image, cfg.y_3, cfg.left_x_1_3, cfg.left_x_2_3, param));
+	if (param == 1 || param == -1) {
+		COUT_mutex.lock();
+		std::cout << "++right 3" << "\n";
+		COUT_mutex.unlock();
+	}
+	ret.push_back(find_avg_point_on_line(frame_pixels, frame_image, cfg.y_3, cfg.right_x_1_3, cfg.right_x_2_3, param));
+
 	return ret;
 }
 
 //std::vector<int> servo_comand_line(Mat frame_pixels, Mat frame_image, int param, unsigned char usr_speed) {
-int servo_comand_line(Mat frame_pixels, Mat frame_image, int param, unsigned short usr_speed) {
+int servo_comand_line(cv::Mat frame_pixels, cv::Mat frame_image, int param, unsigned short usr_speed) {
 
-	int servo_no_speed;
-	double servo_speed;
+	int servo_no_adj;
+	double servo_post_adj;
 	double servo_diff = 0;
-	double servo_adj = 0;
+	double servo_pre_adj = 0;
 
 	double left_avg_1, right_avg_1, left_avg_2, right_avg_2, left_avg_3, right_avg_3;
 
-	if (param > 3 || param == -1) {
-		COUT_mutex.lock();
-		cout << "left1++" << endl;
-		COUT_mutex.unlock();
-	}
-	left_avg_1 = find_avg_point_on_line(frame_pixels, frame_image, Y_1, LEFT_X_1_1, LEFT_X_2_1, param);
+	std::vector<double> averages = average_lane_lines(frame_pixels, frame_image, param);
 
-	if (param > 3 || param == -1) {
-		COUT_mutex.lock();
-		cout << "right1++" << endl;
-		COUT_mutex.unlock();
-	}
-	right_avg_1 = find_avg_point_on_line(frame_pixels, frame_image, Y_1, RIGHT_X_1_1, RIGHT_X_2_1, param);
-
-	if (param > 3 || param == -1) {
-		COUT_mutex.lock();
-		cout << "left2++" << endl;
-		COUT_mutex.unlock();
-	}
-	left_avg_2 = find_avg_point_on_line(frame_pixels, frame_image, Y_2, LEFT_X_1_2, LEFT_X_2_2, param);
-
-	if (param > 3 || param == -1) {
-		COUT_mutex.lock();
-		cout << "right2++" << endl;
-		COUT_mutex.unlock();
-	}
-	right_avg_2 = find_avg_point_on_line(frame_pixels, frame_image, Y_2, RIGHT_X_1_2, RIGHT_X_2_2, param);
-
-	if (param > 3 || param == -1) {
-		COUT_mutex.lock();
-		cout << "left3++" << endl;
-		COUT_mutex.unlock();
-	}
-	left_avg_3 = find_avg_point_on_line(frame_pixels, frame_image, Y_3, LEFT_X_1_3, LEFT_X_2_3, param);
-
-	if (param > 3 || param == -1) {
-		COUT_mutex.lock();
-		cout << "right3++" << endl;
-		COUT_mutex.unlock();
-	}
-	right_avg_3 = find_avg_point_on_line(frame_pixels, frame_image, Y_3, RIGHT_X_1_3, RIGHT_X_2_3, param);
+	left_avg_1 = averages[0];
+	right_avg_1 = averages[1];
+	left_avg_2 = averages[2];
+	right_avg_2 = averages[3];
+	left_avg_3 = averages[4];
+	right_avg_3 = averages[5];
 
 	int servo_left1 = 0, servo_right1 = 0, servo_left2 = 0, servo_right2 = 0, servo_left3 = 0, servo_right3 = 0;
 
 	if (left_avg_1 != -1) {
-		servo_left1 = map_servo_fine(left_avg_1, LEFT_X_1_1, LEFT_X_2_1, LEFT_MEAN_1);
+		servo_left1 = map_servo_fine(left_avg_1, cfg.left_x_1_1, cfg.left_x_2_1, cfg.left_mean_1);
 		if (left_avg_2 != -1) {
-			servo_left2 = map_servo_fine(left_avg_2, LEFT_X_1_2, LEFT_X_2_2, LEFT_MEAN_2);
+			servo_left2 = map_servo_fine(left_avg_2, cfg.left_x_1_2, cfg.left_x_2_2, cfg.left_mean_2);
 			if (left_avg_3 != -1) {
-				servo_left3 = map_servo_fine(left_avg_3, LEFT_X_1_3, LEFT_X_2_3, LEFT_MEAN_3);
+				servo_left3 = map_servo_fine(left_avg_3, cfg.left_x_1_3, cfg.left_x_2_3, cfg.left_mean_3);
 			}
 		}
 	}
 
 	if (right_avg_1 != -1) {
-		servo_right1 = map_servo_fine(right_avg_1, RIGHT_X_1_1, RIGHT_X_2_1, RIGHT_MEAN_1);
+		servo_right1 = map_servo_fine(right_avg_1, cfg.right_x_1_1, cfg.right_x_2_1, cfg.right_mean_1);
 		if (right_avg_2 != -1) {
-			servo_right2 = map_servo_fine(right_avg_2, RIGHT_X_1_2, RIGHT_X_2_2, RIGHT_MEAN_2);
+			servo_right2 = map_servo_fine(right_avg_2, cfg.right_x_1_2, cfg.right_x_2_2, cfg.right_mean_2);
 			if (right_avg_3 != -1) {
-				servo_right3 = map_servo_fine(right_avg_3, RIGHT_X_1_3, RIGHT_X_2_3, RIGHT_MEAN_3);
+				servo_right3 = map_servo_fine(right_avg_3, cfg.right_x_1_3, cfg.right_x_2_3, cfg.right_mean_3);
 			}
 		}
 	}
 
-	if (param > 0 || param == -1) {
+	if (param == 1 || param == -1) {
 		COUT_mutex.lock();
-		cout << "lft  = " << servo_left1 << ", rgt = " << servo_right1 << endl;
+		std::cout << "lft  = " << servo_left1 << ", rgt = " << servo_right1 << "\n";
 		COUT_mutex.unlock();
+
+	}
+
+	if (param == 2 || param == -1) {
 
 		char name[30];
 		sprintf(name, "lft = %d, rgt = %d", servo_left1, servo_right1);
+		cv::putText(frame_image, name, cvPoint(200, 60), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 
-		putText(frame_image, name, cvPoint(200, 60), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 	}
 
 	//return choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, usr_speed);
-	servo_no_speed = choose_servo(servo_left1, servo_right1, SERVO_CENTER);
+	servo_no_adj = choose_servo(servo_left1, servo_right1, SERVO_CENTER);
 
-	if (servo_no_speed != -1) {
-		servo_adj = full_map(usr_speed, MIN_SPEED, MAX_SPEED, MIN_ADJ_SRV, MAX_ADJ_SRV);
-		servo_speed = SERVO_CENTER - (SERVO_CENTER - servo_no_speed) * servo_adj;
+	if (servo_no_adj != -1) {
+		servo_pre_adj = full_map(usr_speed, cfg.min_speed, cfg.max_speed, cfg.min_adj_servo, cfg.max_adj_servo);
+		servo_post_adj = SERVO_CENTER - (SERVO_CENTER - servo_no_adj) * servo_pre_adj;
 	} else {
-		servo_speed = servo_no_speed;
+		servo_post_adj = servo_no_adj;
 	}
 
-	return (int) servo_speed;
+	return (int) servo_post_adj;
 }
 
-void one_poly_sign(Mat img) {
+void one_poly(cv::Mat img) {
 	int w = img.cols;
 	int h = img.rows;
 
@@ -336,72 +306,72 @@ void one_poly_sign(Mat img) {
 	y2 = h;
 
 	int lineType = 8;
-	/* Create some points */
-	Point pts[1][4];
-	pts[0][0] = Point(x1, y1);
-	pts[0][1] = Point(x1, y2);
-	pts[0][2] = Point(x2, y2);
-	pts[0][3] = Point(x2, y1);
 
-	const Point* ppt[1] = { pts[0] };
+	cv::Point pts[1][4];
+	pts[0][0] = cv::Point(x1, y1);
+	pts[0][1] = cv::Point(x1, y2);
+	pts[0][2] = cv::Point(x2, y2);
+	pts[0][3] = cv::Point(x2, y1);
+
+	const cv::Point* ppt[1] = { pts[0] };
 	int npt[] = { 4 };
-	fillPoly(img, ppt, npt, 1, Scalar(255, 255, 255), lineType);
+	cv::fillPoly(img, ppt, npt, 1, cv::Scalar(255, 255, 255), lineType);
 }
 
-Mat crop(Mat frame, int x1, int y1, int x2, int y2) {
+cv::Mat crop(cv::Mat frame, int x1, int y1, int x2, int y2) {
 
-	Rect roi;
+	cv::Rect roi;
 	roi.x = x1;
 	roi.y = y1;
 	roi.width = x2 - x1;
 	roi.height = y2 - y1;
 
-	Mat crop = frame(roi);
+	cv::Mat crop = frame(roi);
 	return crop;
 }
 
-void lines(Mat img) {
-// the 1st selection lines
-	line(img, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
-	line(img, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(255, 255, 255), 3, CV_AA);
-// the 2nd selection lines
-	line(img, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(255, 255, 255), 3, CV_AA);
-	line(img, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(255, 255, 255), 3, CV_AA);
-// the 3rd selection lines
-	line(img, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(255, 255, 255), 3, CV_AA);
-	line(img, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(255, 255, 255), 3, CV_AA);
+void lines(cv::Mat img) {
+	// the 1st selection lines
+	cv::line(img, cv::Point(cfg.right_x_1_1, cfg.y_1), cv::Point(cfg.right_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3, CV_AA);
+	cv::line(img, cv::Point(cfg.left_x_1_1, cfg.y_1), cv::Point(cfg.left_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3, CV_AA);
+	// the 2nd selection lines
+	cv::line(img, cv::Point(cfg.right_x_1_2, cfg.y_2), cv::Point(cfg.right_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3, CV_AA);
+	cv::line(img, cv::Point(cfg.left_x_1_2, cfg.y_2), cv::Point(cfg.left_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3, CV_AA);
+	// the 3rd selection lines
+	cv::line(img, cv::Point(cfg.right_x_1_3, cfg.y_3), cv::Point(cfg.right_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3, CV_AA);
+	cv::line(img, cv::Point(cfg.left_x_1_3, cfg.y_3), cv::Point(cfg.left_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3, CV_AA);
 }
 
-int detect_and_display(Mat frame, int param) {
+int detect_and_display(cv::Mat frame, int param) {
 
 	int ret = 0;
-	std::vector<Rect> stop_signs;
-	Mat frame_gray;
-	cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
-	equalizeHist(frame_gray, frame_gray);
-//-- Detect stop_signs
-	stop_cascade.detectMultiScale(frame_gray, stop_signs, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
-	if (param > 0 || param == -1) {
+	std::vector<cv::Rect> stop_signs;
+	cv::Mat frame_gray;
+	cv::cvtColor(frame, frame_gray, cv::COLOR_BGR2GRAY);
+	cv::equalizeHist(frame_gray, frame_gray);
+
+	stop_cascade.detectMultiScale(frame_gray, stop_signs, 1.1, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
+	if (param == 1 || param == -1) {
 		COUT_mutex.lock();
-		cout << "stop signs = " << stop_signs.size() << endl;
+		std::cout << "stop signs = " << stop_signs.size() << "\n";
 		COUT_mutex.unlock();
 	}
 
 	for (size_t i = 0; i < stop_signs.size(); i++) {
-		if (param > 0 || param == -1) {
+		if (param == 1 || param == -1) {
 			COUT_mutex.lock();
-			cout << "stop " << i << " height = " << stop_signs[i].height << endl;
-			cout << "stop " << i << " width = " << stop_signs[i].width << endl;
+			std::cout << "stop " << i << " height = " << stop_signs[i].height << "\n";
+			std::cout << "stop " << i << " width = " << stop_signs[i].width << "\n";
 			COUT_mutex.unlock();
 
-			// draw a ellipse around the sign
-			if (param > 2 || param == -1) {
-				Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
-				ellipse(frame, center, Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, Scalar(255, 0, 255), 4, 8, 0);
+			// draw an ellipse around the sign
+			if (param == 2 || param == -1) {
+				cv::Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
+				cv::ellipse(frame, center, cv::Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, cv::Scalar(255, 0, 255), 4, 8, 0);
 			}
 		}
-		if (stop_signs[i].height >= SIGN_MIN && stop_signs[i].height <= SIGN_MAX) {
-			Scalar clr = cv::mean(crop(frame, stop_signs[i].x, stop_signs[i].y, stop_signs[i].x + stop_signs[i].width, stop_signs[i].y + stop_signs[i].height));
+		if (stop_signs[i].height >= cfg.sign_min && stop_signs[i].height <= cfg.sign_max) {
+			cv::Scalar clr = cv::mean(crop(frame, stop_signs[i].x, stop_signs[i].y, stop_signs[i].x + stop_signs[i].width, stop_signs[i].y + stop_signs[i].height));
 
 			if (clr.val[2] >= clr.val[1] && clr.val[2] >= clr.val[0]) {
 				ret = 1;
@@ -413,48 +383,6 @@ int detect_and_display(Mat frame, int param) {
 
 }
 
-//char sign_done_flag sign_speed_flag;
-Mat IMAGE;
-int h, w, l;
-char lane_done = 0;
-struct sigaction sigIntHandler;
-//unsigned int speed;
-char stop_sign;
-
-struct cardQueue *c_queue = NULL;
-
-//not functioning
-//unsigned int speed_out(unsigned int speed) {
-//
-//	if (speed == 0) {
-//		return 0;
-//	}
-//
-//	static int old_stop_sgn = 0;
-//	static int loop = 0;
-//	static int stop_state = 0;
-//	STOP_mutex.lock();
-//	int stop_sgn = stop_sign;
-//	STOP_mutex.unlock();
-//	if (stop_state == 0) {
-//		if (stop_sgn == 0 && old_stop_sgn == 1) {
-//			stop_state == 1;
-//		}
-//		loop = 0;
-//	} else {
-//		speed = 0;
-//		if (loop == 2 * FPS) {
-//			stop_state == 0;
-//
-//		} else {
-//			loop++;
-//		}
-//	}
-//	old_stop_sgn = stop_sgn;
-//
-//	return speed;
-//}
-
 void my_handler(int s) {
 
 	unsigned int speed = 0;
@@ -464,17 +392,15 @@ void my_handler(int s) {
 	write(f_servo, &servo_out, 2);
 	write(f_motors, &speed, 4);
 
-	close(f_rfid);
+	closeRFID(f_rfid);
 
 	exit(1);
 }
 
-void lane_component(int argc, int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, unsigned short usr_speed, double stop_dist) {
+void lane_component(int argc, int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, unsigned short usr_speed, double stop_dist, int h, int w, int l) {
 
 	int servo_out = 300;
 	int old_servo_out = servo_out;
-
-	int mtr_write, srv_write;
 
 	int clk_edges;
 	int dist = 0;
@@ -490,74 +416,60 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 	auto finish = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
+	auto start_read = std::chrono::high_resolution_clock::now();
+	auto finish_read = std::chrono::high_resolution_clock::now();
+	auto duration_read = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+
 	//unsigned short fast_speed;
 
 	int stop_sgn = 0, old_stop_sgn = 0;
 
-	double full_time = 0;
-	double read_time = 0;
+	double full_time = 0, read_time = 0;
 
 	try {
 		for (int loop = 0; loop < iterations; loop++) {
 
-			//start = std::chrono::high_resolution_clock::now();
+			start = std::chrono::high_resolution_clock::now();
 
 			COUT_mutex.lock();
-			cout << "loop=============" << loop << endl;
+			std::cout << "loop=============" << loop << "\n";
 			COUT_mutex.unlock();
 
-			if (loop == 0 && param == -1) {
-				IMAGE_mutex.lock();
-				IMAGE = imread("test.png", CV_LOAD_IMAGE_COLOR);
-				IMAGE_mutex.unlock();
-			} else {
-				start = std::chrono::high_resolution_clock::now();
-				fread(pixels, 1, h * w * l, camera);
-				finish = std::chrono::high_resolution_clock::now();
-				duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
-				read_time += duration.count();
-				IMAGE_mutex.lock();
-				IMAGE = Mat(h, w, CV_8UC3, &pixels[0]);
-				IMAGE_mutex.unlock();
-			}
+			cv::Mat frame_1, frame, frame_stream;
 
-			//MUTEX
-			Mat frame_1, frame;
-			IMAGE_mutex.lock();
-			IMAGE.copyTo(frame_1);
-			IMAGE_mutex.unlock();
-			Mat canny_image;
+			start_read = std::chrono::high_resolution_clock::now();
+
+			fread(pixels, 1, h * w * l, camera);
+
+			finish_read = std::chrono::high_resolution_clock::now();
+			duration_read = std::chrono::duration_cast<std::chrono::microseconds>(finish_read - start_read);
+			read_time += duration_read.count();
+
+			frame_1 = cv::Mat(h, w, CV_8UC1, &pixels[0]);
+
 			if (param != 100) {
-				resize(frame_1, frame, cv::Size(), (double) RESIZE_FACTOR, (double) RESIZE_FACTOR);
+				cv::resize(frame_1, frame, cv::Size(), cfg.resize_factor, cfg.resize_factor);
 			} else {
 				frame_1.copyTo(frame);
 			}
 
-			Mat gray_image;
-			cvtColor(frame, gray_image, CV_RGB2GRAY);
-			cvtColor(frame, canny_image, CV_RGB2GRAY);
-
-//			Mat blurred_image;
-//			GaussianBlur(gray_image, blurred_image, Size(5, 5), 0, 0);
-//
-//			Mat canny_image;
-//			Canny(blurred_image, canny_image, 50, 150);
-
-// make the selection areas for the images
-			Mat poly;
-			poly = cv::Mat::zeros(frame.size(), canny_image.type());
-			//poly = cv::Mat::zeros(canny_image.size(), canny_image.type());
+			// make the selection areas for the images
+			cv::Mat poly;
+			poly = cv::Mat::zeros(frame.size(), frame.type());
 			lines(poly);
 
 			// apply selection areas to said images
-			Mat region_image_lane;
-			bitwise_and(poly, canny_image, region_image_lane);
+			cv::Mat region_image_lane;
+
+			if (param == 2 || param == -1) {
+				cv::cvtColor(frame, frame_stream, cv::COLOR_GRAY2BGR);
+			}
+
+			cv::bitwise_and(poly, frame, region_image_lane);
 
 			//vector<int> line_ret = servo_comand_line(region_image_lane, frame, param, usr_speed);
-			servo_out = servo_comand_line(region_image_lane, frame, param, new_speed);
 
-			//fast_speed = line_ret[0];
-			//servo_out = line_ret[1];
+			servo_out = servo_comand_line(region_image_lane, frame_stream, param, new_speed);
 
 			if (argc > 5) {
 				read(sonar->_fileno, &clk_edges, 4);
@@ -565,7 +477,6 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 				if (dist < stop_dist && dist != 0) {
 					new_speed = 0;
 				} else {
-					//speed_local = (fast_speed << 16) + fast_speed;
 					new_speed = usr_speed;
 				}
 			}
@@ -604,11 +515,13 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 				switch (card_now->type) {
 
 				case STOP:
-					if (param > 0 || param == -1) {
+					if (param == 1 || param == -1) {
 						COUT_mutex.lock();
-						cout << "STOP CARD" << endl;
+						std::cout << "STOP CARD" << "\n";
 						COUT_mutex.unlock();
-						putText(frame, "STOP CARD", cvPoint(250, 300), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+					}
+					if (param == 2 || param == -1) {
+						cv::putText(frame_stream, "STOP CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 					}
 					speed = 0;
 					write(motors->_fileno, &speed, 4);
@@ -617,11 +530,13 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 					break;
 
 				case PAUSE:
-					if (param > 0 || param == -1) {
+					if (param == 1 || param == -1) {
 						COUT_mutex.lock();
-						cout << "PAUSE CARD" << endl;
+						std::cout << "PAUSE CARD" << "\n";
 						COUT_mutex.unlock();
-						putText(frame, "PAUSE CARD", cvPoint(250, 300), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+					}
+					if (param == 2 || param == -1) {
+						cv::putText(frame_stream, "PAUSE CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 					}
 					speed = 0;
 					write(motors->_fileno, &speed, 4);
@@ -630,31 +545,37 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 					break;
 
 				case SPEED10:
-					if (param > 0 || param == -1) {
+					if (param == 1 || param == -1) {
 						COUT_mutex.lock();
-						cout << "SPEED10 CARD" << endl;
+						std::cout << "SPEED10 CARD" << "\n";
 						COUT_mutex.unlock();
-						putText(frame, "SPEED10 CARD", cvPoint(250, 300), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+					}
+					if (param == 2 || param == -1) {
+						cv::putText(frame_stream, "SPEED10 CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 					}
 					new_speed = 15000;
 					break;
 
 				case SPEED20:
-					if (param > 0 || param == -1) {
+					if (param == 1 || param == -1) {
 						COUT_mutex.lock();
-						cout << "SPEED20 CARD" << endl;
+						std::cout << "SPEED20 CARD" << "\n";
 						COUT_mutex.unlock();
-						putText(frame, "SPEED20 CARD", cvPoint(250, 300), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+					}
+					if (param == 2 || param == -1) {
+						cv::putText(frame_stream, "SPEED20 CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 					}
 					new_speed = 17000;
 					break;
 
 				case SPEED30:
-					if (param > 0 || param == -1) {
+					if (param == 1 || param == -1) {
 						COUT_mutex.lock();
-						cout << "SPEED30 CARD" << endl;
+						std::cout << "SPEED30 CARD" << "\n";
 						COUT_mutex.unlock();
-						putText(frame, "SPEED30 CARD", cvPoint(250, 300), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+					}
+					if (param == 2 || param == -1) {
+						cv::putText(frame_stream, "SPEED30 CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 					}
 					new_speed = 20000;
 					break;
@@ -667,132 +588,109 @@ void lane_component(int argc, int param, int iterations, FILE* camera, FILE* ser
 
 			speed = (new_speed << 16) + new_speed;
 
-			mtr_write = write(motors->_fileno, &speed, 4);
-			srv_write = write(servo->_fileno, &servo_out, 2);
+			int mtr_write = write(motors->_fileno, &speed, 4);
+			if (mtr_write < 4) {
+				COUT_mutex.lock();
+				std::cerr << "Failed write to motors." << "\n";
+				COUT_mutex.unlock();
+				break;
+			}
+			int srv_write = write(servo->_fileno, &servo_out, 2);
+			if (srv_write < 2) {
+				COUT_mutex.lock();
+				std::cerr << "Failed write to servo." << "\n";
+				COUT_mutex.unlock();
+				break;
+			}
 
-			if (param > 0 || param == -1) {
+			if (param == 1 || param == -1) {
 				COUT_mutex.lock();
 
-				cout << "servo = " << servo_out << endl;
-				cout << "speed = " << (speed >> 16) << endl;
-				cout << "dist  = " << dist << endl;
+				std::cout << "servo = " << servo_out << "\n";
+				std::cout << "speed = " << (speed >> 16) << "\n";
+				std::cout << "dist  = " << dist << "\n";
 
 				COUT_mutex.unlock();
 			}
-			if (param != 100) {
-				if (param > 1 || param == -1) {
-					line(frame, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
-					line(frame, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
-					line(frame, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
-					line(frame, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
-					line(frame, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
-					line(frame, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
 
-					line(frame, Point(LEFT_MEAN_1, Y_1 - 5), Point(LEFT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
-					line(frame, Point(RIGHT_MEAN_1, Y_1 - 5), Point(RIGHT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
-					line(frame, Point(LEFT_MEAN_2, Y_2 - 5), Point(LEFT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
-					line(frame, Point(RIGHT_MEAN_2, Y_2 - 5), Point(RIGHT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
-					line(frame, Point(LEFT_MEAN_3, Y_3 - 5), Point(LEFT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
-					line(frame, Point(RIGHT_MEAN_3, Y_3 - 5), Point(RIGHT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
+			if (param == 2 || param == -1) {
+				cv::line(frame_stream, cv::Point(cfg.right_x_1_1, cfg.y_1), cv::Point(cfg.right_x_2_1, cfg.y_1), cv::Scalar(100, 0, 0), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.left_x_1_1, cfg.y_1), cv::Point(cfg.left_x_2_1, cfg.y_1), cv::Scalar(0, 100, 0), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.right_x_1_2, cfg.y_2), cv::Point(cfg.right_x_2_2, cfg.y_2), cv::Scalar(100, 0, 0), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.left_x_1_2, cfg.y_2), cv::Point(cfg.left_x_2_2, cfg.y_2), cv::Scalar(0, 100, 0), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.right_x_1_3, cfg.y_3), cv::Point(cfg.right_x_2_3, cfg.y_3), cv::Scalar(100, 0, 0), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.left_x_1_3, cfg.y_3), cv::Point(cfg.left_x_2_3, cfg.y_3), cv::Scalar(0, 100, 0), 2, CV_AA);
 
-					char lop[20];
-					sprintf(lop, "loop = %d", loop);
-					putText(frame, lop, cvPoint(30, 30), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.left_mean_1, cfg.y_1 - 5), cv::Point(cfg.left_mean_1, cfg.y_1 + 5), cv::Scalar(0, 255, 255), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.right_mean_1, cfg.y_1 - 5), cv::Point(cfg.right_mean_1, cfg.y_1 + 5), cv::Scalar(0, 255, 255), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.left_mean_2, cfg.y_2 - 5), cv::Point(cfg.left_mean_2, cfg.y_2 + 5), cv::Scalar(0, 255, 255), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.right_mean_2, cfg.y_2 - 5), cv::Point(cfg.right_mean_2, cfg.y_2 + 5), cv::Scalar(0, 255, 255), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.left_mean_3, cfg.y_3 - 5), cv::Point(cfg.left_mean_3, cfg.y_3 + 5), cv::Scalar(0, 255, 255), 2, CV_AA);
+				cv::line(frame_stream, cv::Point(cfg.right_mean_3, cfg.y_3 - 5), cv::Point(cfg.right_mean_3, cfg.y_3 + 5), cv::Scalar(0, 255, 255), 2, CV_AA);
 
-					char srv[20];
-					sprintf(srv, "servo = %d", servo_out);
-					putText(frame, srv, cvPoint(30, 60), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+				char lop[20];
+				sprintf(lop, "loop = %d", loop);
+				cv::putText(frame_stream, lop, cvPoint(30, 30), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 
-					char spd[20];
-					sprintf(spd, "speed = %d", speed >> 16);
-					putText(frame, spd, cvPoint(30, 90), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+				char srv[20];
+				sprintf(srv, "servo = %d", servo_out);
+				cv::putText(frame_stream, srv, cvPoint(30, 60), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 
-					char dst[20];
-					sprintf(dst, "dist = %d", dist);
-					putText(frame, dst, cvPoint(30, 120), FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+				char spd[20];
+				sprintf(spd, "speed = %d", speed >> 16);
+				cv::putText(frame_stream, spd, cvPoint(30, 90), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 
-					vector<int> compression_params;
-					compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-					compression_params.push_back(9);
+				char dst[20];
+				sprintf(dst, "dist = %d", dist);
+				cv::putText(frame_stream, dst, cvPoint(30, 120), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 
-					char name[20];
-					sprintf(name, "img%d.jpg", loop);
-
-					try {
-
-						//imwrite(name, frame, compression_params);
-						//if (loop % 10 == 0) {
-							imwrite("/etc/mjpg-stream.jpg", frame);
-
-						//}
-
-						if (param == -1) {
-							imwrite("img_poly.png", poly, compression_params);
-						}
-
-					} catch (runtime_error& ex) {
-						COUT_mutex.lock();
-						cerr << "Exception converting image to PNG format: " << ex.what() << endl;
-						COUT_mutex.unlock();
-					}
-				}
-
-			} else {
-				line(frame, Point(RIGHT_X_1_1, Y_1), Point(RIGHT_X_2_1, Y_1), Scalar(100, 0, 0), 2, CV_AA);
-				line(frame, Point(LEFT_X_1_1, Y_1), Point(LEFT_X_2_1, Y_1), Scalar(0, 100, 0), 2, CV_AA);
-				line(frame, Point(RIGHT_X_1_2, Y_2), Point(RIGHT_X_2_2, Y_2), Scalar(100, 0, 0), 2, CV_AA);
-				line(frame, Point(LEFT_X_1_2, Y_2), Point(LEFT_X_2_2, Y_2), Scalar(0, 100, 0), 2, CV_AA);
-				line(frame, Point(RIGHT_X_1_3, Y_3), Point(RIGHT_X_2_3, Y_3), Scalar(100, 0, 0), 2, CV_AA);
-				line(frame, Point(LEFT_X_1_3, Y_3), Point(LEFT_X_2_3, Y_3), Scalar(0, 100, 0), 2, CV_AA);
-
-				line(frame, Point(LEFT_MEAN_1, Y_1 - 5), Point(LEFT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
-				line(frame, Point(RIGHT_MEAN_1, Y_1 - 5), Point(RIGHT_MEAN_1, Y_1 + 5), Scalar(0, 255, 255), 2, CV_AA);
-				line(frame, Point(LEFT_MEAN_2, Y_2 - 5), Point(LEFT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
-				line(frame, Point(RIGHT_MEAN_2, Y_2 - 5), Point(RIGHT_MEAN_2, Y_2 + 5), Scalar(0, 255, 255), 2, CV_AA);
-				line(frame, Point(LEFT_MEAN_3, Y_3 - 5), Point(LEFT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
-				line(frame, Point(RIGHT_MEAN_3, Y_3 - 5), Point(RIGHT_MEAN_3, Y_3 + 5), Scalar(0, 255, 255), 2, CV_AA);
-
-				vector<int> compression_params;
-				compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-				compression_params.push_back(9);
+//				vector<int> compression_params;
+//				compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+//				compression_params.push_back(9);
 
 				try {
 
-					imwrite("calib_lines.png", frame, compression_params);
-					imwrite("calib_free.png", frame_1, compression_params);
+					cv::imwrite("/etc/mjpg-stream.jpg", frame_stream);
 
-				} catch (runtime_error& ex) {
+					if (param == -1) {
+						char name[65];
+						sprintf(name, "img_lane%d.jpg", loop);
+						cv::imwrite(name, frame_stream);
+					}
+
+				} catch (std::runtime_error& ex) {
 					COUT_mutex.lock();
-					cerr << "Exception converting image to PNG format: " << ex.what() << endl;
+					std::cerr << "Exception converting image to PNG format: " << ex.what() << "\n";
 					COUT_mutex.unlock();
 				}
 			}
 
 			sigaction(SIGINT, &sigIntHandler, NULL);
 
-//			finish = std::chrono::high_resolution_clock::now();
-//			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
+			finish = std::chrono::high_resolution_clock::now();
+			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-//			if (duration.count() < LOOP_TIME) {
-//				usleep(LOOP_TIME - duration.count());
-//			}
+			if (cfg.fps != -1 && duration.count() < cfg.loop_time) {
+				usleep(cfg.loop_time - duration.count());
+			}
 			full_time += duration.count();
 
 		}
 
 	} catch (...) {
-		cout << "EX_T1" << endl;
+		std::cout << "EX_T1" << "\n";
 	}
 
 	COUT_mutex.lock();
-	cout << "LANE time/loop = " << read_time / (double) iterations << endl;
+	std::cout << "LANE time/loop = " << full_time / (double) iterations << "\n";
+	std::cout << "READ time/loop = " << read_time / (double) iterations << "\n";
 	COUT_mutex.unlock();
 
 	lane_done = 1;
 
 }
 
-void sign_component(int param) {
+void sign_component(int param, FILE* camera, int h, int w, int l) {
 
 	auto start = std::chrono::high_resolution_clock::now();
 	auto finish = std::chrono::high_resolution_clock::now();
@@ -804,56 +702,54 @@ void sign_component(int param) {
 
 	double full_time = 0;
 
+	unsigned char* pixels;
+	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
+
 	try {
 		while (lane_done == 0) {
 
 			start = std::chrono::high_resolution_clock::now();
 
-			Mat frame;
-			//MUTEX
-			IMAGE_mutex.lock();
-			IMAGE.copyTo(frame);
-			IMAGE_mutex.unlock();
+			cv::Mat frame;
+
+			fread(pixels, 1, h * w * l, camera);
+
+			frame = cv::Mat(h, w, CV_8UC3, &pixels[0]);
 
 			if (frame.rows != 0) {
 
-				Mat region_image_sign_1, region_image_sign_2;
+				cv::Mat region_image_sign_1, region_image_sign_2;
 
-				region_image_sign_1 = crop(frame, frame.cols / 2, 0, frame.cols, frame.rows);
+				//region_image_sign_1 = crop(frame, frame.cols / 2, 0, frame.cols, frame.rows);
 
-				cv::resize(region_image_sign_1, region_image_sign_2, cv::Size(), 0.5, 0.5);
+				cv::resize(frame, region_image_sign_2, cv::Size(), cfg.resize_factor, cfg.resize_factor);
 
 				sign = detect_and_display(region_image_sign_2, param);
 				STOP_mutex.lock();
 				stop_sign = sign;
 				STOP_mutex.unlock();
 
-				if (param > 1 || param == -1) {
-
-					vector<int> compression_params;
-					compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-					compression_params.push_back(9);
-
-					char name[65];
-					sprintf(name, "img_region_image_sign%d.png", loop);
-
+				if (param == 2 || param == -1) {
 					try {
 
-						if (param > 2 || param == -1) {
+						cv::imwrite("sign-stream.jpg", region_image_sign_2);
 
-							imwrite(name, region_image_sign_2, compression_params);
+						if (param == -1) {
+							char name[65];
+							sprintf(name, "img_sign%d.jpg", loop);
+							cv::imwrite(name, frame);
 						}
 
-					} catch (runtime_error& ex) {
-						cerr << "Exception converting image to PNG format: " << ex.what() << endl;
+					} catch (std::runtime_error& ex) {
+						std::cerr << "Exception converting image to PNG format: " << ex.what() << "\n";
 					}
 				}
 
 				finish = std::chrono::high_resolution_clock::now();
 				duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-				if (duration.count() < LOOP_TIME) {
-					usleep(LOOP_TIME - duration.count());
+				if (cfg.fps != -1 && duration.count() < cfg.loop_time) {
+					usleep(cfg.loop_time - duration.count());
 				}
 				loop++;
 				full_time += duration.count();
@@ -862,11 +758,11 @@ void sign_component(int param) {
 		}
 
 		COUT_mutex.lock();
-		cout << "SIGN time/loop = " << full_time / (double) loop << endl;
+		std::cout << "SIGN time/loop = " << full_time / (double) loop << "\n";
 		COUT_mutex.unlock();
 
 	} catch (...) {
-		cout << "EX_T2" << endl;
+		std::cout << "EX_T2" << "\n";
 	}
 
 }
@@ -917,6 +813,7 @@ void runRFID(int fd, struct cardQueue *queue) {
 						uint8_t result = insertCard(queue, card);
 						if (result == 1) {
 							numCards++;
+
 #ifdef RFID_DEBUG
 							printf("Inserted card\n");
 #endif
@@ -937,48 +834,57 @@ void runRFID(int fd, struct cardQueue *queue) {
 			finish = std::chrono::high_resolution_clock::now();
 			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-			if (duration.count() < LOOP_TIME) {
-				usleep(LOOP_TIME - duration.count());
+			if (duration.count() < cfg.loop_time) {
+				usleep(cfg.loop_time - duration.count());
 			}
 
 		}
 	} catch (...) {
-		cout << "EX_T3" << endl;
+		std::cout << "EX_T3" << "\n";
 	}
 }
 
 int main(int argc, char** argv) {
 
-	cout << "OpenCV version : " << CV_VERSION << endl;
+	std::cout << "OpenCV version : " << CV_VERSION << "\n";
 
 	int param = 0;
 
 	if (argc < 5) {
-		cerr << argv[0] << " <debug param> <number of iterations> <speed> <direction> <stop distance>" << endl << "0 - nothing" << endl << "1 - just text" << endl
-				<< "2 - one *relevant* image" << endl << "3 - more *relevant* images" << endl << "-1 - full debug mode test.png used" << endl
-				<< "100 - calibration mode, make one .png" << endl;
+		std::cerr << argv[0] << " <debug param> <number of iterations> <speed> <direction> <stop distance>" << "\n" << "0 - nothing" << "\n" << "1 - just text" << "\n"
+				<< "2 - just images" << "\n" << "\n" << "-1 - text and images" << "\n" << "100 - calibration mode" << "\n";
 		return -1;
 	}
 
 	param = atoi(argv[1]);
 
-	FILE* camera = fopen("/dev/videoHLS", "rb");
-	if (camera < 0) {
-		cerr << "Failed to open camera." << endl;
+	std::string cfg_name = "prop.cfg";
+
+	FILE* camera_lane = fopen("/dev/videoHLS", "rb");
+	if (camera_lane < 0) {
+		std::cerr << "Failed to open lane camera." << "\n";
+		return -1;
+	}
+
+	FILE* camera_sign = fopen("/dev/video", "rb");
+	if (camera_sign < 0) {
+		std::cerr << "Failed to open sign camera." << "\n";
 		return -1;
 	}
 
 	FILE* servo = fopen("/dev/servo", "r+b");
 	if (servo < 0) {
-		cerr << "Failed to open servo." << endl;
-		fclose(camera);
+		std::cerr << "Failed to open servo." << "\n";
+		fclose(camera_lane);
+		fclose(camera_sign);
 		return -1;
 	}
 
 	FILE* motors = fopen("/dev/motors", "r+b");
 	if (motors < 0) {
-		cerr << "Failed to open motors." << endl;
-		fclose(camera);
+		std::cerr << "Failed to open motors." << "\n";
+		fclose(camera_lane);
+		fclose(camera_sign);
 		fclose(servo);
 		return -1;
 	}
@@ -986,8 +892,9 @@ int main(int argc, char** argv) {
 	FILE* sonar = fopen("/dev/sonar", "rb");
 	if (argc > 5) {
 		if (sonar < 0) {
-			cerr << "Failed to open sonar." << endl;
-			fclose(camera);
+			std::cerr << "Failed to open sonar." << "\n";
+			fclose(camera_lane);
+			fclose(camera_sign);
 			fclose(servo);
 			fclose(motors);
 			return -1;
@@ -996,8 +903,9 @@ int main(int argc, char** argv) {
 
 	int iterations = atoi(argv[2]);
 	if (iterations < 0) {
-		cerr << "Bad number of iterations." << endl;
-		fclose(camera);
+		std::cerr << "Bad number of iterations." << "\n";
+		fclose(camera_lane);
+		fclose(camera_sign);
 		fclose(servo);
 		fclose(motors);
 		fclose(sonar);
@@ -1005,7 +913,7 @@ int main(int argc, char** argv) {
 	} else if (iterations == 42) {
 		iterations = 10000;
 	}
-	if (param == -1 || param == 100) {
+	if (param == 100) {
 		iterations = 1;
 	}
 
@@ -1013,8 +921,9 @@ int main(int argc, char** argv) {
 
 	unsigned int left_dir = atoi(argv[4]);
 	if (left_dir < 0 && left_dir > 1) {
-		cerr << "Bad direction." << endl;
-		fclose(camera);
+		std::cerr << "Bad direction." << "\n";
+		fclose(camera_lane);
+		fclose(camera_sign);
 		fclose(servo);
 		fclose(motors);
 		fclose(sonar);
@@ -1023,8 +932,9 @@ int main(int argc, char** argv) {
 
 	int rfid = initRFID();
 	if (rfid < 0) {
-		cerr << "Failed to open RFID." << endl;
-		fclose(camera);
+		std::cerr << "Failed to open RFID." << "\n";
+		fclose(camera_lane);
+		fclose(camera_sign);
 		fclose(servo);
 		fclose(motors);
 		if (argc > 5) {
@@ -1055,13 +965,15 @@ int main(int argc, char** argv) {
 	}
 
 	if (!stop_cascade.load(stop_cascade_name)) {
-		cerr << "--(!)Error loading stop cascade" << endl;
-		fclose(camera);
+		std::cerr << "Failed to load stop sign cascade" << "\n";
+		fclose(camera_lane);
+		fclose(camera_sign);
 		fclose(servo);
 		fclose(motors);
 		if (argc > 5) {
 			fclose(sonar);
 		}
+		closeRFID(rfid);
 		return -1;
 	};
 
@@ -1069,38 +981,61 @@ int main(int argc, char** argv) {
 
 	sigIntHandler.sa_flags = SA_RESETHAND;
 	sigIntHandler.sa_handler = my_handler;
+	sigaction(SIGINT, &sigIntHandler, NULL);
 
 	createCardQueue(&c_queue);
 
-	sigaction(SIGINT, &sigIntHandler, NULL);
+	int h_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQHEIGHT);
+	int w_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQWIDTH);
+	int l_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQPIXELLEN);
 
-	h = ioctl(camera->_fileno, CHARVIDEO_IOCQHEIGHT);
-	w = ioctl(camera->_fileno, CHARVIDEO_IOCQWIDTH);
-	l = ioctl(camera->_fileno, CHARVIDEO_IOCQPIXELLEN);
-	cout << h << endl << w << endl << l << endl;
+	int h_sign = ioctl(camera_sign->_fileno, CHARVIDEO_IOCQHEIGHT);
+	int w_sign = ioctl(camera_sign->_fileno, CHARVIDEO_IOCQWIDTH);
+	int l_sign = ioctl(camera_sign->_fileno, CHARVIDEO_IOCQPIXELLEN);
 
-	std::thread t1(lane_component, argc, param, iterations, camera, servo, motors, sonar, usr_speed, stop_dist);
-//	std::thread t2(sign_component, param);
-//	std::thread t3(runRFID, rfid, c_queue);
+	std::vector<double> calib_avg;
+	cfg = configure(param, cfg_name, calib_avg);
 
-	t1.join();
-//	t2.join();
-//	t3.join();
+	if (param != 100) {
+
+		std::thread t1(lane_component, argc, param, iterations, camera_lane, servo, motors, sonar, usr_speed, stop_dist, h_lane, w_lane, l_lane);
+//		std::thread t2(sign_component, param, camera_sign, h_sign, w_sign, l_sign);
+//		std::thread t3(runRFID, rfid, c_queue);
+
+		t1.join();
+//		t2.join();
+//		t3.join();
+
+	} else {
+
+		unsigned char* pixels;
+		pixels = (unsigned char *) malloc(h_lane * w_lane * l_lane * sizeof(char));
+		fread(pixels, 1, h_lane * w_lane * l_lane, camera_lane);
+		cv::Mat calib_img = cv::Mat(h_lane, w_lane, CV_8UC1, &pixels[0]);
+		cv::Mat poly;
+		poly = cv::Mat::zeros(calib_img.size(), calib_img.type());
+		lines(poly);
+		cv::Mat region_image_lane;
+		cv::bitwise_and(poly, calib_img, region_image_lane);
+		calib_avg = average_lane_lines(region_image_lane, calib_img, param);
+		cfg = configure(param, cfg_name, calib_avg);
+
+	}
 
 	stock_servo_out = SERVO_CENTER;
 	write(servo->_fileno, &stock_servo_out, 2);
 	stock_speed = 0;
 	write(motors->_fileno, &stock_speed, 4);
 
-	fclose(camera);
+	fclose(camera_lane);
+	fclose(camera_sign);
 	fclose(servo);
 	fclose(motors);
 	if (argc > 5) {
 		fclose(sonar);
 	}
-
-
-
+	freeCardQueue(c_queue);
+	closeRFID(rfid);
 
 	return 0;
 }
