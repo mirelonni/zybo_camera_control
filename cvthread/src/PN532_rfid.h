@@ -1,14 +1,5 @@
 #ifndef PN532_RFID_H
 #define PN532_RFID_H
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdint.h>
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <sys/ioctl.h>
-#include <linux/i2c-dev.h>
-#include <uiotools/uiotools.h>
 
 //#define RFID_DEBUG
 
@@ -749,7 +740,7 @@ int init() {
 	printf("Opened i2c device\n");
 #endif
 
-	/////////////////////////////irq_fd = findDeviceByNameAndAddr(GPIO_NAME, GPIO_RFID_ADDRESS);
+	irq_fd = findDeviceByNameAndAddr(GPIO_NAME, GPIO_RFID_ADDRESS);
 	if (irq_fd < 0) {
 #ifdef RFID_DEBUG
 		printf("Could not open GPIO_INTR device\n");

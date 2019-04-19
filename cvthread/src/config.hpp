@@ -33,6 +33,12 @@ struct properties {
   int right_x_2_3;
 
   int loop_time;
+
+  int rfid_on;
+  int sign_on;
+  int sonar_dist;
+
+  double speed_up_min, speed_up_max;
 };
 
 enum prop_codes {
@@ -53,6 +59,11 @@ enum prop_codes {
   E_sign_min,
   E_sign_max,
   E_fps,
+  E_speed_up_min,
+  E_speed_up_max,
+  E_rfid_on,
+  E_sign_on,
+  E_sonar_dist,
   E_left_mean_1,
   E_left_mean_2,
   E_left_mean_3,
