@@ -9,6 +9,9 @@ struct properties {
   int line_distance_1_out, line_distance_1_in;
   int line_distance_1, line_distance_2, line_distance_3;
   int servo_fine, min_speed, max_speed;
+
+  double servo_map_a, servo_map_b, servo_map_c, servo_map_d;
+
   int sign_min, sign_max, fps;
   int left_mean_1, left_mean_2, left_mean_3;
   int right_mean_1, right_mean_2, right_mean_3;
@@ -38,7 +41,7 @@ struct properties {
   int sign_on;
   int sonar_dist;
 
-  double speed_up_min, speed_up_max;
+  double speed_up_min, speed_up_max, speed_up_rate;
 };
 
 enum prop_codes {
@@ -56,11 +59,16 @@ enum prop_codes {
   E_max_speed,
   E_min_adj_servo,
   E_max_adj_servo,
+  E_servo_map_a,
+  E_servo_map_b,
+  E_servo_map_c,
+  E_servo_map_d,
   E_sign_min,
   E_sign_max,
   E_fps,
   E_speed_up_min,
   E_speed_up_max,
+  E_speed_up_rate,
   E_rfid_on,
   E_sign_on,
   E_sonar_dist,

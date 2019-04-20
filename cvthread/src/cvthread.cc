@@ -27,6 +27,7 @@ extern "C" {
 #include <thread>
 #include <mutex>
 #include <typeinfo>
+#include <csignal>
 
 //#define RFID_DEBUG
 
@@ -131,34 +132,42 @@ int choose_servo(int left, int right, int mean) {
 	}
 }
 
-std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int right_2, int left_3, int right_3, int mean, int current_speed, int base_speed) {
+std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int right_2, int left_3, int right_3, int mean, int current_speed, int base_speed, int lane_keep) {
 
 	std::vector<int> ret;
-	ret.push_back(choose_servo(left_1, right_1, mean));
 
-	double adj = 0.03f;
+	if (lane_keep == 1) {
+		// adjust servo only with the right_lane_line
+		ret.push_back(choose_servo(0, right_1, mean));
+	} else if (lane_keep == -1) {
+		// adjust servo only with the left_lane_line
+		ret.push_back(choose_servo(left_1, 0, mean));
+	} else {
+		// adjust servo with both lane lines
+		ret.push_back(choose_servo(left_1, right_1, mean));
+	}
 
 	if (left_1 != 0 || right_1 != 0) {
 
 		if (left_2 != 0 && right_2 != 0) {
 			if (left_3 != 0 && right_3 != 0) {
 				if (current_speed < base_speed * cfg.speed_up_max) {
-					ret.push_back(current_speed + base_speed * adj);
+					ret.push_back(current_speed + base_speed * cfg.speed_up_rate);
 				} else {
 					ret.push_back(base_speed * cfg.speed_up_max);
 				}
 			} else {
 				if (current_speed > base_speed) {
-					ret.push_back(current_speed - base_speed * adj);
+					ret.push_back(current_speed - base_speed * cfg.speed_up_rate);
 				} else if (current_speed < base_speed) {
-					ret.push_back(current_speed + base_speed * adj);
+					ret.push_back(current_speed + base_speed * cfg.speed_up_rate);
 				} else {
 					ret.push_back(base_speed);
 				}
 			}
 		} else {
 			if (current_speed > base_speed * cfg.speed_up_min) {
-				ret.push_back(current_speed - base_speed * adj);
+				ret.push_back(current_speed - base_speed * cfg.speed_up_rate);
 			} else {
 				ret.push_back(base_speed * cfg.speed_up_min);
 			}
@@ -204,8 +213,6 @@ int servo_speed_adj(int servo_no_adj, int current_speed) {
 
 	double servo_post_adj;
 	double servo_pre_adj = 0;
-
-	std::cout << current_speed << "\n";
 
 	if (servo_no_adj != -1) {
 		servo_pre_adj = full_map(current_speed, cfg.min_speed, cfg.max_speed, cfg.min_adj_servo, cfg.max_adj_servo);
@@ -260,7 +267,7 @@ std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image
 	return ret;
 }
 
-std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int param, int current_speed, int base_speed) {
+std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int param, int current_speed, int base_speed, int lane_keep) {
 
 	int servo_no_adj;
 
@@ -306,7 +313,8 @@ std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int 
 
 	int posible_speed = 0;
 
-	std::vector<int> srv_spd = choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, current_speed, base_speed);
+	std::vector<int> srv_spd = choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, current_speed, base_speed,
+			lane_keep);
 
 	servo_no_adj = srv_spd[0];
 	posible_speed = srv_spd[1];
@@ -412,11 +420,12 @@ int detect_and_display(cv::Mat frame, int param) {
 
 }
 
-std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, int current_speed, int base_speed, int stop_time, int posible_speed) {
+std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, int current_speed, int base_speed, int stop_time, int posible_speed, int lane_keep) {
 	std::vector<int> ret;
 	int cur_spd = current_speed;
 	int bas_spd = base_speed;
 	int stp_tim = stop_time;
+	int lan_kep = lane_keep;
 	int dst = 0;
 
 	int stop_sgn = 0;
@@ -453,8 +462,6 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 			STOP_mutex.unlock();
 
 			if (stop_sgn == 0 && old_stop_sgn == 1) {
-
-				std::cout << "MUYE" << "\n";
 
 				cur_spd = 0;
 				stp_tim = 1000000;
@@ -520,6 +527,48 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 
 						cascade_flag = 1;
 						break;
+					case KEEPR:
+						if (param == 1 || param == -1) {
+							COUT_mutex.lock();
+							std::cout << "KEEP RIGHT CARD" << "\n";
+							COUT_mutex.unlock();
+						}
+						if (param == 2 || param == -1) {
+							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+						}
+						lan_kep = 1;
+
+						cascade_flag = 1;
+						break;
+
+					case KEEPL:
+						if (param == 1 || param == -1) {
+							COUT_mutex.lock();
+							std::cout << "KEEP RIGHT CARD" << "\n";
+							COUT_mutex.unlock();
+						}
+						if (param == 2 || param == -1) {
+							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+						}
+						lan_kep = -1;
+
+						cascade_flag = 1;
+						break;
+
+					case KEEPLR:
+						if (param == 1 || param == -1) {
+							COUT_mutex.lock();
+							std::cout << "KEEP RIGHT CARD" << "\n";
+							COUT_mutex.unlock();
+						}
+						if (param == 2 || param == -1) {
+							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+						}
+						lan_kep = 0;
+
+						cascade_flag = 1;
+						break;
+
 					}
 
 				}
@@ -534,6 +583,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 	ret.push_back(bas_spd);
 	ret.push_back(stp_tim);
 	ret.push_back(dst);
+	ret.push_back(lan_kep);
 
 	return ret;
 }
@@ -549,11 +599,11 @@ void my_handler(int s) {
 	write(f_servo, &servo_out, 2);
 	write(f_motors, &speed, 4);
 
-	closeRFID(f_rfid);
+	fake_interrupt();
 
 	std::cout << "STOPPED." << "\n";
 
-	exit(1);
+	//std::terminate();
 }
 
 void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, unsigned short usr_speed, int h, int w, int l) {
@@ -571,6 +621,8 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 	int base_speed = usr_speed;
 	int stop_time = 0;
 
+	int lane_keep = 0;
+
 	unsigned char* pixels;
 	pixels = (unsigned char *) malloc(h * w * l * sizeof(char));
 
@@ -581,7 +633,7 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 	int full_time = 0;
 
 	try {
-		for (int loop = 0; loop < iterations; loop++) {
+		for (int loop = 0; loop < iterations && lane_done == 0; loop++) {
 
 			start = std::chrono::high_resolution_clock::now();
 
@@ -615,7 +667,7 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 
 			cv::bitwise_and(poly, frame, region_image_lane);
 
-			std::vector<int> srv_spd = servo_and_speed(region_image_lane, frame_stream, param, current_speed, base_speed);
+			std::vector<int> srv_spd = servo_and_speed(region_image_lane, frame_stream, param, current_speed, base_speed, lane_keep);
 
 			servo_out = srv_spd[0];
 			posible_speed = srv_spd[1];
@@ -631,12 +683,13 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 
 			old_servo_out = servo_out;
 
-			std::vector<int> big_speed = speed_and_stop(param, frame_stream, sonar, current_speed, base_speed, stop_time, posible_speed);
+			std::vector<int> big_speed = speed_and_stop(param, frame_stream, sonar, current_speed, base_speed, stop_time, posible_speed, lane_keep);
 
 			current_speed = big_speed[0];
 			base_speed = big_speed[1];
 			stop_time = big_speed[2];
 			dist = big_speed[3];
+			lane_keep = big_speed[4];
 
 //speed that is written to motors
 			speed = ((unsigned short) current_speed << 16) + (unsigned short) current_speed;
@@ -732,11 +785,14 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 		std::cout << "EX_T1" << "\n";
 	}
 
+	lane_done = 1;
+	fake_interrupt();
+	//thread_kill(rfid_th, SIGINT);
+	//rfid_th.~thread();
+
 	COUT_mutex.lock();
 	std::cout << "LANE time/loop = " << full_time / (double) iterations << "\n";
 	COUT_mutex.unlock();
-
-	lane_done = 1;
 
 }
 
@@ -807,13 +863,15 @@ void sign_component(int param, FILE* camera, int h, int w, int l) {
 
 		}
 
-		COUT_mutex.lock();
-		std::cout << "SIGN time/loop = " << full_time / (double) loop << "\n";
-		COUT_mutex.unlock();
-
 	} catch (...) {
 		std::cout << "EX_T2" << "\n";
 	}
+
+	COUT_mutex.lock();
+	std::cout << "SIGN time/loop = " << full_time / (double) loop << "\n";
+	COUT_mutex.unlock();
+
+	//std::raise(SIGINT);
 
 }
 
@@ -826,6 +884,8 @@ void runRFID(int fd, struct cardQueue *queue) {
 	uint8_t keys[6] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }; //default key
 	uint8_t block = 4;
 	uint8_t numCards = 0;
+
+	//sigaction(SIGINT, &sigIntHandler, NULL);
 
 	auto start = std::chrono::high_resolution_clock::now();
 	auto finish = std::chrono::high_resolution_clock::now();
@@ -843,7 +903,7 @@ void runRFID(int fd, struct cardQueue *queue) {
 			memset(uid, 0, 6);
 			success = 0;
 			while (success != 1 && lane_done == 0) {
-				success = readPassiveTargetID(fd, PN532_MIFARE_ISO14443A, uid, &uidLength, 1000);
+				success = readPassiveTargetID(fd, PN532_MIFARE_ISO14443A, uid, &uidLength, 1);
 				if (success == 1)
 					break;
 			}
@@ -884,10 +944,9 @@ void runRFID(int fd, struct cardQueue *queue) {
 			finish = std::chrono::high_resolution_clock::now();
 			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
-			if (duration.count() < cfg.loop_time) {
+			if (cfg.fps != -1 && duration.count() < cfg.loop_time) {
 				usleep(cfg.loop_time - duration.count());
 			}
-
 		}
 	} catch (...) {
 		std::cout << "EX_T3" << "\n";
@@ -974,17 +1033,20 @@ int main(int argc, char** argv) {
 	if (param == 100) {
 		iterations = 1;
 	}
-
-	int rfid = initRFID();
-	if (rfid < 0) {
-		std::cerr << "Failed to open RFID." << "\n";
-		close_fp(fp);
-		return -1;
+	int rfid = -1;
+	if (cfg.rfid_on == 1) {
+		 rfid = initRFID();
+		if (rfid < 0) {
+			std::cerr << "Failed to open RFID." << "\n";
+			close_fp(fp);
+			return -1;
+		}
+		f_rfid = rfid;
 	}
 
 	f_motors = motors->_fileno;
 	f_servo = servo->_fileno;
-	f_rfid = rfid;
+
 
 	unsigned int left_dir = 1; // the car allways is going forwards
 	unsigned int right_dir = left_dir;
@@ -1002,7 +1064,8 @@ int main(int argc, char** argv) {
 	if (!stop_cascade.load(stop_cascade_name)) {
 		std::cerr << "Failed to load stop sign cascade" << "\n";
 		close_fp(fp);
-		closeRFID(rfid);
+		if(cfg.rfid_on==1)
+			closeRFID(rfid);
 		return -1;
 	};
 
@@ -1035,12 +1098,17 @@ int main(int argc, char** argv) {
 		}
 
 		t1.join();
+		std::cout<<"T1 joined\n";
+		if (cfg.rfid_on == 1) {
+				t3.join();
+				std::cout<<"T3 joined\n";
+		}
+
 		if (cfg.sign_on == 1) {
 			t2.join();
+			std::cout<<"T2 joined\n";
 		}
-		if (cfg.rfid_on == 1) {
-			t3.join();
-		}
+
 
 	} else {
 
@@ -1063,15 +1131,18 @@ int main(int argc, char** argv) {
 	stock_speed = 0;
 	write(motors->_fileno, &stock_speed, 4);
 
-	fclose(camera_lane);
-	fclose(camera_sign);
-	fclose(servo);
-	fclose(motors);
-	if (argc > 5) {
-		fclose(sonar);
-	}
+//	fclose(camera_lane);
+//	fclose(camera_sign);
+//	fclose(servo);
+//	fclose(motors);
+//	if (argc > 5) {
+//		fclose(sonar);
+//	}
+	close_fp(fp);
+	if(cfg.rfid_on==1)
+		closeRFID(rfid);
 	freeCardQueue(c_queue);
-	closeRFID(rfid);
+	//closeRFID(rfid);
 
 	return 0;
 }

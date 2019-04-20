@@ -12,5 +12,8 @@
 #define SPEED30 30
 #define SPEED35 35
 #define SPEED40 40
+#define KEEPLR 110
+#define KEEPL 111
+#define KEEPR 112
 
 #endif
