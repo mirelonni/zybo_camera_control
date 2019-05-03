@@ -1,8 +1,6 @@
 #ifndef PN532_RFID_H
 #define PN532_RFID_H
 
-//#define RFID_DEBUG
-
 #define PN532_PREAMBLE                (0x00)
 #define PN532_STARTCODE1              (0x00)
 #define PN532_STARTCODE2              (0xFF)
@@ -80,7 +78,6 @@
 #define GPIO_IRQ_STATUS 0x120
 
 #define USE_INTERRUPTS //comment this to enable timeout based polling
-//#define RFID_DEBUG
 
 static uint8_t command; //last command sent
 static int irq_fd = -1;

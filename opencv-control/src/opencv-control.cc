@@ -1,41 +1,4 @@
-#include <opencv2/core.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/objdetect.hpp>
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdint.h>
-#include <unistd.h>
-#include <string.h>
-#include <signal.h>
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <sys/ioctl.h>
-#include <linux/i2c-dev.h>
-extern "C" {
-#include <uiotools/uiotools.h>
-}
-#include <math.h>
-
-#include <vector>
-#include <numeric>
-#include <chrono>
-#include <fstream>
-#include <thread>
-#include <mutex>
-#include <typeinfo>
-#include <csignal>
-
-//#define RFID_DEBUG
-
-#include "PN532_rfid.h"
-#include "cardQueue.h"
-#include "cards.h"
-
-#include "config.hpp"
+#include "utils.hpp"
 
 #define CHARVIDEO_IOC_MAGIC  '8'
 #define MOTION_IOC_MAGIC  '9'
@@ -56,8 +19,10 @@ extern "C" {
 #define SERVO_RIGHT 380
 #define SERVO_CENTER (SERVO_LEFT + (SERVO_RIGHT-SERVO_LEFT)/2)
 
-#define CLK_FREQ 50000000.0f // FCLK0 frequency not found in xparameters.h
-const double clk_to_cm = (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
+#define CLK_FREQ 50000000.0f
+#define CLK_TO_CM (((1000000.0f / CLK_FREQ) * 2.54f) / 147.0f);
+
+//#define RFID_DEBUG
 
 struct properties cfg;
 
@@ -78,19 +43,6 @@ struct sigaction sigIntHandler;
 char stop_sign;
 struct cardQueue *c_queue = NULL;
 
-double full_map(double input, double in_min, double in_max, double out_min, double out_max) {
-
-	double slope = (double) (out_max - out_min) / (double) (in_max - in_min);
-	double output = (double) out_min + slope * (double) (input - in_min);
-	return output;
-}
-
-int map_servo(double input, double in_min, double in_max) {
-
-	return (int) full_map(input, in_min, in_max, SERVO_LEFT, SERVO_RIGHT);
-
-}
-
 int map_servo_fine(double input, double in_min, double in_max, double mean) {
 
 	if (input < mean) {
@@ -99,19 +51,6 @@ int map_servo_fine(double input, double in_min, double in_max, double mean) {
 		return (int) full_map(input, mean, in_max, SERVO_CENTER, SERVO_RIGHT);
 	}
 
-}
-
-double average_not_zero(int a, int b) {
-
-	if (a != 0 && b != 0) {
-		return (double) (a + b) / 2;
-	} else if (a != 0) {
-		return a;
-	} else if (b != 0) {
-		return b;
-	} else {
-		return -1;
-	}
 }
 
 int choose_servo(int left, int right, int mean) {
@@ -191,7 +130,7 @@ double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int lin
 				std::cout << "px " << i + line_start << "\n";
 				COUT_mutex.unlock();
 			}
-			if (param == 2 || param == -1) {
+			if (cfg.draw == 1 && (param == 2 || param == -1)) {
 				cv::line(frame_image, cv::Point(i + line_start, line_y - 7), cv::Point(i + line_start, line_y + 7), cv::Scalar(0, 0, 255), 4, CV_AA);
 			}
 			v.push_back(i + line_start);
@@ -200,7 +139,7 @@ double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int lin
 
 	if (v.size() > 0) {
 		ret = std::accumulate(v.begin(), v.end(), 0.0) / v.size();
-		if (param == 2 || param == -1) {
+		if (cfg.draw == 1 && (param == 2 || param == -1)) {
 			cv::line(frame_image, cv::Point(ret, line_y - 10), cv::Point(ret, line_y + 10), cv::Scalar(255, 0, 255), 3,
 			CV_AA);
 		}
@@ -313,8 +252,7 @@ std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int 
 
 	int posible_speed = 0;
 
-	std::vector<int> srv_spd = choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, current_speed, base_speed,
-			lane_keep);
+	std::vector<int> srv_spd = choose_advanced_servo(servo_left1, servo_right1, servo_left2, servo_right2, servo_left3, servo_right3, SERVO_CENTER, current_speed, base_speed, lane_keep);
 
 	servo_no_adj = srv_spd[0];
 	posible_speed = srv_spd[1];
@@ -326,57 +264,49 @@ std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int 
 	return ret;
 }
 
-void one_poly(cv::Mat img) {
-	int w = img.cols;
-	int h = img.rows;
-
-	int x1, x2, y1, y2;
-	x1 = (int) w / 2;
-	y1 = 0;
-	x2 = w;
-	y2 = h;
-
-	int lineType = 8;
-
-	cv::Point pts[1][4];
-	pts[0][0] = cv::Point(x1, y1);
-	pts[0][1] = cv::Point(x1, y2);
-	pts[0][2] = cv::Point(x2, y2);
-	pts[0][3] = cv::Point(x2, y1);
-
-	const cv::Point* ppt[1] = { pts[0] };
-	int npt[] = { 4 };
-	cv::fillPoly(img, ppt, npt, 1, cv::Scalar(255, 255, 255), lineType);
-}
-
-cv::Mat crop(cv::Mat frame, int x1, int y1, int x2, int y2) {
-
-	cv::Rect roi;
-	roi.x = x1;
-	roi.y = y1;
-	roi.width = x2 - x1;
-	roi.height = y2 - y1;
-
-	cv::Mat crop = frame(roi);
-	return crop;
-}
-
-void lines(cv::Mat img) {
+void draw_lines(cv::Mat img) {
 	// the 1st selection lines
-	cv::line(img, cv::Point(cfg.right_x_1_1, cfg.y_1), cv::Point(cfg.right_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3,
-	CV_AA);
-	cv::line(img, cv::Point(cfg.left_x_1_1, cfg.y_1), cv::Point(cfg.left_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3,
-	CV_AA);
+	cv::line(img, cv::Point(cfg.right_x_1_1, cfg.y_1), cv::Point(cfg.right_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3, CV_AA);
+	cv::line(img, cv::Point(cfg.left_x_1_1, cfg.y_1), cv::Point(cfg.left_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3, CV_AA);
 	// the 2nd selection lines
-	cv::line(img, cv::Point(cfg.right_x_1_2, cfg.y_2), cv::Point(cfg.right_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3,
-	CV_AA);
-	cv::line(img, cv::Point(cfg.left_x_1_2, cfg.y_2), cv::Point(cfg.left_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3,
-	CV_AA);
+	cv::line(img, cv::Point(cfg.right_x_1_2, cfg.y_2), cv::Point(cfg.right_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3, CV_AA);
+	cv::line(img, cv::Point(cfg.left_x_1_2, cfg.y_2), cv::Point(cfg.left_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3, CV_AA);
 	// the 3rd selection lines
-	cv::line(img, cv::Point(cfg.right_x_1_3, cfg.y_3), cv::Point(cfg.right_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3,
-	CV_AA);
-	cv::line(img, cv::Point(cfg.left_x_1_3, cfg.y_3), cv::Point(cfg.left_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3,
-	CV_AA);
+	cv::line(img, cv::Point(cfg.right_x_1_3, cfg.y_3), cv::Point(cfg.right_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3, CV_AA);
+	cv::line(img, cv::Point(cfg.left_x_1_3, cfg.y_3), cv::Point(cfg.left_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3, CV_AA);
+}
+
+void draw_accel(cv::Mat frame, float accel_x, float accel_y, int area_corner_x, int area_corner_y) {
+
+	int length = 80;
+	int center = length / 2;
+	int radius = length / 2;
+	int thickness = 2;
+	int shift = 0;
+	int range = 4;
+
+	cv::circle(frame, cv::Point(area_corner_x + center, area_corner_y + center), radius, cv::Scalar(0, 0, 255), thickness, CV_AA);
+	cv::line(frame, cv::Point(area_corner_x + 0, area_corner_y + center), cv::Point(area_corner_x + length, area_corner_y + center), cv::Scalar(0, 0, 255), thickness, CV_AA, shift);
+	cv::line(frame, cv::Point(area_corner_x + center, area_corner_y + 0), cv::Point(area_corner_x + center, area_corner_y + length), cv::Scalar(0, 0, 255), thickness, CV_AA, shift);
+
+	float x = full_map(accel_y, -range, range, 0, length);
+	float y = full_map(accel_x, -range, range, 0, length);
+
+	if (x > length) {
+		x = length;
+	}
+	if (x < 0) {
+		x = 0;
+	}
+	if (y > length) {
+		y = length;
+	}
+	if (y < 0) {
+		y = 0;
+	}
+
+	cv::circle(frame, cv::Point(area_corner_x + x, area_corner_y + y), 3, cv::Scalar(255, 255, 255), thickness, CV_AA);
+
 }
 
 int detect_and_display(cv::Mat frame, int param) {
@@ -400,13 +330,14 @@ int detect_and_display(cv::Mat frame, int param) {
 			std::cout << "stop " << i << " height = " << stop_signs[i].height << "\n";
 			std::cout << "stop " << i << " width = " << stop_signs[i].width << "\n";
 			COUT_mutex.unlock();
-
-			// draw an ellipse around the sign
-			if (param == 2 || param == -1) {
-				cv::Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
-				cv::ellipse(frame, center, cv::Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, cv::Scalar(255, 0, 255), 4, 8, 0);
-			}
 		}
+
+		// draw an ellipse around the sign
+		if (cfg.draw == 2 && (param == 2 || param == -1)) {
+			cv::Point center(stop_signs[i].x + stop_signs[i].width / 2, stop_signs[i].y + stop_signs[i].height / 2);
+			cv::ellipse(frame, center, cv::Size(stop_signs[i].width / 2, stop_signs[i].height / 2), 0, 0, 360, cv::Scalar(255, 0, 255), 4, 8, 0);
+		}
+
 		if (stop_signs[i].height >= cfg.sign_min && stop_signs[i].height <= cfg.sign_max) {
 			cv::Scalar clr = cv::mean(crop(frame, stop_signs[i].x, stop_signs[i].y, stop_signs[i].x + stop_signs[i].width, stop_signs[i].y + stop_signs[i].height));
 
@@ -416,6 +347,7 @@ int detect_and_display(cv::Mat frame, int param) {
 
 		}
 	}
+
 	return ret;
 
 }
@@ -435,7 +367,6 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 
 	if (stop_time <= 0) {
 
-		//std::cout << "MUYE" << "\n";
 		cur_spd = posible_speed;
 		stp_tim = 0;
 
@@ -444,7 +375,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 
 			int clk_edges;
 			read(sonar->_fileno, &clk_edges, 4);
-			int dist = clk_edges * clk_to_cm;
+			int dist = clk_edges * CLK_TO_CM;
 
 			dst = dist;
 			if (dist < cfg.sonar_dist && dist != 0) {
@@ -485,7 +416,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 						std::cout << "SPEED" << card_now->type << " CARD" << "\n";
 						COUT_mutex.unlock();
 					}
-					if (param == 2 || param == -1) {
+					if (cfg.draw == 1 && (param == 2 || param == -1)) {
 						char card_str[30];
 						sprintf(card_str, "SPEED%d CARD", card_now->type);
 						cv::putText(frame_stream, card_str, cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
@@ -504,7 +435,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 							std::cout << "STOP CARD" << "\n";
 							COUT_mutex.unlock();
 						}
-						if (param == 2 || param == -1) {
+						if (cfg.draw == 1 && (param == 2 || param == -1)) {
 							cv::putText(frame_stream, "STOP CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
 						cur_spd = 0;
@@ -519,7 +450,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 							std::cout << "PAUSE CARD" << "\n";
 							COUT_mutex.unlock();
 						}
-						if (param == 2 || param == -1) {
+						if (cfg.draw == 1 && (param == 2 || param == -1)) {
 							cv::putText(frame_stream, "PAUSE CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
 						cur_spd = 0;
@@ -533,7 +464,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 							std::cout << "KEEP RIGHT CARD" << "\n";
 							COUT_mutex.unlock();
 						}
-						if (param == 2 || param == -1) {
+						if (cfg.draw == 1 && (param == 2 || param == -1)) {
 							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
 						lan_kep = 1;
@@ -547,7 +478,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 							std::cout << "KEEP RIGHT CARD" << "\n";
 							COUT_mutex.unlock();
 						}
-						if (param == 2 || param == -1) {
+						if (cfg.draw == 1 && (param == 2 || param == -1)) {
 							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
 						lan_kep = -1;
@@ -561,7 +492,7 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 							std::cout << "KEEP RIGHT CARD" << "\n";
 							COUT_mutex.unlock();
 						}
-						if (param == 2 || param == -1) {
+						if (cfg.draw == 1 && (param == 2 || param == -1)) {
 							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
 						lan_kep = 0;
@@ -602,11 +533,9 @@ void my_handler(int s) {
 	fake_interrupt();
 
 	std::cout << "STOPPED." << "\n";
-
-	//std::terminate();
 }
 
-void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, unsigned short usr_speed, int h, int w, int l) {
+void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, FILE* acl, unsigned short usr_speed, int h, int w, int l) {
 
 	int servo_out = 300;
 	int old_servo_out = servo_out;
@@ -631,9 +560,10 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
 
 	int full_time = 0;
+	int loop;
 
 	try {
-		for (int loop = 0; loop < iterations && lane_done == 0; loop++) {
+		for (loop = 0; loop < iterations && lane_done == 0; loop++) {
 
 			start = std::chrono::high_resolution_clock::now();
 
@@ -656,12 +586,12 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 			// make the selection areas for the images
 			cv::Mat poly;
 			poly = cv::Mat::zeros(frame.size(), frame.type());
-			lines(poly);
+			draw_lines(poly);
 
 			// apply selection areas to said images
 			cv::Mat region_image_lane;
 
-			if (param == 2 || param == -1) {
+			if (cfg.draw == 1 && (param == 2 || param == -1)) {
 				cv::cvtColor(frame, frame_stream, cv::COLOR_GRAY2BGR);
 			}
 
@@ -719,7 +649,7 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 				COUT_mutex.unlock();
 			}
 
-			if (param == 2 || param == -1) {
+			if (cfg.draw == 1 && (param == 2 || param == -1)) {
 				cv::line(frame_stream, cv::Point(cfg.right_x_1_1, cfg.y_1), cv::Point(cfg.right_x_2_1, cfg.y_1), cv::Scalar(100, 0, 0), 2, CV_AA);
 				cv::line(frame_stream, cv::Point(cfg.left_x_1_1, cfg.y_1), cv::Point(cfg.left_x_2_1, cfg.y_1), cv::Scalar(0, 100, 0), 2, CV_AA);
 				cv::line(frame_stream, cv::Point(cfg.right_x_1_2, cfg.y_2), cv::Point(cfg.right_x_2_2, cfg.y_2), cv::Scalar(100, 0, 0), 2, CV_AA);
@@ -750,6 +680,16 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 				sprintf(dst, "dist = %d", dist);
 				cv::putText(frame_stream, dst, cvPoint(30, 120), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 
+				if (cfg.acl_on == 1) {
+					float accel_x, accel_y, accel_z;
+					ACL_ReadAccelG(acl->_fileno, &accel_x, &accel_y, &accel_z);
+					accel_x *= 9.8f;
+					accel_y *= 9.8f;
+
+					draw_accel(frame_stream, accel_x, accel_y, 500, 30);
+
+				}
+
 				try {
 
 					cv::imwrite("/etc/mjpg-stream.jpg", frame_stream);
@@ -762,7 +702,7 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 
 				} catch (std::runtime_error& ex) {
 					COUT_mutex.lock();
-					std::cerr << "Exception converting image to PNG format: " << ex.what() << "\n";
+					std::cerr << "Exception writing image: " << ex.what() << "\n";
 					COUT_mutex.unlock();
 				}
 			}
@@ -786,12 +726,12 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 	}
 
 	lane_done = 1;
-	fake_interrupt();
-	//thread_kill(rfid_th, SIGINT);
-	//rfid_th.~thread();
+	if (cfg.rfid_on == 1) {
+		fake_interrupt();
+	}
 
 	COUT_mutex.lock();
-	std::cout << "LANE time/loop = " << full_time / (double) iterations << "\n";
+	std::cout << "LANE time/loop = " << full_time / (double) loop << "\n";
 	COUT_mutex.unlock();
 
 }
@@ -824,21 +764,20 @@ void sign_component(int param, FILE* camera, int h, int w, int l) {
 
 			if (frame.rows != 0) {
 
-				cv::Mat region_image_sign_1, region_image_sign_2;
+				cv::Mat region_image_sign, frame_stream;
 
-				//region_image_sign_1 = crop(frame, frame.cols / 2, 0, frame.cols, frame.rows);
+				region_image_sign = crop(frame, frame.cols / 2, 0, frame.cols, frame.rows);
+				cv::resize(region_image_sign, frame_stream, cv::Size(), cfg.resize_factor, cfg.resize_factor);
 
-				cv::resize(frame, region_image_sign_2, cv::Size(), cfg.resize_factor, cfg.resize_factor);
-
-				sign = detect_and_display(region_image_sign_2, param);
+				sign = detect_and_display(frame_stream, param);
 				STOP_mutex.lock();
 				stop_sign = sign;
 				STOP_mutex.unlock();
 
-				if (param == 2 || param == -1) {
+				if (cfg.draw == 2 && (param == 2 || param == -1)) {
 					try {
 
-						cv::imwrite("sign-stream.jpg", region_image_sign_2);
+						cv::imwrite("/etc/mjpg-stream.jpg", frame_stream);
 
 						if (param == -1) {
 							char name[65];
@@ -847,7 +786,7 @@ void sign_component(int param, FILE* camera, int h, int w, int l) {
 						}
 
 					} catch (std::runtime_error& ex) {
-						std::cerr << "Exception converting image to PNG format: " << ex.what() << "\n";
+						std::cerr << "Exception writing image: " << ex.what() << "\n";
 					}
 				}
 
@@ -871,8 +810,6 @@ void sign_component(int param, FILE* camera, int h, int w, int l) {
 	std::cout << "SIGN time/loop = " << full_time / (double) loop << "\n";
 	COUT_mutex.unlock();
 
-	//std::raise(SIGINT);
-
 }
 
 void runRFID(int fd, struct cardQueue *queue) {
@@ -885,17 +822,9 @@ void runRFID(int fd, struct cardQueue *queue) {
 	uint8_t block = 4;
 	uint8_t numCards = 0;
 
-	//sigaction(SIGINT, &sigIntHandler, NULL);
-
-	auto start = std::chrono::high_resolution_clock::now();
-	auto finish = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
-
 	try {
 
 		while (lane_done == 0) {
-
-			start = std::chrono::high_resolution_clock::now();
 
 #ifdef RFID_DEBUG
 			printf("Waiting for card\n");
@@ -941,12 +870,6 @@ void runRFID(int fd, struct cardQueue *queue) {
 				}
 			}
 
-			finish = std::chrono::high_resolution_clock::now();
-			duration = std::chrono::duration_cast<std::chrono::microseconds>(finish - start);
-
-			if (cfg.fps != -1 && duration.count() < cfg.loop_time) {
-				usleep(cfg.loop_time - duration.count());
-			}
 		}
 	} catch (...) {
 		std::cout << "EX_T3" << "\n";
@@ -964,8 +887,7 @@ int main(int argc, char** argv) {
 	std::cout << "OpenCV version : " << CV_VERSION << "\n";
 
 	if (argc < 3) {
-		std::cerr << argv[0] << " <debug param> <number of iterations> <speed>" << "\n" << "0 - nothing" << "\n" << "1 - just text" << "\n" << "2 - just images" << "\n" << "\n"
-				<< "-1 - text and images" << "\n" << "100 - calibration mode" << "\n";
+		std::cerr << argv[0] << " <debug param> <number of iterations> <speed>" << "\n" << "0 - nothing" << "\n" << "1 - just text" << "\n" << "2 - just images" << "\n" << "\n" << "-1 - text and images" << "\n" << "100 - calibration mode" << "\n";
 		return -1;
 	}
 
@@ -1023,6 +945,23 @@ int main(int argc, char** argv) {
 		fp.push_back(sonar);
 	}
 
+	FILE* acl;
+	if (cfg.acl_on == 1) {
+		acl = fopen("/dev/i2c-1", "r+b");
+		if (acl < 0) {
+			std::cerr << "Failed to open acl." << "\n";
+			close_fp(fp);
+			return -1;
+		}
+		fp.push_back(acl);
+
+		if (ACL_Init(acl->_fileno) < 0) {
+			std::cerr << "Failed to initialize acl." << "\n";
+			close_fp(fp);
+			return -1;
+		}
+	}
+
 	if (iterations < 0) {
 		std::cerr << "Bad number of iterations." << "\n";
 		close_fp(fp);
@@ -1035,7 +974,8 @@ int main(int argc, char** argv) {
 	}
 	int rfid = -1;
 	if (cfg.rfid_on == 1) {
-		 rfid = initRFID();
+		rfid = initRFID();
+		createCardQueue(&c_queue);
 		if (rfid < 0) {
 			std::cerr << "Failed to open RFID." << "\n";
 			close_fp(fp);
@@ -1046,7 +986,6 @@ int main(int argc, char** argv) {
 
 	f_motors = motors->_fileno;
 	f_servo = servo->_fileno;
-
 
 	unsigned int left_dir = 1; // the car allways is going forwards
 	unsigned int right_dir = left_dir;
@@ -1064,7 +1003,7 @@ int main(int argc, char** argv) {
 	if (!stop_cascade.load(stop_cascade_name)) {
 		std::cerr << "Failed to load stop sign cascade" << "\n";
 		close_fp(fp);
-		if(cfg.rfid_on==1)
+		if (cfg.rfid_on == 1)
 			closeRFID(rfid);
 		return -1;
 	};
@@ -1074,8 +1013,6 @@ int main(int argc, char** argv) {
 	sigIntHandler.sa_flags = SA_RESETHAND;
 	sigIntHandler.sa_handler = my_handler;
 	sigaction(SIGINT, &sigIntHandler, NULL);
-
-	createCardQueue(&c_queue);
 
 	int h_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQHEIGHT);
 	int w_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQWIDTH);
@@ -1089,7 +1026,7 @@ int main(int argc, char** argv) {
 
 		std::thread t1, t2, t3;
 
-		t1 = std::thread(lane_component, param, iterations, camera_lane, servo, motors, sonar, usr_speed, h_lane, w_lane, l_lane);
+		t1 = std::thread(lane_component, param, iterations, camera_lane, servo, motors, sonar, acl, usr_speed, h_lane, w_lane, l_lane);
 		if (cfg.sign_on == 1) {
 			t2 = std::thread(sign_component, param, camera_sign, h_sign, w_sign, l_sign);
 		}
@@ -1098,17 +1035,15 @@ int main(int argc, char** argv) {
 		}
 
 		t1.join();
-		std::cout<<"T1 joined\n";
-		if (cfg.rfid_on == 1) {
-				t3.join();
-				std::cout<<"T3 joined\n";
-		}
-
+		std::cout << "T1 joined" << "\n";
 		if (cfg.sign_on == 1) {
 			t2.join();
-			std::cout<<"T2 joined\n";
+			std::cout << "T2 joined" << "\n";
 		}
-
+		if (cfg.rfid_on == 1) {
+			t3.join();
+			std::cout << "T3 joined" << "\n";
+		}
 
 	} else {
 
@@ -1118,7 +1053,7 @@ int main(int argc, char** argv) {
 		cv::Mat calib_img = cv::Mat(h_lane, w_lane, CV_8UC1, &pixels[0]);
 		cv::Mat poly;
 		poly = cv::Mat::zeros(calib_img.size(), calib_img.type());
-		lines(poly);
+		draw_lines(poly);
 		cv::Mat region_image_lane;
 		cv::bitwise_and(poly, calib_img, region_image_lane);
 		calib_avg = average_lane_lines(region_image_lane, calib_img, param);
@@ -1131,18 +1066,11 @@ int main(int argc, char** argv) {
 	stock_speed = 0;
 	write(motors->_fileno, &stock_speed, 4);
 
-//	fclose(camera_lane);
-//	fclose(camera_sign);
-//	fclose(servo);
-//	fclose(motors);
-//	if (argc > 5) {
-//		fclose(sonar);
-//	}
 	close_fp(fp);
-	if(cfg.rfid_on==1)
+	if (cfg.rfid_on == 1) {
 		closeRFID(rfid);
-	freeCardQueue(c_queue);
-	//closeRFID(rfid);
+		freeCardQueue(c_queue);
+	}
 
 	return 0;
 }
