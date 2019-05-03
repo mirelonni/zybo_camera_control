@@ -60,29 +60,6 @@ double average_not_zero(int a, int b) {
 	}
 }
 
-void one_poly(cv::Mat img) {
-	int w = img.cols;
-	int h = img.rows;
-
-	int x1, x2, y1, y2;
-	x1 = (int) w / 2;
-	y1 = 0;
-	x2 = w;
-	y2 = h;
-
-	int lineType = 8;
-
-	cv::Point pts[1][4];
-	pts[0][0] = cv::Point(x1, y1);
-	pts[0][1] = cv::Point(x1, y2);
-	pts[0][2] = cv::Point(x2, y2);
-	pts[0][3] = cv::Point(x2, y1);
-
-	const cv::Point* ppt[1] = { pts[0] };
-	int npt[] = { 4 };
-	cv::fillPoly(img, ppt, npt, 1, cv::Scalar(255, 255, 255), lineType);
-}
-
 cv::Mat crop(cv::Mat frame, int x1, int y1, int x2, int y2) {
 
 	cv::Rect roi;

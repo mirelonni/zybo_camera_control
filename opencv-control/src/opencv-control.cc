@@ -43,6 +43,27 @@ struct sigaction sigIntHandler;
 char stop_sign;
 struct cardQueue *c_queue = NULL;
 
+/* ------------------------------------------------------------ */
+/*** int map_servo_fine(double input, double in_min, double in_max, double mean)
+ **
+ **   Parameters:
+ **     input: 				the average point on the detection line
+ **		in_min:				the left end of the detection line
+ **		in_max:				the right end of the detection line
+ **		mean:				the "center" of the detection line
+ **
+ **   Return Value:
+ **      Individual servo command.
+ **
+ **   Description:
+ **      This function maps the point on the detection line to the boundaries of
+ **      the servo motor keeping in mind if the received value is to the right or
+ **      to the left of the detection line imaginary center (because the center
+ **      is not right in the middle of the detection line the outputs will be
+ **      fine tuned in the inside region and rough in the outside region).
+ **
+ **      Basically a scaled map function.
+ */
 int map_servo_fine(double input, double in_min, double in_max, double mean) {
 
 	if (input < mean) {
@@ -53,6 +74,26 @@ int map_servo_fine(double input, double in_min, double in_max, double mean) {
 
 }
 
+
+/* ------------------------------------------------------------ */
+/*** int choose_servo(int left, int right, int mean)
+ **
+ **   Parameters:
+ **     left: 				the left side servo command
+ **		right:				the right side servo command
+ **		mean:				the center of the servo
+ **
+ **   Return Value:
+ **      Servo command.
+ **
+ **   Description:
+ **      This function returns the correct servo commnad meaning either:
+ **      	- an average of the left and right servo command if it is posible
+ **      	- the extreme servo command (if one of the sides is detecting a
+ **      		sharp turn it chooses the sharp maneuver over the normal one)
+ **      	- if none of the conditions above are met the average of the two
+ **      		is returned ()
+ */
 int choose_servo(int left, int right, int mean) {
 	if (left != 0 && right != 0) {
 		if (abs(right - left) < cfg.servo_fine) {
@@ -71,6 +112,30 @@ int choose_servo(int left, int right, int mean) {
 	}
 }
 
+
+/* ------------------------------------------------------------ */
+/*** std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int right_2, int left_3, int right_3, int mean, int current_speed, int base_speed, int lane_keep)
+ **
+ **   Parameters:
+ **     left_1: 			the left detection line 1 average
+ **		right_1:			the right detection line 1 average
+ **     left_2: 			the left detection line 2 average
+ **		right_2:			the right detection line 2 average
+ **     left_3: 			the left detection line 3 average
+ **		right_3:			the right detection line 3 average
+ **		mean:				the center of the servo
+ **		current_speed:		the current speed of the car
+ **		base_speed:			the speed set by the user
+ **		lane_keep:			the lanes considered in deciding the servo output
+ **
+ **   Return Value:
+ **      A vector with servo command on [0] and the speed the car is capable of doing now
+ **
+ **   Description:
+ **      This function returns the servo command adjusted to the lane keep parameter and
+ **      the possible speed which is gradually increased or decreased (between the
+ **      configured limits) depending on how well the lane lines are detected.
+ */
 std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int right_2, int left_3, int right_3, int mean, int current_speed, int base_speed, int lane_keep) {
 
 	std::vector<int> ret;
@@ -119,6 +184,25 @@ std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int 
 
 }
 
+
+/* ------------------------------------------------------------ */
+/*** double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int line_y, int line_start, int line_stop, int param)
+ **
+ **   Parameters:
+ **     frame_pixels: 		the image from which the lane is identified
+ **		frame_image:		the image where the detected line is displayed
+ **     line_y: 			the detection line y coordinate
+ **		line_start:			the detection line x coordinate to the left
+ **     line_stop: 			the detection line x coordinate to the right
+ **		param:				the debug parameter
+ **
+ **   Return Value:
+ **      The x position of the lane line on the detection area.
+ **
+ **   Description:
+ **      This function computes the average point of the lane on the detection
+ **      line and displays (prints) the coordinate of the points found and their average.
+ */
 double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int line_y, int line_start, int line_stop, int param) {
 
 	std::vector<int> v;
@@ -148,6 +232,23 @@ double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int lin
 	return ret;
 }
 
+
+/* ------------------------------------------------------------ */
+/*** int servo_speed_adj(int servo_no_adj, int current_speed)
+ **
+ **   Parameters:
+ **     servo_no_adj: 		the raw servo command
+ **		current_speed:		the current speed of the car
+ **
+ **   Return Value:
+ **      The speed adjusted servo command.
+ **
+ **   Description:
+ **      This function adjusts the raw servo command computed
+ **      to the speed of the car, so if the car is going fast it
+ **      doesn't need to turn as sharp to take higher angle turn
+ **      as it would need to turn at a lower speed.
+ */
 int servo_speed_adj(int servo_no_adj, int current_speed) {
 
 	double servo_post_adj;
@@ -163,6 +264,21 @@ int servo_speed_adj(int servo_no_adj, int current_speed) {
 	return (int) servo_post_adj;
 }
 
+
+/* ------------------------------------------------------------ */
+/*** std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image, int param)
+ **
+ **   Parameters:
+ **     frame_pixels: 		the image from which the lane is identified
+ **		frame_image:		the image where the detected line is displayed
+ **		param:				the debug parameter
+ **
+ **   Return Value:
+ **      A vector containing the detected coordinates from the 6 detection zones.
+ **
+ **   Description:
+ **      This function returns the 6 average lane lines points and prints relevant information if needed.
+ */
 std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image, int param) {
 
 	std::vector<double> ret;
@@ -206,6 +322,28 @@ std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image
 	return ret;
 }
 
+
+/* ------------------------------------------------------------ */
+/*** std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int param, int current_speed, int base_speed, int lane_keep)
+ **
+ **   Parameters:
+ **     frame_pixels: 		the image from which the lane is identified
+ **		frame_image:		the image where the data is displayed
+ **		param:				the debug parameter
+ **		current_speed:		the current speed of the car
+ **		base_speed:			the speed set by the user
+ **		lane_keep:			the lanes considered in deciding the servo output
+ **
+ **   Return Value:
+ **      A vector containing the final computations of the servo command and possible speed.
+ **
+ **   Description:
+ **      This function is a combination of all the other functions that calculate the working parameters of the car.
+ **      	- compute the position of the lane lines
+ **      	- map said positions to servo outputs
+ **      	- chose the correct servo output and compute the possible speed of the car
+ **      	- adjust chosen servo output to the speed of the car
+ */
 std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int param, int current_speed, int base_speed, int lane_keep) {
 
 	int servo_no_adj;
@@ -264,18 +402,23 @@ std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int 
 	return ret;
 }
 
-void draw_lines(cv::Mat img) {
-	// the 1st selection lines
-	cv::line(img, cv::Point(cfg.right_x_1_1, cfg.y_1), cv::Point(cfg.right_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3, CV_AA);
-	cv::line(img, cv::Point(cfg.left_x_1_1, cfg.y_1), cv::Point(cfg.left_x_2_1, cfg.y_1), cv::Scalar(255, 255, 255), 3, CV_AA);
-	// the 2nd selection lines
-	cv::line(img, cv::Point(cfg.right_x_1_2, cfg.y_2), cv::Point(cfg.right_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3, CV_AA);
-	cv::line(img, cv::Point(cfg.left_x_1_2, cfg.y_2), cv::Point(cfg.left_x_2_2, cfg.y_2), cv::Scalar(255, 255, 255), 3, CV_AA);
-	// the 3rd selection lines
-	cv::line(img, cv::Point(cfg.right_x_1_3, cfg.y_3), cv::Point(cfg.right_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3, CV_AA);
-	cv::line(img, cv::Point(cfg.left_x_1_3, cfg.y_3), cv::Point(cfg.left_x_2_3, cfg.y_3), cv::Scalar(255, 255, 255), 3, CV_AA);
-}
 
+/* ------------------------------------------------------------ */
+/*** void draw_accel(cv::Mat frame, float accel_x, float accel_y, int area_corner_x, int area_corner_y)
+ **
+ **   Parameters:
+ **     frame: 			the image where the data is displayed
+ **		accel_x:		the x value of the acceleration
+ **		accel_y:		the y value of the acceleration
+ **		area_corner_x:	the top left corner of the draw zone
+ **		area_corner_y:	the top left corner of the draw zone
+ **
+ **   Return Value:
+ **      None.
+ **
+ **   Description:
+ **      This function draws the acceleration display on the streamed image.
+ */
 void draw_accel(cv::Mat frame, float accel_x, float accel_y, int area_corner_x, int area_corner_y) {
 
 	int length = 80;
@@ -309,6 +452,24 @@ void draw_accel(cv::Mat frame, float accel_x, float accel_y, int area_corner_x, 
 
 }
 
+
+/* ------------------------------------------------------------ */
+/*** int detect_and_display(cv::Mat frame, int param)
+ **
+ **   Parameters:
+ **     frame: 			the image where the data is displayed
+ **		param:			the debug parameter
+ **
+ **   Return Value:
+ **      Stop sign flag.
+ **
+ **   Description:
+ **      This function detects if there are any stop signs in the current frame.
+ **      	- preprocess the frame (grayscale and equalize histograms)
+ **      	- detect stop signs using Haar cascades
+ **      	- display/print critical information about the signs
+ **      	- check if the considered sign is close to the required stop sign (right dimension and color)
+ */
 int detect_and_display(cv::Mat frame, int param) {
 
 	int ret = 0;
@@ -352,6 +513,38 @@ int detect_and_display(cv::Mat frame, int param) {
 
 }
 
+
+/* ------------------------------------------------------------ */
+/*** std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, int current_speed, int base_speed, int stop_time, int posible_speed, int lane_keep)
+ **
+ **   Parameters:
+ **		param:				the debug parameter
+ **		frame_stream:		the image where the data is displayed
+ **		sonar:				the sonar file pointer, used to reed distance to object in front
+ **		current_speed:		the current speed of the car
+ **		base_speed:			the speed set by the user
+ **		stop_time:			the time the car needs to be still
+ **		possible_speed:		THe possible speed of the car
+ **		lane_keep:			the lanes considered in deciding the servo output
+ **
+ **   Return Value:
+ **     A vector with:
+ **     	- [0] current speed
+ **     	- [1] base speed
+ **     	- [2] stop time
+ **     	- [3] distance to object in front
+ **     	- [4] which lane to keep
+ **
+ **   Description:
+ **     This function checks (in this order):
+ **      	- for objects in front of the car;
+ **      	- for stop signs
+ **      	- RFID cards
+ **     Then returns computed values to take them at the next iteration and computes
+ **     a "rolling" state of the car determining speed the time of halting distance
+ **     to the object in front if there are any and lane keeping decisions.
+ **
+ */
 std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, int current_speed, int base_speed, int stop_time, int posible_speed, int lane_keep) {
 	std::vector<int> ret;
 	int cur_spd = current_speed;
@@ -375,7 +568,8 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 
 			int clk_edges;
 			read(sonar->_fileno, &clk_edges, 4);
-			int dist = clk_edges * CLK_TO_CM;
+			int dist = clk_edges * CLK_TO_CM
+			;
 
 			dst = dist;
 			if (dist < cfg.sonar_dist && dist != 0) {
@@ -467,7 +661,12 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 						if (cfg.draw == 1 && (param == 2 || param == -1)) {
 							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
-						lan_kep = 1;
+
+						if (lan_kep == 0) {
+							lan_kep = 1;
+						} else {
+							lan_kep = 0;
+						}
 
 						cascade_flag = 1;
 						break;
@@ -475,13 +674,17 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 					case KEEPL:
 						if (param == 1 || param == -1) {
 							COUT_mutex.lock();
-							std::cout << "KEEP RIGHT CARD" << "\n";
+							std::cout << "KEEP LEFT CARD" << "\n";
 							COUT_mutex.unlock();
 						}
 						if (cfg.draw == 1 && (param == 2 || param == -1)) {
-							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+							cv::putText(frame_stream, "KEEP LEFT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
-						lan_kep = -1;
+						if (lan_kep == 0) {
+							lan_kep = -1;
+						} else {
+							lan_kep = 0;
+						}
 
 						cascade_flag = 1;
 						break;
@@ -489,11 +692,11 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 					case KEEPLR:
 						if (param == 1 || param == -1) {
 							COUT_mutex.lock();
-							std::cout << "KEEP RIGHT CARD" << "\n";
+							std::cout << "KEEP BOTH CARD" << "\n";
 							COUT_mutex.unlock();
 						}
 						if (cfg.draw == 1 && (param == 2 || param == -1)) {
-							cv::putText(frame_stream, "KEEP RIGHT CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
+							cv::putText(frame_stream, "KEEP BOTH CARD", cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 						}
 						lan_kep = 0;
 
@@ -519,6 +722,20 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 	return ret;
 }
 
+
+/* ------------------------------------------------------------ */
+/*** void my_handler(int s)
+ **
+ **   Parameters:
+ **		s:			signal received
+ **
+ **   Return Value:
+ **     None.
+ **
+ **   Description:
+ **     This is a SIG_INT handler to stop the car in case of emergency or user input by pressing CTRL^C
+ **
+ */
 void my_handler(int s) {
 
 	std::cout << "CAR ";
@@ -535,6 +752,40 @@ void my_handler(int s) {
 	std::cout << "STOPPED." << "\n";
 }
 
+
+/* ------------------------------------------------------------ */
+/*** void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, FILE* acl, unsigned short usr_speed, int h, int w, int l)
+ **
+ **   Parameters:
+ **		param:				the debug parameter
+ **		iterations:			the number of user set iterations
+ **		camera:				the file pionter to the /dev/videoHLS
+ **		servo:				the file pointer to the /dev/servo
+ **		motors:				the file pointer to the /dev/motors
+ **		sonar:				the file pointer to the /dev/sonar
+ **		acl:				the file pointer to the /dev/i2c-1 (accelerometer)
+ **		usr_speed:			the user assigned speed
+ **		h:					height of the stream
+ **		w:					width of the stream
+ **		l:					color depth of the stream
+ **
+ **   Return Value:
+ **     None.
+ **
+ **   Description:
+ **     This function is running in its own thread and it is responsible of
+ **     controlling the car's lane detection and correct driving.
+ **     It achieves this by using some previous functions after resizing
+ **     the camera image it gets the servo angle and possible speed from
+ **     servo_and_speed(...) function and then decides if it is able to go
+ **     forward and in what conditions (keeping the right or the left road
+ **     or how much it still has to stop) from speed_and_stop.
+ **     After the working parameters are calculated this functions writes an
+ **     image containing the lasts iterations actions and goes to the next
+ **     iterations where it will compute the iterations current parameters
+ **     to the road read from the video stream and last computed parameters.
+ **
+ */
 void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, FILE* acl, unsigned short usr_speed, int h, int w, int l) {
 
 	int servo_out = 300;
@@ -583,21 +834,11 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 				frame_1.copyTo(frame);
 			}
 
-			// make the selection areas for the images
-			cv::Mat poly;
-			poly = cv::Mat::zeros(frame.size(), frame.type());
-			draw_lines(poly);
-
-			// apply selection areas to said images
-			cv::Mat region_image_lane;
-
 			if (cfg.draw == 1 && (param == 2 || param == -1)) {
 				cv::cvtColor(frame, frame_stream, cv::COLOR_GRAY2BGR);
 			}
 
-			cv::bitwise_and(poly, frame, region_image_lane);
-
-			std::vector<int> srv_spd = servo_and_speed(region_image_lane, frame_stream, param, current_speed, base_speed, lane_keep);
+			std::vector<int> srv_spd = servo_and_speed(frame, frame_stream, param, current_speed, base_speed, lane_keep);
 
 			servo_out = srv_spd[0];
 			posible_speed = srv_spd[1];
@@ -987,7 +1228,7 @@ int main(int argc, char** argv) {
 	f_motors = motors->_fileno;
 	f_servo = servo->_fileno;
 
-	unsigned int left_dir = 1; // the car allways is going forwards
+	unsigned int left_dir = 1; // the car is always going forward
 	unsigned int right_dir = left_dir;
 	ioctl(motors->_fileno, MOTION_IOCTSETDIR, ((left_dir & 1) << 1) + (right_dir & 1));
 
@@ -1051,12 +1292,7 @@ int main(int argc, char** argv) {
 		pixels = (unsigned char *) malloc(h_lane * w_lane * l_lane * sizeof(char));
 		fread(pixels, 1, h_lane * w_lane * l_lane, camera_lane);
 		cv::Mat calib_img = cv::Mat(h_lane, w_lane, CV_8UC1, &pixels[0]);
-		cv::Mat poly;
-		poly = cv::Mat::zeros(calib_img.size(), calib_img.type());
-		draw_lines(poly);
-		cv::Mat region_image_lane;
-		cv::bitwise_and(poly, calib_img, region_image_lane);
-		calib_avg = average_lane_lines(region_image_lane, calib_img, param);
+		calib_avg = average_lane_lines(calib_img, calib_img, param);
 		cfg = configure(param, cfg_name, calib_avg);
 
 	}

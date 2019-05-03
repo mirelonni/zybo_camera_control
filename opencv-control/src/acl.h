@@ -106,7 +106,7 @@ int writeData(int fd, uint8_t *data, uint8_t length) {
 /*** void ACL_ReadI2C(int fd, uint8_t reg, uint8_t *rData, int nData)
 **
 **   Parameters:
-**      fd : 				 the PmodACL fd to communicate with
+**      fd : 		 the PmodACL fd to communicate with
 **      reg:         the starting register to read from
 **      rData:       the byte array to read into
 **      nData:       the number of data bytes to read
@@ -128,7 +128,7 @@ void ACL_ReadI2C(int fd, uint8_t reg, uint8_t *rData, int nData) {
 /*** void ACL_WriteI2C(int fd, uint8_t reg, uint8_t *wData, int nData)
 **
 **   Parameters:
-**      fd: 				 the PmodACL fd to communicate with
+**      fd: 		 the PmodACL fd to communicate with
 **      reg:         the starting register to write to
 **      wData:       the data to write
 **      nData:       the number of data bytes to write
@@ -161,7 +161,7 @@ void ACL_WriteI2C(int fd, uint8_t reg, uint8_t *wData, int nData) {
 /*** void ACL_SetRegisterBits(int fd, uint8_t reg, uint8_t mask, uint8_t fValue)
 **
 **   Parameters:
-**      fd:      					the PmodACL fd to communicate with
+**      fd:      		  the PmodACL fd to communicate with
 **      reg:              the address of the register whose bits are set
 **      bMask:            the mask indicating which bits are affected
 **      fValue:           1 if the bits are set or 0 if their bits are reset
@@ -188,7 +188,7 @@ void ACL_SetRegisterBits(int fd, uint8_t reg, uint8_t mask, uint8_t fValue) {
 /*** void ACL_SetMeasure(int fd, uint8_t fMeasure)
 **
 **   Parameters:
-**      fd: 				 the PmodACL fd to communicate with
+**      fd: 		 the PmodACL fd to communicate with
 **      fMeasure:    the value to be set for MEASURE bit of POWER_CTL register
 **
 **   Return Value:
@@ -256,7 +256,7 @@ float ACL_GetGRangeLSB(uint8_t bGRange) {
 /*** void ACL_SetGRange(int fd, uint8_t bGRangePar)
 **
 **   Parameters:
-**      fd: 				 the PmodACL fd to communicate with
+**      fd: 		 the PmodACL fd to communicate with
 **      bGRangePar:  the parameter specifying the g range. Can be one of the
 **                   parameters from the following list:
 **                      0   ACL_PAR_GRANGE_PM2G Parameter g range : +/- 2g
@@ -316,7 +316,7 @@ float ConvertReadingToValueG(int16_t uiReading) {
 **         float *aclZg)
 **
 **   Parameters:
-**      fd:          the PmodACL device to communicate with
+**      fd:         the PmodACL device to communicate with
 **      aclXg:      the output parameter that will receive acceleration on
 **                      X-axis (in "g")
 **      aclYg:      the output parameter that will receive acceleration on
@@ -350,7 +350,7 @@ void ACL_ReadAccelG(int fd, float *aclXg, float *aclYg, float *aclZg) {
 **      int16_t *aclZ)
 **
 **   Parameters:
-**      fd: 				 the PmodACL fd to communicate with
+**      fd: 		the PmodACL fd to communicate with
 **      aclX:       the output parameter that will receive acceleration on
 **                      X-axis - 10 bits signed value
 **      aclY:       the output parameter that will receive acceleration on
@@ -381,7 +381,7 @@ void ReadAccel(int fd, int16_t *aclX, int16_t *aclY, int16_t *aclZ) {
 /*** void ACL_SetOffsetG(int fd, uint8_t bAxisParam, float dOffset)
 **
 **   Parameters:
-**      fd: 				 the PmodACL fd to communicate with
+**      fd: 		 the PmodACL fd to communicate with
 **      bAxisParam:  byte indicating the axis whose offset will be set. Can be
 **                   one of:
 **                      ACL_PAR_AXIS_X - indicating X-axis
@@ -422,7 +422,7 @@ void ACL_SetOffsetG(int fd, uint8_t bAxisParam, float dOffset) {
 /*** float ACL_GetOffsetG(int fd, uint8_t bAxisParam)
 **
 **   Parameters:
-**      fd: 				 the PmodACL fd to communicate with
+**      fd: 		 the PmodACL fd to communicate with
 **      bAxisParam:  byte indicating the axis whose acceleration will be read.
 **                   Can be one of:
 **                      ACL_PAR_AXIS_X - indicating X-axis
