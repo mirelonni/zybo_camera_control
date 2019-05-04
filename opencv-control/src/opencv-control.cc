@@ -29,6 +29,7 @@ struct properties cfg;
 int f_motors;
 int f_servo;
 int f_rfid;
+int f_rgbled;
 
 cv::CascadeClassifier stop_cascade;
 std::string stop_cascade_name = "stop.xml";
@@ -127,7 +128,7 @@ int choose_servo(int left, int right, int mean) {
  **		lane_keep:			the lanes considered in deciding the servo output
  **
  **   Return Value:
- **      A vector with servo command on [0] and the speed the car is capable of doing now
+ **      A vector with servo command on [0] and the speed the car is capable of doing now [1]
  **
  **   Description:
  **      This function returns the servo command adjusted to the lane keep parameter and
@@ -511,7 +512,8 @@ int detect_and_display(cv::Mat frame, int param) {
  **   Parameters:
  **		param:				the debug parameter
  **		frame_stream:		the image where the data is displayed
- **		sonar:				the sonar file pointer, used to reed distance to object in front
+ **		sonar:				the file pointer to /dev/sonar
+ **		rgbled:				the file pointer to /dev/rgbled
  **		current_speed:		the current speed of the car
  **		base_speed:			the speed set by the user
  **		stop_time:			the time the car needs to be still
@@ -536,7 +538,7 @@ int detect_and_display(cv::Mat frame, int param) {
  **     to the object in front if there are any and lane keeping decisions.
  **
  */
-std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, int current_speed, int base_speed, int stop_time, int posible_speed, int lane_keep) {
+std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, FILE* rgbled, int current_speed, int base_speed, int stop_time, int posible_speed, int lane_keep) {
 	std::vector<int> ret;
 	int cur_spd = current_speed;
 	int bas_spd = base_speed;
@@ -548,6 +550,8 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 	static int old_stop_sgn = 0;
 
 	int cascade_flag = 0;
+
+	static int color;
 
 	if (stop_time <= 0) {
 
@@ -568,6 +572,14 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 				stp_tim = 1;
 
 				cascade_flag = 1;
+
+				color = SONAR_COLOR;
+				write(rgbled->_fileno, &color, 4);
+			} else {
+				if (color == SONAR_COLOR) {
+					color = 0;
+					write(rgbled->_fileno, &color, 4);
+				}
 			}
 		}
 
@@ -576,6 +588,17 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 			STOP_mutex.lock();
 			stop_sgn = stop_sign;
 			STOP_mutex.unlock();
+
+			if (stop_sgn == 1) {
+				color = STOP_COLOR;
+				write(rgbled->_fileno, &color, 4);
+			} else {
+				if (color == STOP_COLOR) {
+					color = 0;
+					write(rgbled->_fileno, &color, 4);
+
+				}
+			}
 
 			if (stop_sgn == 0 && old_stop_sgn == 1) {
 
@@ -607,10 +630,13 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 						cv::putText(frame_stream, card_str, cvPoint(250, 300), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(0, 0, 255), 1, CV_AA);
 					}
 
-					cur_spd = card_now->type * 1000;
 					bas_spd = card_now->type * 1000;
 
 					cascade_flag = 1;
+
+					color = SPEED_COLOR;
+					write(rgbled->_fileno, &color, 4);
+
 				} else {
 					switch (card_now->type) {
 
@@ -627,6 +653,10 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 						stp_tim = 3000000;
 
 						cascade_flag = 1;
+
+						color = HALT_COLOR;
+						write(rgbled->_fileno, &color, 4);
+
 						break;
 
 					case PAUSE:
@@ -642,6 +672,10 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 						stp_tim = 1000000;
 
 						cascade_flag = 1;
+
+						color = HALT_COLOR;
+						write(rgbled->_fileno, &color, 4);
+
 						break;
 					case KEEPR:
 						if (param == 1 || param == -1) {
@@ -695,6 +729,13 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 						break;
 
 					}
+					if (lan_kep != 0) {
+						color = SINGLE_LANE_COLOR;
+						write(rgbled->_fileno, &color, 4);
+					} else {
+						color = 0;
+						write(rgbled->_fileno, &color, 4);
+					}
 
 				}
 
@@ -728,14 +769,16 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
  */
 void my_handler(int s) {
 
-	std::cout << "CAR ";
+	std::cout << "\nCAR ";
 
 	unsigned int speed = 0;
 	int servo_out = SERVO_CENTER;
+	int color = 0;
 	lane_done = 1;
 
 	write(f_servo, &servo_out, 2);
 	write(f_motors, &speed, 4);
+	write(f_rgbled, &color, 4);
 
 	fake_interrupt();
 
@@ -753,6 +796,7 @@ void my_handler(int s) {
  **		motors:				the file pointer to /dev/motors
  **		sonar:				the file pointer to /dev/sonar
  **		acl:				the file pointer to /dev/i2c-1 (accelerometer)
+ **		rgbled:				the file pointer to /dev/rgbled
  **		usr_speed:			the user assigned speed
  **		h:					height of the stream
  **		w:					width of the stream
@@ -775,7 +819,7 @@ void my_handler(int s) {
  **     to the road read from the video stream and last computed parameters.
  **
  */
-void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, FILE* acl, unsigned short usr_speed, int h, int w, int l) {
+void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, FILE* acl, FILE* rgbled, unsigned short usr_speed, int h, int w, int l) {
 
 	int servo_out = 300;
 	int old_servo_out = servo_out;
@@ -843,7 +887,7 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 
 			old_servo_out = servo_out;
 
-			std::vector<int> big_speed = speed_and_stop(param, frame_stream, sonar, current_speed, base_speed, stop_time, posible_speed, lane_keep);
+			std::vector<int> big_speed = speed_and_stop(param, frame_stream, sonar, rgbled, current_speed, base_speed, stop_time, posible_speed, lane_keep);
 
 			current_speed = big_speed[0];
 			base_speed = big_speed[1];
@@ -1083,7 +1127,7 @@ void sign_component(int param, FILE* camera, int h, int w, int l) {
  **     the control algorithm finishes.
  **
  */
-void runRFID(int fd, struct cardQueue *queue) {
+void RFID_component(int fd, struct cardQueue *queue) {
 
 	uint8_t success;
 	uint8_t uid[6];
@@ -1151,7 +1195,7 @@ int main(int argc, char** argv) {
 
 	std::cout << "OpenCV version : " << CV_VERSION << "\n";
 
-	if (argc != 3) {
+	if (argc != 4) {
 		std::cerr << argv[0] << " <debug param> <number of iterations> <speed>" << "\n" << "0 - nothing" << "\n" << "1 - just text" << "\n" << "2 - just images" << "\n" << "\n" << "-1 - text and images" << "\n" << "100 - calibration mode" << "\n";
 		return -1;
 	}
@@ -1183,7 +1227,6 @@ int main(int argc, char** argv) {
 	// open the different devices and check if they have opened correctly
 	FILE* camera_lane = fopen("/dev/videoHLS", "rb");
 	if (camera_lane < 0) {
-
 		std::cerr << "Failed to open lane camera." << "\n";
 		close_fp(fp);
 		return -1;
@@ -1225,6 +1268,14 @@ int main(int argc, char** argv) {
 		fp.push_back(sonar);
 	}
 
+	FILE* rgbled = fopen("/dev/rgbled", "r+b");
+	if (rgbled < 0) {
+		std::cerr << "Failed to open rgbled." << "\n";
+		close_fp(fp);
+		return -1;
+	}
+	fp.push_back(rgbled);
+
 	FILE* acl;
 	if (cfg.acl_on == 1) {
 		acl = fopen("/dev/i2c-1", "r+b");
@@ -1256,6 +1307,7 @@ int main(int argc, char** argv) {
 
 	f_motors = motors->_fileno;
 	f_servo = servo->_fileno;
+	f_rgbled = rgbled->_fileno;
 
 	// initialize motors direction (the car is always going forward)
 	unsigned int left_dir = 1;
@@ -1273,6 +1325,10 @@ int main(int argc, char** argv) {
 	// set starting speed to 0
 	int stock_speed = 0;
 	write(motors->_fileno, &stock_speed, 4);
+
+	// turn off the led
+	int color = 0;
+	write(rgbled->_fileno, &color, 4);
 
 	// load Haar cascade
 	if (!stop_cascade.load(stop_cascade_name)) {
@@ -1303,12 +1359,12 @@ int main(int argc, char** argv) {
 		// the main part of the algorithm, where the threads are started if needed
 		std::thread t1, t2, t3;
 
-		t1 = std::thread(lane_component, param, iterations, camera_lane, servo, motors, sonar, acl, usr_speed, h_lane, w_lane, l_lane);
+		t1 = std::thread(lane_component, param, iterations, camera_lane, servo, motors, sonar, acl, rgbled, usr_speed, h_lane, w_lane, l_lane);
 		if (cfg.sign_on == 1) {
 			t2 = std::thread(sign_component, param, camera_sign, h_sign, w_sign, l_sign);
 		}
 		if (cfg.rfid_on == 1) {
-			t3 = std::thread(runRFID, rfid, c_queue);
+			t3 = std::thread(RFID_component, rfid, c_queue);
 		}
 
 		t1.join();
@@ -1341,6 +1397,8 @@ int main(int argc, char** argv) {
 	write(servo->_fileno, &stock_servo_out, 2);
 	stock_speed = 0;
 	write(motors->_fileno, &stock_speed, 4);
+	color = 0;
+	write(rgbled->_fileno, &color, 4);
 
 	close_fp(fp);
 	if (cfg.rfid_on == 1) {
