@@ -1,87 +1,100 @@
 struct properties {
-  int y_1, y_2, y_3;
-  int line_distance_1_out, line_distance_1_in;
-  int line_distance_1, line_distance_2, line_distance_3;
-  int servo_fine, min_speed, max_speed;
+	int y_1, y_2, y_3;
+	int line_distance_1_out, line_distance_1_in;
+	int line_distance_1, line_distance_2, line_distance_3;
+	int servo_fine, min_speed, max_speed;
 
-  double servo_map_a, servo_map_b, servo_map_c, servo_map_d;
+	double servo_map_a, servo_map_b, servo_map_c, servo_map_d;
 
-  int sign_min, sign_max, fps;
-  int left_mean_1, left_mean_2, left_mean_3;
-  int right_mean_1, right_mean_2, right_mean_3;
-  double resize_factor, min_adj_servo, max_adj_servo;
+	int sign_min, sign_max, fps;
+	int left_mean_1, left_mean_2, left_mean_3;
+	int right_mean_1, right_mean_2, right_mean_3;
+	double resize_factor, min_adj_servo, max_adj_servo;
 
-  int left_x_1_1;
-  int left_x_2_1;
+	int left_x_1_1;
+	int left_x_2_1;
 
-  int right_x_1_1;
-  int right_x_2_1;
+	int right_x_1_1;
+	int right_x_2_1;
 
-  int left_x_1_2;
-  int left_x_2_2;
+	int left_x_1_2;
+	int left_x_2_2;
 
-  int right_x_1_2;
-  int right_x_2_2;
+	int right_x_1_2;
+	int right_x_2_2;
 
-  int left_x_1_3;
-  int left_x_2_3;
+	int left_x_1_3;
+	int left_x_2_3;
 
-  int right_x_1_3;
-  int right_x_2_3;
+	int right_x_1_3;
+	int right_x_2_3;
 
-  int loop_time;
+	int loop_time;
 
-  int rfid_on;
-  int sign_on;
-  int sonar_dist;
+	int rfid_on;
+	int sign_on;
+	int sonar_dist;
 
-  int acl_on;
+	int acl_on;
 
-  double speed_up_min, speed_up_max, speed_up_rate;
+	double speed_up_min, speed_up_max, speed_up_rate;
 
-  int draw;
+	int draw;
 };
 
 enum prop_codes {
-  E_resize_factor,
-  E_y_1,
-  E_y_2,
-  E_y_3,
-  E_line_dist_1_out,
-  E_line_dist_1_in,
-  E_line_dist_1,
-  E_line_dist_2,
-  E_line_dist_3,
-  E_servo_fine,
-  E_min_speed,
-  E_max_speed,
-  E_min_adj_servo,
-  E_max_adj_servo,
-  E_servo_map_a,
-  E_servo_map_b,
-  E_servo_map_c,
-  E_servo_map_d,
-  E_sign_min,
-  E_sign_max,
-  E_fps,
-  E_speed_up_min,
-  E_speed_up_max,
-  E_speed_up_rate,
-  E_rfid_on,
-  E_sign_on,
-  E_acl_on,
-  E_sonar_dist,
-  E_left_mean_1,
-  E_left_mean_2,
-  E_left_mean_3,
-  E_right_mean_1,
-  E_right_mean_2,
-  E_right_mean_3,
-  E_calib,
-  E_invalid,
-  E_draw
+	E_resize_factor,
+	E_y_1,
+	E_y_2,
+	E_y_3,
+	E_line_dist_1_out,
+	E_line_dist_1_in,
+	E_line_dist_1,
+	E_line_dist_2,
+	E_line_dist_3,
+	E_servo_fine,
+	E_min_speed,
+	E_max_speed,
+	E_min_adj_servo,
+	E_max_adj_servo,
+	E_servo_map_a,
+	E_servo_map_b,
+	E_servo_map_c,
+	E_servo_map_d,
+	E_sign_min,
+	E_sign_max,
+	E_fps,
+	E_speed_up_min,
+	E_speed_up_max,
+	E_speed_up_rate,
+	E_rfid_on,
+	E_sign_on,
+	E_acl_on,
+	E_sonar_dist,
+	E_left_mean_1,
+	E_left_mean_2,
+	E_left_mean_3,
+	E_right_mean_1,
+	E_right_mean_2,
+	E_right_mean_3,
+	E_calib,
+	E_invalid,
+	E_draw
 };
 
+/* ------------------------------------------------------------ */
+/*** prop_codes string_to_prop(std::string const& inString)
+ **
+ **   Parameters:
+ **		inSting:					the string of the property from the config file.
+ **
+ **   Return Value:
+ **     A prop_code
+ **
+ **   Description:
+ **     This function is a helper function that enables the use of a switch for strings.
+ **
+ */
 prop_codes string_to_prop(std::string const& inString) {
 
 	if (inString == "resize_factor")
@@ -161,6 +174,22 @@ prop_codes string_to_prop(std::string const& inString) {
 
 }
 
+/* ------------------------------------------------------------ */
+/*** struct properties configure(int param, std::string filename, std::vector<double> mean)
+ **
+ **   Parameters:
+ **   	param:						calibration mode flag
+ **		filename:					the name of the config file.
+ **		mean:						if there is the need of calibration this are the
+ **									values from which the old ones are overwritten
+ **
+ **   Return Value:
+ **     The configuration structure.
+ **
+ **   Description:
+ **     This function is a helper function that enables the use of a switch for strings.
+ **
+ */
 struct properties configure(int param, std::string filename, std::vector<double> mean) {
 
 	int seek_calib = 0;
@@ -173,6 +202,7 @@ struct properties configure(int param, std::string filename, std::vector<double>
 	try {
 		config_file.open(filename);
 
+		// reading the whole configuration file and setting the parameters form it
 		while (std::getline(config_file, line)) {
 			std::istringstream is_line(line);
 			std::getline(is_line, prop, '=');
@@ -296,42 +326,36 @@ struct properties configure(int param, std::string filename, std::vector<double>
 
 		config_file.close();
 
+		// computing other parameters from the ones read
 		configuration.loop_time = (1000000 / configuration.fps);
 
+		// calibration part
 		if (param == 100) {
 			std::ofstream config_file_out;
-			config_file_out.open(filename, std::ios::in | std::ios::out);
-
-			configuration.left_x_1_1 = ((configuration.left_mean_1 - configuration.line_distance_1_out));
-			configuration.left_x_2_1 = ((configuration.left_mean_1 + configuration.line_distance_1_in));
-
-			configuration.right_x_1_1 = ((configuration.right_mean_1 - configuration.line_distance_1_in));
-			configuration.right_x_2_1 = ((configuration.right_mean_1 + configuration.line_distance_1_out));
-
-			configuration.left_x_1_2 = ((configuration.left_mean_2 - configuration.line_distance_2));
-			configuration.left_x_2_2 = ((configuration.left_mean_2 + configuration.line_distance_2));
-
-			configuration.right_x_1_2 = ((configuration.right_mean_2 - configuration.line_distance_2));
-			configuration.right_x_2_2 = ((configuration.right_mean_2 + configuration.line_distance_2));
-
-			configuration.left_x_1_3 = ((configuration.left_mean_3 - configuration.line_distance_3));
-			configuration.left_x_2_3 = ((configuration.left_mean_3 + configuration.line_distance_3));
-
-			configuration.right_x_1_3 = ((configuration.right_mean_3 - configuration.line_distance_3));
-			configuration.right_x_2_3 = ((configuration.right_mean_3 + configuration.line_distance_3));
-
 			if (mean.size() == 6) {
-				std::cout << seek_calib << "\n";
-				std::cout << "MUIE" << "\n";
-				config_file_out.seekp(seek_calib, std::ios::beg);
-				config_file_out << "left_mean_1=" << (int) mean[0] << "\n";
-				std::cout << mean[0] << "\n";
-				std::cout << mean[2] << "\n";
-				std::cout << mean[4] << "\n";
-				std::cout << mean[1] << "\n";
-				std::cout << mean[3] << "\n";
-				std::cout << mean[5] << "\n";
+				config_file_out.open(filename, std::ios::in | std::ios::out);
 
+				configuration.left_x_1_1 = (((int) mean[0] - configuration.line_distance_1_out));
+				configuration.left_x_2_1 = (((int) mean[0] + configuration.line_distance_1_in));
+
+				configuration.right_x_1_1 = (((int) mean[1] - configuration.line_distance_1_in));
+				configuration.right_x_2_1 = (((int) mean[1] + configuration.line_distance_1_out));
+
+				configuration.left_x_1_2 = (((int) mean[2] - configuration.line_distance_2));
+				configuration.left_x_2_2 = (((int) mean[2] + configuration.line_distance_2));
+
+				configuration.right_x_1_2 = (((int) mean[3] - configuration.line_distance_2));
+				configuration.right_x_2_2 = (((int) mean[3] + configuration.line_distance_2));
+
+				configuration.left_x_1_3 = (((int) mean[4] - configuration.line_distance_3));
+				configuration.left_x_2_3 = (((int) mean[4] + configuration.line_distance_3));
+
+				configuration.right_x_1_3 = (((int) mean[5] - configuration.line_distance_3));
+				configuration.right_x_2_3 = (((int) mean[5] + configuration.line_distance_3));
+
+				config_file_out.seekp(seek_calib, std::ios::beg);
+
+				config_file_out << "left_mean_1=" << (int) mean[0] << "\n";
 				config_file_out << "left_mean_2=" << (int) mean[2] << "\n";
 				config_file_out << "left_mean_3=" << (int) mean[4] << "\n";
 				config_file_out << "right_mean_1=" << (int) mean[1] << "\n";
@@ -343,12 +367,30 @@ struct properties configure(int param, std::string filename, std::vector<double>
 				configuration.right_mean_1 = (int) mean[1];
 				configuration.right_mean_2 = (int) mean[3];
 				configuration.right_mean_3 = (int) mean[5];
+
+				config_file_out.close();
+			} else {
+				configuration.left_x_1_1 = ((configuration.left_mean_1 - configuration.line_distance_1_out));
+				configuration.left_x_2_1 = ((configuration.left_mean_1 + configuration.line_distance_1_in));
+
+				configuration.right_x_1_1 = ((configuration.right_mean_1 - configuration.line_distance_1_in));
+				configuration.right_x_2_1 = ((configuration.right_mean_1 + configuration.line_distance_1_out));
+
+				configuration.left_x_1_2 = ((configuration.left_mean_2 - configuration.line_distance_2));
+				configuration.left_x_2_2 = ((configuration.left_mean_2 + configuration.line_distance_2));
+
+				configuration.right_x_1_2 = ((configuration.right_mean_2 - configuration.line_distance_2));
+				configuration.right_x_2_2 = ((configuration.right_mean_2 + configuration.line_distance_2));
+
+				configuration.left_x_1_3 = ((configuration.left_mean_3 - configuration.line_distance_3));
+				configuration.left_x_2_3 = ((configuration.left_mean_3 + configuration.line_distance_3));
+
+				configuration.right_x_1_3 = ((configuration.right_mean_3 - configuration.line_distance_3));
+				configuration.right_x_2_3 = ((configuration.right_mean_3 + configuration.line_distance_3));
 			}
-			std::cout << "PULA" << "\n";
-			config_file_out.close();
 
 		} else {
-
+			// parameters already scaled to the resize factor of the image
 			configuration.y_1 *= configuration.resize_factor;
 			configuration.y_2 *= configuration.resize_factor;
 			configuration.y_3 *= configuration.resize_factor;

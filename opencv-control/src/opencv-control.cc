@@ -74,7 +74,6 @@ int map_servo_fine(double input, double in_min, double in_max, double mean) {
 
 }
 
-
 /* ------------------------------------------------------------ */
 /*** int choose_servo(int left, int right, int mean)
  **
@@ -111,7 +110,6 @@ int choose_servo(int left, int right, int mean) {
 		return average_not_zero(left, right);
 	}
 }
-
 
 /* ------------------------------------------------------------ */
 /*** std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int right_2, int left_3, int right_3, int mean, int current_speed, int base_speed, int lane_keep)
@@ -184,7 +182,6 @@ std::vector<int> choose_advanced_servo(int left_1, int right_1, int left_2, int 
 
 }
 
-
 /* ------------------------------------------------------------ */
 /*** double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int line_y, int line_start, int line_stop, int param)
  **
@@ -232,7 +229,6 @@ double find_avg_point_on_line(cv::Mat frame_pixels, cv::Mat frame_image, int lin
 	return ret;
 }
 
-
 /* ------------------------------------------------------------ */
 /*** int servo_speed_adj(int servo_no_adj, int current_speed)
  **
@@ -263,7 +259,6 @@ int servo_speed_adj(int servo_no_adj, int current_speed) {
 
 	return (int) servo_post_adj;
 }
-
 
 /* ------------------------------------------------------------ */
 /*** std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image, int param)
@@ -321,7 +316,6 @@ std::vector<double> average_lane_lines(cv::Mat frame_pixels, cv::Mat frame_image
 
 	return ret;
 }
-
 
 /* ------------------------------------------------------------ */
 /*** std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int param, int current_speed, int base_speed, int lane_keep)
@@ -402,7 +396,6 @@ std::vector<int> servo_and_speed(cv::Mat frame_pixels, cv::Mat frame_image, int 
 	return ret;
 }
 
-
 /* ------------------------------------------------------------ */
 /*** void draw_accel(cv::Mat frame, float accel_x, float accel_y, int area_corner_x, int area_corner_y)
  **
@@ -451,7 +444,6 @@ void draw_accel(cv::Mat frame, float accel_x, float accel_y, int area_corner_x, 
 	cv::circle(frame, cv::Point(area_corner_x + x, area_corner_y + y), 3, cv::Scalar(255, 255, 255), thickness, CV_AA);
 
 }
-
 
 /* ------------------------------------------------------------ */
 /*** int detect_and_display(cv::Mat frame, int param)
@@ -512,7 +504,6 @@ int detect_and_display(cv::Mat frame, int param) {
 	return ret;
 
 }
-
 
 /* ------------------------------------------------------------ */
 /*** std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, int current_speed, int base_speed, int stop_time, int posible_speed, int lane_keep)
@@ -722,7 +713,6 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, in
 	return ret;
 }
 
-
 /* ------------------------------------------------------------ */
 /*** void my_handler(int s)
  **
@@ -752,18 +742,17 @@ void my_handler(int s) {
 	std::cout << "STOPPED." << "\n";
 }
 
-
 /* ------------------------------------------------------------ */
 /*** void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* motors, FILE* sonar, FILE* acl, unsigned short usr_speed, int h, int w, int l)
  **
  **   Parameters:
  **		param:				the debug parameter
  **		iterations:			the number of user set iterations
- **		camera:				the file pionter to the /dev/videoHLS
- **		servo:				the file pointer to the /dev/servo
- **		motors:				the file pointer to the /dev/motors
- **		sonar:				the file pointer to the /dev/sonar
- **		acl:				the file pointer to the /dev/i2c-1 (accelerometer)
+ **		camera:				the file pionter to /dev/videoHLS
+ **		servo:				the file pointer to /dev/servo
+ **		motors:				the file pointer to /dev/motors
+ **		sonar:				the file pointer to /dev/sonar
+ **		acl:				the file pointer to /dev/i2c-1 (accelerometer)
  **		usr_speed:			the user assigned speed
  **		h:					height of the stream
  **		w:					width of the stream
@@ -775,11 +764,11 @@ void my_handler(int s) {
  **   Description:
  **     This function is running in its own thread and it is responsible of
  **     controlling the car's lane detection and correct driving.
- **     It achieves this by using some previous functions after resizing
+ **     It achieves this by using some previous functions. After resizing
  **     the camera image it gets the servo angle and possible speed from
  **     servo_and_speed(...) function and then decides if it is able to go
  **     forward and in what conditions (keeping the right or the left road
- **     or how much it still has to stop) from speed_and_stop.
+ **     or how much it still has to stop) from speed_and_stop(...) function.
  **     After the working parameters are calculated this functions writes an
  **     image containing the lasts iterations actions and goes to the next
  **     iterations where it will compute the iterations current parameters
@@ -862,7 +851,7 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 			dist = big_speed[3];
 			lane_keep = big_speed[4];
 
-//speed that is written to motors
+			//speed that is written to motors
 			speed = ((unsigned short) current_speed << 16) + (unsigned short) current_speed;
 
 			int mtr_write = write(motors->_fileno, &speed, 4);
@@ -977,6 +966,29 @@ void lane_component(int param, int iterations, FILE* camera, FILE* servo, FILE* 
 
 }
 
+/* ------------------------------------------------------------ */
+/*** void sign_component(int param, FILE* camera, int h, int w, int l)
+ **
+ **   Parameters:
+ **		param:				the debug parameter
+ **		camera:				the file pionter to /dev/video
+ **		h:					height of the stream
+ **		w:					width of the stream
+ **		l:					color depth of the stream
+ **
+ **   Return Value:
+ **     None.
+ **
+ **   Description:
+ **     This function is running in its own thread and it is responsible of
+ **     controlling the car's sign detection algorithm. It uses a Haar
+ **     cascade technique (detect_and_display(...) function) and it runs
+ **     until the lane_component part of the control algorithm finishes.
+ **     The preprocessing is minial, only resising the original camera image
+ **     and cropping it to halt the size (tipically road signs are on the
+ **     right side of the road)
+ **
+ */
 void sign_component(int param, FILE* camera, int h, int w, int l) {
 
 	auto start = std::chrono::high_resolution_clock::now();
@@ -1053,6 +1065,24 @@ void sign_component(int param, FILE* camera, int h, int w, int l) {
 
 }
 
+/* ------------------------------------------------------------ */
+/*** void runRFID(int fd, struct cardQueue *queue)
+ **
+ **   Parameters:
+ **		fd:					the RFID file descriptor
+ **		queue:				the queue in which the RFID cards are stored
+ **
+ **   Return Value:
+ **     None.
+ **
+ **   Description:
+ **     This function is running in its own thread and it is responsible of
+ **     controlling the car's RFID detection part of the control algorithm.
+ **     The functions and main part of this function are explained in
+ **     PN532_rfid.h file. It runs until the lane_component part of
+ **     the control algorithm finishes.
+ **
+ */
 void runRFID(int fd, struct cardQueue *queue) {
 
 	uint8_t success;
@@ -1117,31 +1147,40 @@ void runRFID(int fd, struct cardQueue *queue) {
 	}
 }
 
-void close_fp(std::vector<FILE*> fp) {
-	for (int i = 0; i < fp.size(); i++) {
-		fclose(fp[i]);
-	}
-}
-
 int main(int argc, char** argv) {
 
 	std::cout << "OpenCV version : " << CV_VERSION << "\n";
 
-	if (argc < 3) {
+	if (argc != 3) {
 		std::cerr << argv[0] << " <debug param> <number of iterations> <speed>" << "\n" << "0 - nothing" << "\n" << "1 - just text" << "\n" << "2 - just images" << "\n" << "\n" << "-1 - text and images" << "\n" << "100 - calibration mode" << "\n";
 		return -1;
 	}
 
+	// get the arguments
 	int param = atoi(argv[1]);
 	int iterations = atoi(argv[2]);
 	unsigned short usr_speed = atoi(argv[3]);
+
+	// check parameters
+	if (iterations < 0) {
+		std::cerr << "Bad number of iterations." << "\n";
+
+		return -1;
+	} else if (iterations == 42) {
+		iterations = 100000;
+	}
+	if (param == 100) {
+		iterations = 1;
+	}
 
 	std::vector<FILE*> fp;
 
 	std::string cfg_name = "prop.cfg";
 	std::vector<double> calib_avg;
+	// initialize the cfg
 	cfg = configure(param, cfg_name, calib_avg);
 
+	// open the different devices and check if they have opened correctly
 	FILE* camera_lane = fopen("/dev/videoHLS", "rb");
 	if (camera_lane < 0) {
 
@@ -1203,16 +1242,6 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	if (iterations < 0) {
-		std::cerr << "Bad number of iterations." << "\n";
-		close_fp(fp);
-		return -1;
-	} else if (iterations == 42) {
-		iterations = 100000;
-	}
-	if (param == 100) {
-		iterations = 1;
-	}
 	int rfid = -1;
 	if (cfg.rfid_on == 1) {
 		rfid = initRFID();
@@ -1228,19 +1257,24 @@ int main(int argc, char** argv) {
 	f_motors = motors->_fileno;
 	f_servo = servo->_fileno;
 
-	unsigned int left_dir = 1; // the car is always going forward
+	// initialize motors direction (the car is always going forward)
+	unsigned int left_dir = 1;
 	unsigned int right_dir = left_dir;
 	ioctl(motors->_fileno, MOTION_IOCTSETDIR, ((left_dir & 1) << 1) + (right_dir & 1));
 
+	// enable motors
 	unsigned int enable = 1;
 	ioctl(motors->_fileno, MOTION_IOCTSETENABLE, enable);
 
-	int stock_servo_out = 300;
+	// center wheels
+	int stock_servo_out = SERVO_CENTER;
 	write(servo->_fileno, &stock_servo_out, 2);
 
+	// set starting speed to 0
 	int stock_speed = 0;
 	write(motors->_fileno, &stock_speed, 4);
 
+	// load Haar cascade
 	if (!stop_cascade.load(stop_cascade_name)) {
 		std::cerr << "Failed to load stop sign cascade" << "\n";
 		close_fp(fp);
@@ -1249,12 +1283,13 @@ int main(int argc, char** argv) {
 		return -1;
 	};
 
+	// set SIG_INT handler
 	memset(&sigIntHandler, 0, sizeof(sigIntHandler));
-
 	sigIntHandler.sa_flags = SA_RESETHAND;
 	sigIntHandler.sa_handler = my_handler;
 	sigaction(SIGINT, &sigIntHandler, NULL);
 
+	// get canfiguration data from the 2 video streams
 	int h_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQHEIGHT);
 	int w_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQWIDTH);
 	int l_lane = ioctl(camera_lane->_fileno, CHARVIDEO_IOCQPIXELLEN);
@@ -1265,6 +1300,7 @@ int main(int argc, char** argv) {
 
 	if (param != 100) {
 
+		// the main part of the algorithm, where the threads are started if needed
 		std::thread t1, t2, t3;
 
 		t1 = std::thread(lane_component, param, iterations, camera_lane, servo, motors, sonar, acl, usr_speed, h_lane, w_lane, l_lane);
@@ -1288,6 +1324,8 @@ int main(int argc, char** argv) {
 
 	} else {
 
+		// the calibration part of the algorithm overwrites the means of the
+		// detection zones with ones calculated from the current image and the config file is changed
 		unsigned char* pixels;
 		pixels = (unsigned char *) malloc(h_lane * w_lane * l_lane * sizeof(char));
 		fread(pixels, 1, h_lane * w_lane * l_lane, camera_lane);
@@ -1297,6 +1335,8 @@ int main(int argc, char** argv) {
 
 	}
 
+	// the end of the algorithm, threads are joined, and for good
+	// measure, the servo and motors are reverted to their default positions
 	stock_servo_out = SERVO_CENTER;
 	write(servo->_fileno, &stock_servo_out, 2);
 	stock_speed = 0;
