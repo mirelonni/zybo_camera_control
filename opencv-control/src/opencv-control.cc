@@ -691,6 +691,8 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, FI
 							lan_kep = 1;
 						} else {
 							lan_kep = 0;
+							color = 0;
+							write(rgbled->_fileno, &color, 4);
 						}
 
 						cascade_flag = 1;
@@ -709,6 +711,8 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, FI
 							lan_kep = -1;
 						} else {
 							lan_kep = 0;
+							color = 0;
+							write(rgbled->_fileno, &color, 4);
 						}
 
 						cascade_flag = 1;
@@ -725,15 +729,15 @@ std::vector<int> speed_and_stop(int param, cv::Mat frame_stream, FILE* sonar, FI
 						}
 						lan_kep = 0;
 
+						color = 0;
+						write(rgbled->_fileno, &color, 4);
+
 						cascade_flag = 1;
 						break;
 
 					}
 					if (lan_kep != 0) {
 						color = SINGLE_LANE_COLOR;
-						write(rgbled->_fileno, &color, 4);
-					} else {
-						color = 0;
 						write(rgbled->_fileno, &color, 4);
 					}
 
